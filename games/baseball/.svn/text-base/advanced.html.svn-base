@@ -1,0 +1,44 @@
+<HTML>
+
+<HEAD>
+<TITLE>Little Professor Baseball: Advanced Game</TITLE>
+</HEAD>
+
+<BODY>
+<FONT FACE="Arial">
+
+<IMG  HSPACE=0 ALIGN=RIGHT HEIGHT=172 WIDTH=161 SRC="images/field.gif">
+<FONT SIZE=+3><font color=red>Little Professor Baseball</font></font>
+<BR>
+<I>We do the arithmetic, so you can play baseball.</I>
+
+<P>
+<FONT SIZE=+2 color=red>The Advanced Game</font>
+
+<P>
+We suggest you get acquainted with the simple game first.
+
+<P>
+<a href="index.html">Home</a>
+&nbsp; | &nbsp;
+<a href="basic.html">Basic Game</a>
+&nbsp; | &nbsp;
+<a href="advanced.html">Advanced Strategy</a>
+&nbsp; | &nbsp;
+<a href="math.html">The Mathematics</a>
+
+</FONT>
+</BODY>
+
+<ADDRESS>
+<HR>
+<FONT FACE="arial">
+<SMALL>
+<B>Copyright</B> ©2001. All rights reserved, <a href="http://www.colloquial.com/">Colloquial.Com</a>. &nbsp; 
+<B>Contact:</B> <A href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</A> &nbsp; 
+<B>Updated:</B> 7 July 2001
+</SMALL>
+</FONT>
+</ADDRESS>
+
+</HTML>

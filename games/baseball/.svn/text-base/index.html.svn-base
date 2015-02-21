@@ -1,0 +1,114 @@
+<HTML>
+
+<HEAD>
+<TITLE>Little Professor Baseball</TITLE>
+</HEAD>
+
+<BODY>
+<FONT FACE="Arial">
+
+<P>
+<IMG  HSPACE=0 ALIGN=RIGHT HEIGHT=172 WIDTH=161 SRC="images/field.gif">
+<FONT SIZE=+3><font color=red>Little Professor Baseball</font></font>
+<BR>
+<I>We do the arithmetic, so you can play baseball.</I>
+
+<P>
+Little Professor Baseball is a simulation game that
+is fun, simple and statistically accurate. 
+<BR>
+You
+can be playing the
+<a href="basic.html">basic game</a> in minutes.
+
+<P>
+<IMG  HSPACE=20 ALIGN=LEFT HEIGHT=116 WIDTH=62 SRC=
+"images/cyYoungCard.jpg">
+<FONT SIZE=+2 color=red>Player Cards</font>
+<BR>
+Each player has a single card from which you directly read outcomes of
+various situations, based on ratings for:
+    <LI><i>Hitting:</i> Basic, Hit and Run, Bunt, Sacrifice, Power, Clutch, Righty vs. Lefty
+    <LI><i>Running:</i> Stealing, Baserunning
+    <LI><i>Defense:</i> Fielding, Range, Throwing
+    <LI><i>Pitching:</i> Basic, Righty vs. Lefty, Endurance, Holding Runners, Wildness, Balks
+
+<P>
+<IMG  HSPACE=10 ALIGN=RIGHT HEIGHT=75 WIDTH=100 SRC=
+"images/TBall.jpg">
+<FONT SIZE=+2 COLOR=red>Basic Game</FONT>
+<BR>
+The <a href="basic.html">Basic Game</a> involves an accurate hitter
+vs. pitchup matchup.  Each at-bat is resolved as a strikeout,
+groundout, lineout, flyout, walk, single, double, triple or home run.
+Even the basic game is played according to the 
+<a href="http://www.mlb.com/NASApp/mlb/mlb/baseball_basics/mlb_basics_foreward.jsp">
+Official Rules of Baseball</a>.  Enough detail is generated from a game
+for a box score.
+
+<P>
+<IMG  HSPACE=10 ALIGN=LEFT HEIGHT=75 WIDTH=100 SRC=
+"images/pitcherGrip.jpg">
+<FONT SIZE=+2 Color=red>Advanced Game</FONT>
+<BR>
+The <a href="advanced.html">Advanced Game</a> lets you add as much
+detail as you want in whatever combination suits you.  The most basic
+addition is fielding.  This naturally goes along with base running and
+throwing.  You can add a number of strategic elements such as stealing
+bases, the hit and run, sacrifice bunts and squeezes.  You can add
+defensive positioning such as moving the infield in or holding
+runners.  Pitcher fatigue for starters, long relievers and short
+relievers can be added for a much more realistic pitching game.
+Enough detail can be generated for 
+<a href="http://www.mlb.com/NASApp/mlb/mlb/baseball_basics/mlb_basics_keeping_score.jsp">Official Baseball Scoring</a>
+
+
+<P>
+<IMG  HSPACE=10 ALIGN=RIGHT WIDTH=52 HEIGHT=92 SRC=
+"images/2d10.jpg">
+<FONT SIZE=+2 Color=red>How to Play</FONT>
+<BR>
+To play, you only need the player cards, dice, paper and pencil.  Each
+outcome is determined by all players involved rolling 000-999 on three
+ten-sided dice.  Higher rolls are always better.
+
+<P>
+<IMG  HSPACE=10 ALIGN=LEFT WIDTH=61 HEIGHT=43 SRC=
+"images/equation.gif">
+<FONT SIZE=+2 Color=red>The Mathematics</FONT>
+<BR>
+If you're a student of the game, check out the
+<a href="math.html">Mathematics</a> behind Little
+Professor Baseball.  If you're not careful, you just
+might learn a little bit about statistical estimation,
+quadratic equations and why three ten-sided dice are
+the way to roll.
+
+<P>
+<a href="index.html">Home</a>
+&nbsp; | &nbsp;
+<a href="basic.html">Basic Game</a>
+&nbsp; | &nbsp;
+<a href="basic.html">Advanced Strategy</a>
+&nbsp; | &nbsp;
+<a href="math.html">The Mathematics</a>
+
+</FONT>
+</BODY>
+
+<ADDRESS>
+<FONT FACE="arial" size=-2>
+<HR>
+<a href="http://www.colloquial.com/carp"><IMG  HSPACE=10 ALIGN=RIGHT HEIGHT=50 WIDTH=38 SRC= 
+"images/author_photo.jpg"></a>
+<B>Copyright</B> ©2001. 
+<a href="http://www.colloquial.com/">Colloquial.Com</a>. 
+All rights reserved, 
+&nbsp; <BR>
+<B>Contact:</B> <A href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</A> 
+&nbsp;  <BR>
+<B>Updated:</B> 7 July 2001
+</FONT>
+</ADDRESS>
+
+</HTML>

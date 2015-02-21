@@ -1,0 +1,516 @@
+Constraint-based Processing  
+================================================================================
+Encyclopedia of Cognitive Science Article 279, Level 2, 2000 words
+
+
+Keywords
+--------------------------------------------------------------------------------
+
+Phrases: grammar formalisms, natural language parsing, constraint
+resolution, feature logic, search
+
+Single Words: grammar, parsing, constraints, features, search
+
+
+Article Definition
+--------------------------------------------------------------------------------
+Logical foundations and parsing of constraint-based natural language grammar
+formalisms.  
+
+
+Contents
+--------------------------------------------------------------------------------
+1. Constraint-based grammar formalisms.
+2. Mathematical foundations (Feature logic).
+3. Constraint-based parsing.
+
+Definition of HeadWord
+--------------------------------------------------------------------------------
+A constraint-based grammar formalism is one in which a class of constraints is
+used to reduce a class of potential representations to the representations which
+are well formed, or grammatical.
+
+Introduction
+--------------------------------------------------------------------------------
+
+Linguistic theories have been primarily concerned with the structure
+of languages and utterances within those languages.  Extensionally,
+all of the mainstream linguistic theories concentrate on picking out
+the set of grammatical, or well-formed structures (sounds, words or
+phrases, for instance) in a language.  Intensionally, linguists debate
+the right way to pick out such structures, often arguing from a
+cognitive perspective based on evidence of human language development,
+comprehension or production, or typological variation.  Computer
+scientists typically worry about efficiency of processing in terms of
+time and space, often side-stepping cognitive issues in the interest
+of building effective software.
+
+
+1. Constraint-based grammar formalisms
+--------------------------------------------------------------------------------
+
+Two basic approaches to characterizing well-formed structures can be
+usefully compared and contrasted.  The first, more traditional view,
+is modeled on the notion of inductive definitions.  To use a logical
+example that motivated linguists, consider an inductive definition of
+the well-formed formulas (WFFs) of propositional logic.  First, there
+is the base case of propositional symbols, which are assumed to be
+WFFs.  Then stipulate that if P and Q are WFFS, then so is the
+conjunction (P and Q) and the negation (not P).  Iterating these
+constructions generates the full set of WFFs.  Any formula that can be
+built up from propositional symbols by applying conjunction or
+negation is taken to be well formed.
+
+The second method for picking out the well-formed structures is based
+on constraints.  Rather than starting from a small set of structures
+known to be well formed, a large set of possibilities is considered
+and the ill-formed ones are removed.  For instance, the prime numbers
+are typically defined in this way.  Start with all of the natural
+numbers, and eliminate the compound numbers, that is numbers that are
+the product of two smaller numbers greater than one.  The remaining
+numbers are the prime numbers.  
+
+Bar-Hillel (1950), working from the tradition of logical languages in
+mathematics and philosophy, presented one of the first mathematically
+rigorous definition of a system for generating the expressions of a
+natural language.  He worked bottom-up from a lexicon associating
+words and categories, such as "dog" and "singular common noun", and
+introduced rules to build larger phrases.  For instance, by
+concatenating a determiner such as "the" with a common noun such as
+"dog", the noun phrase "the dog" is generated.  This was essentially
+an early instance of a phrase structure grammar [225 Linguistics].
+
+Although there is no agreed upon definition, a generative theory is
+typically taken as one in which a mechanism is proposed for generating
+(usually by some formal mathematical means) the set of grammatical
+sentences of a language.  Chomsky (1957) is perhaps the best-known
+example of an early generative theory of language.  Chomsky introduced
+the notion of transformation, which he used to relate constructions in
+a language, such as interrogative and declarative forms of sentences,
+through derivation.  Chomsky employed phrase-structure techniques
+similar to Bar-Hillel to generate "base forms" and then applied
+various structure permuting transformations to generate grammatical
+"surface forms".  For instance, Chomsky produced the interrogative
+"will John run" from the delcarative "John will run" by means of a
+transformation that moves the matrix finite auxiliary to the front of
+the sentence.
+
+Over the ensuing 20 years, generative systems acquired all the bells
+and whistles of a maturing science.  The most common accoutrement was
+a constraint or two, that limited the applicability of some operation.
+For instance, noun compounding might apply freely to combine two nouns
+into a new noun, such as "coal oven", but a constraint would be
+imposed that the first noun not be plural.  By the late 1970s, in the
+Government-Binding Theory (Chomsky 1980) [218 Linguistics], the role
+of constraints on transformations had grown to the point where the
+transformations themselves were of the general form "move anything
+anywhere", requiring constraints to control specifically what moved
+where. This resulting framework is thus explicitly constraint-based.
+
+
+2. Mathematical foundations (Feature logic)
+--------------------------------------------------------------------------------
+
+The mathematics of constraint processing in general involves the
+distinction between inductive and co-inductive definitions (see
+Barwise and Etchemendy 1987).  An inductive definition provides a base
+set, and then operations that grow the set.  The set defined is then
+taken to be the smallest set containing the base cases and closed
+under the operations.  A co-inductive definition on the other hand,
+begins with a set of structures, provides constraints on the form of
+resulting elements, and then produces a result that is the largest
+subset of the original set meeting all of the constraints.
+
+The standard general formulation of constraint problems is one of
+logical satisfiability. Consider the simple language of propositional
+formulas given above under a classical interpretation.  It is natural
+to ask for a given formula if there is an assignment of truth values
+to its propositional symbols under which it is true.  The formula is a
+kind of constraint on assignments of truth values.  Unfortunately,
+even this very simple constraint problem for this very simple logical
+language is very complex computationally.  Propositional
+satisfiability (known as "SAT") is NP complete (see Cormen et al. 1990
+for definitions and proofs), meaning that every known algorithm to
+solve such problems encounters cases whose processing time grows
+exponentially [8 Computer Science].
+
+Robinson (1965) introduced the general technique of resolution for
+proving theorems in first-order logic [60 Computer Science].  From
+this notion of resolution and the simple facts of linguistic
+agreement, Colmerauer (1970) introduced the notion of logic
+programming, motivated primarily by the search and constraint problems
+introduced by linguistic grammars.  Colmerauer used logical rules such
+as the following to code the fact that the noun phrase and verb phrase
+must agree in number and that the sentence carries the verb form of
+its matrix verb:
+
+(1)
+    s(Words1+Words2,VerbForm) 
+      if np(Words1,Number) and vp(Words2,VerbForm,Number).
+
+The symbol s is taken to be a two place predicate, where the first
+argument is a sequence of words and the second argument is a verb form
+such as finite or infinitive.  The symbols for noun phrases and verb
+phrases, np and vp, are to be read similarly, with an additional
+argument for number.  Such rules are implicitly universally
+quantified, and thus can be read as saying that if Words1 is a
+sequence of words that forms a noun phrase of number Number and Words2
+is a sequence of words that forms a verb phrase of the same number and
+a verb form VerbForm, then the concatenation of Words1 and Words2,
+indicated as Words1+Words2, forms a sentence with the given verb form
+VerbForm.
+
+The notion of constrained phrase-structure rules was introduced, along
+with a very general notion of feature into mainstream linguistics by
+Harman (1963).  Since then, every branch of the field from phonetics
+to pragmatics has adopted some kind of "feature-based" analysis.  In
+these theories, rather than relying on a positional encoding as in
+first-order terms, the values are named.  
+
+In theories such as lexical-functional grammar [222 linguistics] and
+head-driven phrase structure grammar [??? lingusitics], feature
+structures are used to represent partial information.  This more
+general data structure is particularly adept at representing the kind
+of sparse information found in linguistic constraints, which often
+indicate the behavior of a handful of linguistic features among
+hundreds.  Feature strucutres of the form employed in head-driven
+phrase structure grammar also allow a natural form of knowledge
+representation through inheritance [58 computer science, 64 computer
+science].  Processing with such structures has essentially followed
+that of first-order terms, with systems being based on
+constraint-resolution and in particular, unification.  Unification is
+an operation that takes two terms or feature structures and produces a
+new term that contains all of the information in both, or returns
+failure if they are inconsistent.  There are also strong
+similarites to product-systems operating over frames [31 computer science].
+
+
+3. Constraint-based parsing.
+--------------------------------------------------------------------------------
+
+Natural language parsing, as a stage in more general natural language
+processing [78 computer science] involves generating some or all of
+the structures compatible with a given sequence of words [277
+linguistics]. Given a context-free grammar and a sequence of words, a
+representation of all parses can be generated in polynomial time
+(slightly sub-cubic).  The universal recognition problem involves
+taking a grammar and a sequence of words and determining if there is
+some parse for a sequence of words.  Barton et al. (1987) showed that
+the introduction of agreement constraints of the form shown above
+yields a universal recognition problem that is NP-complete; the
+problem for any fixed grammar, though, remains polynomial [8 computer
+science].  Similarly, word order constraints added to a general
+context-free grammar result in NP-complete parsing problems.
+
+Most constraint-based parsing systems are hybrids that involve a
+standard search-based parsing algorithm [277 linguistics] with side
+constraints.  At any stage where constituents are combined or rules
+are expanded, a check is made to ensure that the set of constraints
+remains consistent.  If not, the search path is abandoned.  At each
+stage, the information known about variables and their values is
+represented by means of an assignment to variables.  For instance, in
+parsing "the papers falls" from left to right and bottom up, the
+determiner "the" is encountered first, which is unspecified for
+number.  When it is combined with the plural noun "papers", the value
+of the noun phrase's agreement feature becomes plural [211
+linguistics].  Finally, the attempt to combine the plural noun phrase
+with the singular verb phrase fails due to a violation of an agreement
+constraint.  Exponential growth in simple parsing arises because the
+number of possible assignments to variables can grow exponentially.
+
+In the field of artificial intelligence, the drive for richer, more
+structured systems of knowledge representation and reasoning led to a
+generalized notion of feature and values known as a frame [58 computer
+science].  Frames generalize simple feature systems with a finite set
+of features and a finite set of values by allowing some features to
+take frames themselves as values.  On top of this frame-based
+representational system, many forms of constraints can be introduced
+which lead to a variety of reasoning systems for resolving the
+constraints.  Of particular interest for natural language is the pure
+constraint-based representation of natural language grammars, which
+was first introduced in the work on KL-ONE (see Brachman and Schmolze
+1985).
+
+Of particular interest is the notion of constraint resolution, which
+is often known as "classification" in the knowledge representation
+literature [computer science 26].  Early work in classification was
+applied to parsing, most notably in the system KL-ONE (Brachman and
+Schmolze 1985).  In this purely constraint-based representation of
+parsing, features are used to represent phrase structure trees the way
+trees are usually coded in computational data structures.  For
+instance, the simple sentence "the kids laughed" would be represented
+as [S [NP [Det the] [N kids]] [VP laughed]] would be represented in a
+frame as:
+
+(2)
+     CAT: S
+     DTR1: CAT: NP
+           DTR1: CAT: Det
+                 WORD: the
+           DTR2: CAT: N
+                 WORD: kid
+     DTR2: CAT: VP
+           WORD: laughed
+
+Note that features like CAT (for syntactic category) take simple
+atomic values, whereas features like DTR1 and DTR2 (for daughter
+constituents) take values that are themselves frames.  A set of
+grammatical "rules" can then be naturally modeled as a disjunctive
+constraint: every local frame must satisfy one of the phrase structure
+rules, including lexical rules.  In a logical language, this could be
+expressed by:
+
+
+(3)
+      (CAT:S & DTR1:CAT:NP & DTR2:CAT:VP) 
+    | (CAT:NP & DTR1:CAT:Det & DTR2:CAT:N)
+    | (CAT:Det & WORD:(the | a | every | some | ...))
+    | (CAT:N & WORD:(kid | boy | dog | ...))
+    | ...
+
+Representation of agreement is straightforward:
+
+(4) CAT: MAJOR: NP
+         AGR: singular
+    DTR1: CAT: MAJOR: Det
+               AGR: singular
+          WORD: every
+    DTR2: CAT: MAJOR: N
+               AGR: singular
+          WORD: dog
+
+The constraint on agreement can be represented using equations between
+paths of features, as in:
+
+(5)
+   CAT:NP & DTR1:CAT:Det & DTR2:CAT:N & (CAT:AGR = DTR1:CAT:AGR) & (CAT:AGR = DTR2:CAT:AGR)
+
+Pollard and Sag's (1994) Head-driven phrase structure grammar (HPSG)
+has taken this representational strategy to the limit, representing
+all of grammatical structure by means of cosntraints.  But rather than
+a naive encoding of phrase structure grammars, HPSG followed the
+linguistic trend of factoring the rule-specific equations such as (5)
+into general theories of agreement, semantics, unbounded dependencies,
+etc.  A typical constraint in HPSG would enforce agreement between a
+mother and a head daughter, and would apply to every phrase structure
+configuration.  Another constraint might say that the unresolved
+dependencies in a phrase must be the union of all unresolved
+dependencies in the daughters.  Thus rather than a disjunction of
+rules like:
+
+(6) Rule_1 | Rule_2 | ... | Rule_n        [note: _ means subscript!]
+
+HPSG instead looks like:
+
+(7) Principle_1 & Principle_2 & ... & Principle_3
+
+Of course, the principles themselves might involve disjunctions
+of cases.  
+
+In general, constraint systems such as the one employed in HPSG are
+Turing equivalent computational devices, and as such, do not even have
+decidable parsing problems, much less tractable ones [8 computer
+science].  Luckily, the property of actual models expressed in feature
+formalisms are much more tractable -- the theory actually picked out
+by HPSG is decidable, for instance, as are the other major
+feature-based linguistic theories.  Even so, most parsers for HPSG and
+related constraint-based grammar formalisms are built on top of
+efficient parsers for phrase structure with constraints being
+maintained on the side to filter search [277 linguistics, 26 computer
+science].
+
+More recently, the trend in constraint-based theories of language is
+to relax the all-or-nothing nature of constraints.  In theoretical
+linguistics, Optimality theory, for instance, relies on defeasible
+constraints that are ordered by strength (see Archangeli and
+Langendoen 1997).  Within the computational linguistics community,
+statistical models have largely supplanted logical ones, with the
+advantage that constraints are not "hard", but rather "soft".  That
+is, like optimality theory, statistical algorithms search for the
+"best" structure.  In statistical models, that is assumed to be the
+one with the highest likelihood.  In optimality theory, it is the one
+violating the fewest high-ranking constraints.
+
+
+
+Bibliography
+--------------------------------------------------------------------------------
+Archangeli, D. and Langendoen, D. T., eds. 1997. Optimality Theory. An
+Overview. Oxford: Blackwell Publishers.
+
+Bar-Hillel, Y.  1950.  On syntactical categories.  Journal of Symbolic
+Logic.  15:1--16.
+
+Barton, G. E., Jr., Berwick, R. C., and Ristad, E. S.  1987.
+Computational Complexity and Natural Language. Cambridge, Massachusetts: The MIT Press.
+
+Barwise, J. and Etchemendy, J.  1987.  The Liar: An Essay in Truth and
+Circularity.  Oxford: Oxford University Press.
+
+Brachman, R. J. and Schmolze, J. G. 1985. An overview of
+the KL-ONE knowledge representation system.  Cognitive Science.
+9:171--216.
+
+Chomsky, N.  1957.  Syntactic Structures.  The Hague: Mouton.
+
+Chomsky, N.  1980.  Rules and Representations.  New York: Columbia
+University Press.
+
+Colmerauer, A.  1970.  Les syst`emes-q ou un formalisme pour analyser et
+synth'esier des phrases sur ordinateur.  Internal Report 43,
+Computer Science Department, Universit'e de Montr'eal.
+
+Cormen, T. H., Leiserson, C. E., Rivest, R. L. 1990.
+Introduction to Algorithms.  Cambridge, Massachusetts: The MIT Press.
+
+Harman, G.  1963.  Generative grammars without transformation rules: a
+defense of phrase-structure.  Language.  39:597--616.
+
+Pollard, C. and Sag, I. 1994. Head-Driven Phrase Structure Grammar.
+Stanford, California: CSLI Publications.
+
+Robinson, J. A. 1965.  A machine-oriented logic based on the
+resolution principle.  Journal of the ACM.  12:23--41.
+
+
+
+Further Reading
+--------------------------------------------------------------------------------
+
+Bird (1995) provides a purely constraint-based theory of
+morpho-phonology.  Carpenter (1992) is the most comprehensive analysis
+of logical constraints and constraint resolution.  Manning and
+Schuetze (1999) provide a thorough overview of statistical approaches
+to language.  Saraswat (1993) discusses a general form of constraint
+logic programming.  Sowa (1991) has edited an excellent collection of
+papers on frame-based knowledge representation systems.
+
+Bird, S. 1995.  Computational Phonology : A Constraint-Based Approach.
+Cambridge: Cambridge University Press.
+
+Carpenter, B.  1992.  The Logic of Typed Feature
+Structures. Cambridge: Cambridge University Press.
+
+Manning, C. D. and Schuetze, H. 1999. Foundations of Statistical
+Natural Language Processing. Cambridge, Massachusetts: The MIT Press.
+
+Saraswat, V. A.  1993. Concurrent Constraint Programming.
+Cambridge, Massachusetts: The MIT Press.
+
+Sowa, J., editor. 1991. Principles of Semantic Networks.  San Mateo:
+Morgan-Kaufmann.
+
+
+Glossary
+--------------------------------------------------------------------------------
+
+Agreement (linguistic).  
+The relationship between two phrases in a sentence which co-vary
+with respect to grammatical features.  For example, in English,
+the subject must agree with the noun in person and number.
+
+Co-inductive Definition.
+A definition of a class that builds down from a universal class
+by eliminating members that that do not meet the definition.
+
+Context-Free Grammar.
+A phrase-structure grammar with a single non-terminal as
+the left-hand side.  For instance, this allows a rule
+such as S -> NP VP.
+
+Dynamic Programming.
+A technique that stores optimal solutions to subproblems for use
+in computing optimal solutions to larger problems.
+
+Inductive Definition.
+A definition of a class that builds up from a class of members
+by applying constructions that generate new members.
+
+Morphology.
+The study of the formation of words from their smallest meaningful
+units.
+
+NP-Complete.  
+A decision problem is NP-complete if it is both in the class
+NP and also NP-Hard.
+
+Phonology.
+The study of the structure of perceived sounds of a language.
+
+Phrase Structure.
+In general, the way in which meaningful grammatical units are
+organized.  In the technical sense, any of the grammars in
+the Chomsky hierarchy.
+
+Resolution Theorem Proving.
+An automatic method for computing whether a set of general first-order
+formulas are satisfiable.  Can be used to check validity, because a
+formula is valid if and only if its negation is unsatisfiable.
+
+Satisfiability (logical)
+A formula is satisfiable if it is true under some assignment
+to logical variables.
+
+Syntax.
+The study of the structure of grammatical elements, usually
+with a focus on well-formedness and structural relatedness.
+
+Transformational Grammar.
+A Turing-equivalent grammar formalism that poses a set of deep
+structures represented as trees, with a set of transformations
+mapping trees to other trees.  The grammatical sentences are those
+that can be derived from a deep structure tree by means of transformations.
+
+Turing Equivalent.  
+A formalism is Turing-equivalent if every computational problem
+that can be solved on a Turing machine can be solved in the formalism.
+
+
+Cross Links
+--------------------------------------------------------------------------------
+x 211    Linguistics
+                               Agreement
+x   8    Computer science
+                               Computability and computational complexity
+x  26    Computer science
+                               Constraint satisfaction
+ 689    Computer Science
+                               Formal Approaches to Morphology and Syntax
+  79    Computer science
+                               Formal Approaches to Semantics and Pragmatics
+x 218    Linguistics
+                               Government-Binding Theory
+x  64    Computer science
+                               Inheritance
+x  58    Computer science
+                               Knowledge representation
+  86    Computer science
+                               Language generation
+x 222    Linguistics
+                               Lexical-functional grammar
+ 288    Linguistics
+                               Lexicon, computational models of
+ 221    Linguistics
+                               Local dependencies and word order variation
+x  78    Computer science
+                               Natural language processing
+x 277    Linguistics
+                               Parsing: overview
+ 224    Linguistics
+                               Phrase structure and X-bar theory
+x 225    Linguistics
+                               Phrase structure grammar
+x  31    Computer science
+                               Production systems and rule-based inference
+x  60    Computer science
+                               Resolution theorem proving
+ 226    Linguistics
+                               Syntax
+
+
+
+
+Word Processing
+--------------------------------------------------------------------------------
+It's ASCII.  I used emacs version 19.34.6 on a Windows NT 4.0 PC.
+

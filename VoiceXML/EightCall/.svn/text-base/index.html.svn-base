@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>The Magic Eight Call VoiceXML</TITLE>
+<BODY>
+<table>
+<tr>
+<td>
+<img src="http://www.colloquial.com/VoiceXML/EightCall/eightball.gif">
+</td>
+<td>
+<font size=+3><b>The Magic Eight Call</b></font>
+</td>
+</table>
+
+<br>
+by <a href="http://www.colloquial.com/mitzi"><b>Mitzi Morris</b></a>
+of 
+<a href="http://www.tigerblue.com/">
+  <FONT FACE="ARIAL" COLOR="#0A3080">
+  Tiger Blue Software Engineering</FONT></a>.
+
+<p>
+The <b>Magic Eight Call</b> reaches into the future, to find the
+answers to your questions.  It knows what will be, and is willing to
+share this with you.
+
+
+<p>
+<b>In the News:</b>  June 11, 2001.  on XI.NU
+<br>
+<a href="http://xi.nu/8ball/">The Magic 8-Ball&reg;s Unofficial Home Page</a>,
+on its obviously mis-named page <a href="http://xi.nu/8ball/lame.html">Lame Magic 8-Ball&reg;s on the Net</a>,
+awards the Magic Eight Call 
+<img width=119 height=17 src="http://xi.nu/8ball/score7.gif" align=top alt="[Seven Balls]">
+out of a possible <img width=136 height=17 src="http://xi.nu/8ball/score8.gif" align=top alt="[Eight Balls]">
+(the incredible infinity-worthy <img width=17 height=17 src="http://xi.nu/8ball/score1.gif" align=top alt="[Infinite]"> * infinity
+<a href="http://8ball.federated.com/">Federated 8-Ball</a> excepted).
+
+
+<P>
+<table width="470" border="0" cellspacing="0" cellpadding="0">
+              <tr> 
+                <td width="32" valign="bottom"><img src="http://www.tellme.com/images/category_images/blackphone_top.gif" width="32" height="16" border="0"></td>
+                <td valign="baseline" colspan="2"><img src="http://www.tellme.com/images/category_images/number_remaining.gif" width="126" height="16" border="0"><img src="http://www.tellme.com/images/category_images/line_upper.gif" width="310" height="8" border=0></td>
+                <td align="right" width="8" valign="bottom"><img src="http://www.tellme.com/images/category_images/line_upperright.gif" width="8" height="8" border="0"></td>
+              </tr>
+              <tr valign="middle"> 
+                <td width="32" valign="top"><img src="http://www.tellme.com/images/category_images/blackphone_bottom.gif" width="32" height="46" border="0"><img src="http://www.tellme.com/images/category_images/sidegreenphone_spacer.gif" width="32" height="66" border="0"></td>
+                <td class="stepsboxCopy" valign="top" width="18" nowrap><img src="http://www.tellme.com/images/category_images/blackphone_right.gif" width="18" height="46" border="0" align="bottom"></td>
+                <td width="410" valign="top"> 
+                  <table width="100%" border="0" cellspacing="4" cellpadding="0">
+                    <tr> 
+                      <td width="20"><img src="http://www.tellme.com/images/category_images/numbers_1.gif" align="bottom" width="19" height="18" border="0" vspace="5"></td>
+                      <td class="stepsboxCopy">Call <a href="http://www.tellme.com">Tellme</a> <i>toll free</i> at <b>1.800.555.TELL</b>.</td>
+                    </tr>
+                    <tr> 
+                      <td width="20"><img src="http://www.tellme.com/images/category_images/numbers_2.gif" align="bottom" width="19" height="18" border="0" vspace="5"></td>
+                      <td class="stepsboxCopy">At the Main Menu, say <b>Extensions</b>.</td>
+                    </tr>
+                    <tr> 
+                      <td width="20"><img src="http://www.tellme.com/images/category_images/numbers_3.gif" align="bottom" width="19" height="18" border="0" vspace="5"></td>
+                      <td class="stepsboxCopy">Type or say <b>80222</b> for <b>The Magic Eight Call</b>.</td>
+                    </tr>
+                  </table>
+                </td>
+                <td width="8" valign="top"><img src="http://www.tellme.com/images/category_images/line_right.gif" width=8 height="112" border="0" align="bottom"></td>
+              </tr>
+              <tr> 
+                <td width="32" align="right" valign="top"><img src="http://www.tellme.com/images/category_images/line_lowerleft.gif" border="0" width="8" height="8" align="top"></td>
+                <td valign="bottom" colspan="2"><img src="http://www.tellme.com/images/category_images/line_lower.gif" width="436" height="8" border="0"></td>
+                <td align="right" width="8" valign="top"><img src="http://www.tellme.com/images/category_images/line_lowerright.gif" border="0" width="8" height="8" align="top"></td>
+              </tr>
+            </table>
+
+
+<p>
+If you liked this game, try the <a href="http://www.colloquial.com/VoiceXML">Other
+VoiceXML applications on Colloquial</a>.
+
+<p>
+Here's the <a href="eightcall.vxml">VoiceXML source code for the Magic
+Eight Call</a>.  It exercises most of the basics of the language
+including JavaScript functions, variables, forms and control flow.
+This appliction is compliant with the <a
+href="http://xi.nu/8ball/answers.html">official 8-ball answers</a>.
+
+
+<P>
+VoiceXML is a new technology that enables you to write voice
+dialogues in much the same way as you write HTML.  
+You can find the spec and further information at
+<a href="http://www.voicexml.org">The VoiceXML Forum</a>.
+
+<P>
+Currently, <a href="http://www.tellme.com">Tellme</a> is
+hosting VoiceXML applications, including this one, through 
+<a href="http://studio.tellme.com">Tellme Studio</a>.  Here's
+a full listing of <a href="http://studio.tellme.com/mystudio/showdirectory.cgi">Tellme Extensions</a>.
+
+<br>
+&nbsp;
+<br>
+<hr>
+<FONT SIZE=-2>
+&quot;Magic 8-Ball&quot; and &quot;Tyco Toys, Inc.&quot; are registered
+trademarks of Tyco Toys, Inc., and are used without permission.
+No affiliation exists between Tyco Toys, Inc., and this publication.  
+Opinions herein are solely those of the authors.  Other trademarks are 
+the property of their respective owners, and are used without permission.
+(This disclaimer was shamelessly appropriated from <a href="http://xi.nu/8ball/answers.html">
+http://xi.nu/8ball/answers.html</a>.)
+</FONT>
+
+<ADDRESS><SMALL>
+<HR>
+<I>Copyright</I> ©1999-2001. All rights reserved. &nbsp; <I>Contact:</I> <A 
+href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</A> &nbsp; 
+<I>Updated:</I> &nbsp; 12 June 2001</SMALL></ADDRESS></BODY></HTML>
+

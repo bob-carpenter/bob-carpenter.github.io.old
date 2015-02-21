@@ -1,0 +1,2014 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./ICSLP00_files/filelist.xml">
+<link rel=Edit-Time-Data href="./ICSLP00_files/editdata.mso">
+<link rel=OLE-Object-Data href="./ICSLP00_files/oledata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>Optimizing BNF Grammars through Source Transformations</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>A.T. &amp; T. Labs Research</o:Author>
+  <o:LastAuthor>Bob Carpenter</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>2</o:TotalTime>
+  <o:LastPrinted>2000-07-28T19:18:00Z</o:LastPrinted>
+  <o:Created>2000-09-20T17:40:00Z</o:Created>
+  <o:LastSaved>2000-09-20T17:40:00Z</o:LastSaved>
+  <o:Pages>5</o:Pages>
+  <o:Words>2608</o:Words>
+  <o:Characters>14870</o:Characters>
+  <o:Company>A.T. &amp; T. Labs Research</o:Company>
+  <o:Bytes>86528</o:Bytes>
+  <o:Lines>123</o:Lines>
+  <o:Paragraphs>29</o:Paragraphs>
+  <o:CharactersWithSpaces>18261</o:CharactersWithSpaces>
+  <o:Version>9.2720</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:AutoHyphenation/>
+  <w:HyphenationZone>7</w:HyphenationZone>
+  <w:DrawingGridHorizontalSpacing>6 pt</w:DrawingGridHorizontalSpacing>
+  <w:DrawingGridVerticalSpacing>6 pt</w:DrawingGridVerticalSpacing>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:Compatibility>
+   <w:SpaceForUL/>
+   <w:BalanceSingleByteDoubleByteWidth/>
+   <w:DoNotLeaveBackslashAlone/>
+   <w:ULTrailSpace/>
+   <w:DoNotExpandShiftReturn/>
+   <w:UsePrinterMetrics/>
+   <w:WW6BorderRules/>
+   <w:FootnoteLayoutLikeWW8/>
+   <w:ShapeLayoutLikeWW8/>
+   <w:AlignTablesRowByRow/>
+   <w:ForgetLastTabAlignment/>
+   <w:AutoSpaceLikeWord95/>
+   <w:LayoutRawTableWidth/>
+   <w:LayoutTableRowsApart/>
+  </w:Compatibility>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+h1
+	{mso-style-parent:"Heading Base";
+	mso-style-next:"Body Text";
+	margin-top:11.0pt;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:-1.75in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:11.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:-.25pt;
+	mso-font-kerning:14.0pt;
+	font-weight:normal;}
+h2
+	{mso-style-parent:"Heading Base";
+	mso-style-next:"Body Text";
+	margin-top:11.0pt;
+	margin-right:-.25in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:-.2pt;
+	mso-bidi-font-weight:normal;}
+h3
+	{mso-style-parent:"Heading Base";
+	mso-style-next:"Body Text";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	letter-spacing:-.1pt;
+	font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+h4
+	{mso-style-parent:"Heading Base";
+	mso-style-next:"Body Text";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:-.2pt;
+	font-weight:normal;}
+h5
+	{mso-style-parent:"Heading Base";
+	mso-style-next:"Body Text";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-outline-level:5;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:-.2pt;
+	font-weight:normal;}
+h6
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:6;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:11.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
+	{margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-parent:"Footnote Base";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoHeader, li.MsoHeader, div.MsoHeader
+	{mso-style-parent:"Header Base";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoFooter, li.MsoFooter, div.MsoFooter
+	{mso-style-parent:"Header Base";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:right 4.75in;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{mso-style-next:Normal;
+	margin-top:6.0pt;
+	margin-right:-.25in;
+	margin-bottom:6.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+span.MsoFootnoteReference
+	{vertical-align:super;}
+span.MsoCommentReference
+	{mso-style-parent:"";
+	mso-ansi-font-size:8.0pt;}
+span.MsoPageNumber
+	{mso-style-parent:"";
+	mso-ansi-font-size:9.0pt;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	font-weight:bold;}
+span.MsoEndnoteReference
+	{vertical-align:super;}
+p.MsoEndnoteText, li.MsoEndnoteText, div.MsoEndnoteText
+	{margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoMacroText, li.MsoMacroText, div.MsoMacroText
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Courier New";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+p.MsoList, li.MsoList, div.MsoList
+	{mso-style-parent:"Body Text";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:.25in;
+	text-indent:-.25in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet, li.MsoListBullet, div.MsoListBullet
+	{margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:12.0pt;
+	text-indent:-12.0pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber, li.MsoListNumber, div.MsoListNumber
+	{mso-style-parent:List;
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:.25in;
+	text-indent:-.25in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoList2, li.MsoList2, div.MsoList2
+	{mso-style-parent:List;
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:.5in;
+	text-indent:-.25in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoList3, li.MsoList3, div.MsoList3
+	{mso-style-parent:List;
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:.75in;
+	text-indent:-.25in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoList4, li.MsoList4, div.MsoList4
+	{mso-style-parent:List;
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:1.0in;
+	text-indent:-.25in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoList5, li.MsoList5, div.MsoList5
+	{mso-style-parent:List;
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+	{mso-style-parent:"List Bullet";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:30.0pt;
+	text-indent:-12.0pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{mso-style-parent:"List Bullet";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:48.0pt;
+	text-indent:-12.0pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet4, li.MsoListBullet4, div.MsoListBullet4
+	{mso-style-parent:"List Bullet";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:66.0pt;
+	text-indent:-12.0pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListBullet5, li.MsoListBullet5, div.MsoListBullet5
+	{mso-style-parent:"List Bullet";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:84.0pt;
+	text-indent:-12.0pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber2, li.MsoListNumber2, div.MsoListNumber2
+	{mso-style-parent:"List Number";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:.5in;
+	text-indent:-.25in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber3, li.MsoListNumber3, div.MsoListNumber3
+	{mso-style-parent:"List Number";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:.75in;
+	text-indent:-.25in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber4, li.MsoListNumber4, div.MsoListNumber4
+	{mso-style-parent:"List Number";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:1.0in;
+	text-indent:-.25in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListNumber5, li.MsoListNumber5, div.MsoListNumber5
+	{mso-style-parent:"List Number";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:1.25in;
+	text-indent:-.25in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyTextIndent, li.MsoBodyTextIndent, div.MsoBodyTextIndent
+	{mso-style-parent:"Body Text";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:.5in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue, li.MsoListContinue, div.MsoListContinue
+	{mso-style-parent:List;
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:.25in;
+	text-indent:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue2, li.MsoListContinue2, div.MsoListContinue2
+	{mso-style-parent:"List Continue";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:.5in;
+	text-indent:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue3, li.MsoListContinue3, div.MsoListContinue3
+	{mso-style-parent:"List Continue";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:.75in;
+	text-indent:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue4, li.MsoListContinue4, div.MsoListContinue4
+	{mso-style-parent:"List Continue";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:1.0in;
+	text-indent:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoListContinue5, li.MsoListContinue5, div.MsoListContinue5
+	{mso-style-parent:"List Continue";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:1.25in;
+	text-indent:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoDate, li.MsoDate, div.MsoDate
+	{mso-style-parent:"Body Text";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoBodyText2, li.MsoBodyText2, div.MsoBodyText2
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-weight:bold;}
+p.MsoBodyText3, li.MsoBodyText3, div.MsoBodyText3
+	{margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-weight:bold;}
+em
+	{mso-style-parent:"";
+	mso-ansi-font-size:9.0pt;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	letter-spacing:-.4pt;
+	font-weight:bold;
+	font-style:normal;}
+p.HeadingBase, li.HeadingBase, div.HeadingBase
+	{mso-style-name:"Heading Base";
+	mso-style-parent:"Body Text";
+	mso-style-next:"Body Text";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan lines-together;
+	page-break-after:avoid;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:-.2pt;}
+p.HeaderBase, li.HeaderBase, div.HeaderBase
+	{mso-style-name:"Header Base";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.DocumentLabel, li.DocumentLabel, div.DocumentLabel
+	{mso-style-name:"Document Label";
+	mso-style-next:"Section Title";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:24.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	letter-spacing:-1.0pt;}
+p.SectionTitle, li.SectionTitle, div.SectionTitle
+	{mso-style-name:"Section Title";
+	mso-style-next:Objective;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	background:#E5E5E5;
+	mso-shading:windowtext;
+	mso-pattern:gray-10 auto;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	border:none;
+	mso-border-alt:solid white .75pt;
+	padding:0in;
+	mso-padding-alt:2.0pt 2.0pt 2.0pt 2.0pt;
+	mso-element:frame;
+	mso-element-frame-width:1.5in;
+	mso-element-wrap:around;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:page;
+	mso-element-left:72.05pt;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-text-raise:3.5pt;
+	letter-spacing:-.5pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.CompanyName, li.CompanyName, div.CompanyName
+	{mso-style-name:"Company Name";
+	mso-style-next:"Job Title";
+	margin-top:11.0pt;
+	margin-right:-.25in;
+	margin-bottom:2.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:1.5in right 4.75in;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Achievement, li.Achievement, div.Achievement
+	{mso-style-name:Achievement;
+	mso-style-parent:"Body Text";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:12.0pt;
+	text-indent:-12.0pt;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Name, li.Name, div.Name
+	{mso-style-name:Name;
+	mso-style-next:"Section Title";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:22.0pt;
+	margin-left:0in;
+	mso-line-height-alt:12.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:24.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	letter-spacing:-1.0pt;}
+p.Objective, li.Objective, div.Objective
+	{mso-style-name:Objective;
+	mso-style-next:"Body Text";
+	margin-top:11.0pt;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.CityState, li.CityState, div.CityState
+	{mso-style-name:"City\/State";
+	mso-style-parent:"Body Text";
+	mso-style-next:"Body Text";
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:11.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Institution, li.Institution, div.Institution
+	{mso-style-name:Institution;
+	mso-style-next:Achievement;
+	margin-top:11.0pt;
+	margin-right:-.25in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:1.5in right 4.75in;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+span.Lead-inEmphasis
+	{mso-style-name:"Lead-in Emphasis";
+	mso-style-parent:"";
+	mso-ansi-font-size:9.0pt;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	letter-spacing:-.4pt;
+	font-weight:bold;}
+p.Address1, li.Address1, div.Address1
+	{mso-style-name:"Address 1";
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:10.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	mso-element:frame;
+	mso-element-frame-width:120.0pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:page;
+	mso-element-anchor-horizontal:page;
+	mso-element-left:432.05pt;
+	mso-element-top:48.05pt;
+	mso-height-rule:exactly;
+	mso-element-anchor-lock:locked;
+	font-size:8.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.SectionSubtitle, li.SectionSubtitle, div.SectionSubtitle
+	{mso-style-name:"Section Subtitle";
+	mso-style-parent:"Section Title";
+	mso-style-next:Normal;
+	margin-top:6.0pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	line-height:14.0pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	background:#E5E5E5;
+	mso-shading:windowtext;
+	mso-pattern:gray-10 auto;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	border:none;
+	mso-border-left-alt:solid white .75pt;
+	mso-border-bottom-alt:solid white .75pt;
+	mso-border-right-alt:solid white .75pt;
+	padding:0in;
+	mso-padding-alt:0in 2.0pt 2.0pt 2.0pt;
+	mso-element:frame;
+	mso-element-frame-width:1.5in;
+	mso-element-wrap:around;
+	mso-element-anchor-vertical:paragraph;
+	mso-element-anchor-horizontal:page;
+	mso-element-left:72.05pt;
+	mso-element-top:.05pt;
+	mso-height-rule:exactly;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-text-raise:3.0pt;}
+p.Address2, li.Address2, div.Address2
+	{mso-style-name:"Address 2";
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:10.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	mso-element:frame;
+	mso-element-frame-width:120.0pt;
+	mso-element-wrap:no-wrap-beside;
+	mso-element-anchor-vertical:page;
+	mso-element-anchor-horizontal:page;
+	mso-element-left:306.05pt;
+	mso-element-top:48.05pt;
+	mso-height-rule:exactly;
+	mso-element-anchor-lock:locked;
+	font-size:8.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.Picture, li.Picture, div.Picture
+	{mso-style-name:Picture;
+	margin-top:0in;
+	margin-right:-.25in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.JobTitle, li.JobTitle, div.JobTitle
+	{mso-style-name:"Job Title";
+	mso-style-parent:"";
+	mso-style-next:Achievement;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:2.0pt;
+	margin-left:0in;
+	line-height:11.0pt;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	letter-spacing:-.5pt;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+span.Job
+	{mso-style-name:Job;}
+p.FootnoteBase, li.FootnoteBase, div.FootnoteBase
+	{mso-style-name:"Footnote Base";
+	margin:0in;
+	margin-bottom:.0001pt;
+	line-height:11.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:9.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+span.Supercript
+	{mso-style-name:Supercript;
+	mso-style-parent:"";
+	vertical-align:super;}
+p.PersonalData, li.PersonalData, div.PersonalData
+	{mso-style-name:"Personal Data";
+	mso-style-parent:"Body Text";
+	margin-top:0in;
+	margin-right:.75in;
+	margin-bottom:6.0pt;
+	margin-left:-.75in;
+	line-height:12.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-layout-grid-align:none;
+	punctuation-wrap:simple;
+	text-autospace:none;
+	font-size:10.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+@page Section1
+	{size:595.35pt 842.0pt;
+	margin:1.0in .8in 1.0in .8in;
+	mso-header-margin:0in;
+	mso-footer-margin:0in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+@page Section2
+	{size:595.35pt 842.0pt;
+	margin:1.0in 53.85pt 112.5pt 53.85pt;
+	mso-header-margin:0in;
+	mso-footer-margin:0in;
+	mso-columns:2 even 28.1pt;
+	mso-paper-source:0;}
+div.Section2
+	{page:Section2;}
+@page Section3
+	{size:595.35pt 842.0pt;
+	margin:1.0in .8in 1.0in .8in;
+	mso-header-margin:0in;
+	mso-footer-margin:0in;
+	mso-paper-source:0;}
+div.Section3
+	{page:Section3;}
+ /* List Definitions */
+@list l0
+	{mso-list-id:590894194;
+	mso-list-type:hybrid;
+	mso-list-template-ids:524601680 678176756 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-number-format:alpha-lower;
+	mso-level-text:"\(%1\)";
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:1109082576;
+	mso-list-type:hybrid;
+	mso-list-template-ids:6349386 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:1213930759;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-506672602 -606031822 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l2:level1
+	{mso-level-start-at:2;
+	mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:30.75pt;
+	mso-level-number-position:left;
+	margin-left:30.75pt;
+	text-indent:-.25in;}
+@list l3
+	{mso-list-id:1664317926;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1720866080 -337219702 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l3:level1
+	{mso-level-start-at:2;
+	mso-level-number-format:alpha-lower;
+	mso-level-tab-stop:30.75pt;
+	mso-level-number-position:left;
+	margin-left:30.75pt;
+	text-indent:-.25in;}
+@list l4
+	{mso-list-id:1795713687;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1075409496 67698703 67698713 67698715 67698703 67698713 67698715 67698703 67698713 67698715;}
+@list l4:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l5
+	{mso-list-id:1866401683;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1899258116 67698689 67698691 67698693 67698689 67698691 67698693 67698689 67698691 67698693;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:48.0pt;
+	mso-level-number-position:left;
+	margin-left:48.0pt;
+	text-indent:-.25in;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+</head>
+
+<body lang=EN-US style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<p class=MsoNormal align=center style='text-align:center'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:18.0pt;mso-bidi-font-size:10.0pt'>Optimizing BNF
+Grammars through Source Transformations<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><span style='font-size:12.0pt;
+mso-bidi-font-size:10.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><i style='mso-bidi-font-style:
+normal'><span style='font-size:14.0pt;mso-bidi-font-size:10.0pt'>Bob
+Carpenter<span style="mso-spacerun: yes">          </span>Sol Lerner<span
+style="mso-spacerun: yes">           </span>Roberto Pieraccini<o:p></o:p></span></i></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>SpeechWorks International,
+Inc.<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><a href="http://www.speechworks.com/">http://www.speechworks.com/</a><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'>( <a href="mailto:Bob.Carpenter@SpeechWorks.com">Bob.Carpenter</a> | <a href="mailto:Sol.Lerner@SpeechWorks.com">Sol.Lerner</a>
+| <a href="mailto:Roberto.Pieraccini@SpeechWorks.com">Roberto.Pieraccini</a> )@speechworks.com<o:p></o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span
+style='font-size:12.0pt;mso-bidi-font-size:10.0pt'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+</div>
+
+<span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman";
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA'><br clear=all style='page-break-before:auto;
+mso-break-type:section-break'>
+</span>
+
+<div class=Section2>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'><b
+style='mso-bidi-font-weight:normal'>ABSTRACT<o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'>In this paper we
+explore the efficiency of various ways of expressing the form and meaning of
+natural language utterances as context-free grammars. We concentrate on the
+top-down parsing strategy employed in SpeechWorks 6.5, a strategy common to
+many systems. As with other search-based parsers, the key to efficiency is to
+limit the uncertainty of the parser at any given stage by reducing
+non-determinism in the grammar.<span style="mso-spacerun: yes">  </span>Here we
+study the effects of different expressions of the same grammar in terms of efficiency.<span
+style="mso-spacerun: yes">  </span>We also describe a methodology for
+transforming a source grammar into a more efficient expression of the same
+forms and meanings.</p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'><b
+style='mso-bidi-font-weight:normal'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-right:0in'><b style='mso-bidi-font-weight:
+normal'>INTRODUCTION<o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-right:0in'><span style='mso-bidi-font-weight:
+bold'>Sophisticated spoken dialogue applications rely on the ability to
+interpret a wide range of user utterances.<span style="mso-spacerun: yes"> 
+</span>The usual result is a complex natural language grammar expressing both
+what someone can say to the system and what the system will understand them to
+mean.<span style="mso-spacerun: yes">  </span>Complex grammars can lead to
+bottlenecks in processing if they are not expressed in an efficient way.<span
+style="mso-spacerun: yes">  </span>This paper concentrates on the notion of
+parsing as computation in which the programs are grammars.<span
+style="mso-spacerun: yes">  </span>As with other forms of programming, grammars
+expressing the same thing can be encoded in more or less efficient forms.<span
+style="mso-spacerun: yes">  </span>As with most other problems in spoken
+language recogn</span>ition and understanding, the fundamental principle is the
+reduction of non-determinism.<span style="mso-spacerun: yes">  </span>In this
+paper, we will show how this can be accomplished in a principled way. </p>
+
+<p class=MsoNormal style='margin-right:0in'><span style="mso-spacerun:
+yes">     </span>We begin with a survey of the SpeechWorks architecture for
+recognition and interpretation.<span style="mso-spacerun: yes">  </span>Next,
+we provide the standard algorithm for top-down search-based parsing.<span
+style="mso-spacerun: yes">  </span>We briefly discuss the role of semantic
+interpretation, and then move on to a description of how grammars can be
+optimized for top-down search-based parsing.<span style="mso-spacerun: yes"> 
+</span>We provide empirical evidence in terms of comparative run times for
+simple, equivalent grammars.<span style="mso-spacerun: yes">  </span>We
+conclude with a discussion of general techniques for optimizing grammars for
+top-down search-based parsers.<b style='mso-bidi-font-weight:normal'><o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-right:0in'><b style='mso-bidi-font-weight:
+normal'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-right:0in'><b style='mso-bidi-font-weight:
+normal'>RECOGNITION AND PARSING PASSES<o:p></o:p></b></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>The SpeechWorks 6.5 architecture [1] for extracting meaning from user
+utterances involves three passes, including one acoustic and statistical
+language model pass and two context-free grammar-based passes.<span
+style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>First Pass: Decoding</span></b><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'><span
+style="mso-spacerun: yes">  </span>Operates forward to construct a word
+graph.<span style="mso-spacerun: yes">  </span>Scores are determined by
+successively refined acoustic models and a bigram language model.<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Second Pass: Parsing</span></b><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'><span
+style="mso-spacerun: yes">  </span>Operates backwards to extract parses for the
+<i>n</i>-best word string hypotheses that are accepted by a specified context-free
+grammar.<span style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Third Pass: Interpretation<span
+style="mso-spacerun: yes">  </span></span></b><span style='font-family:"Times New Roman";
+mso-bidi-font-weight:bold'>Evaluates semantics for parses generated in the
+second pass.<span style="mso-spacerun: yes">  </span>Grammars are allowed to
+re-score hypotheses on the basis of semantics.<a style='mso-footnote-id:ftn1'
+href="#_ftn1" name="_ftnref1" title=""><span class=MsoFootnoteReference><span
+style='mso-special-character:footnote'><![if !supportFootnotes]>[1]<![endif]></span></span></a><span
+style="mso-spacerun: yes">  </span>Word strings with equivalent semantics are
+conflated before confidence scores are computed.<span style="mso-spacerun:
+yes">  </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>The final result to be processed by the dialog engine is a ranked list of
+semantic hypotheses in the form of key-value pairs.<span style="mso-spacerun:
+yes">  </span>Subsequent processing can re-score these hypotheses further using
+context-specific information, such as user profiles, time of day, availability
+of requested information, etc.<span style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>CONTEXT-FREE GRAMMARS<o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>The context-free grammar paradigm has been thoroughly studied in the
+formal languages and automata theory literature (for example, see [2] for a
+range of definitions and theorems).<span style="mso-spacerun: yes">  </span>A
+context-free grammar is essentially a finite collection of phrase structure
+rules.<span style="mso-spacerun: yes">  </span>More formally, we assume a set </span><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman"'>Word</span></b><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'> of <i>words</i>
+(often called <i>terminals</i>), a set </span><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"Times New Roman"'>NonTerminal </span></b><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'>of <i>non-terminals</i>,
+and a finite set </span><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Rule</span></b><span style='font-family:
+"Times New Roman";mso-bidi-font-weight:bold'> of <i>grammar rules</i>, where each
+grammar rule is of the form (C =&gt; X1 … Xn) where C is a non-terminal and
+each of the X<i>i</i> is either a non-terminal or a word.<span
+style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">     </span>Each grammar defines a set of
+parse trees.<span style="mso-spacerun: yes">  </span>The set of trees, </span><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman"'>Tree</span></b><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'>, is defined to
+be the least set such that </span><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Word</span></b><span style='font-family:
+"Times New Roman";mso-bidi-font-weight:bold'> </span><span style='font-family:
+Symbol;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman";
+mso-char-type:symbol;mso-symbol-font-family:Symbol;mso-bidi-font-weight:bold'><span
+style='mso-char-type:symbol;mso-symbol-font-family:Symbol'>Í</span></span><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'> </span><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman"'>Tree
+</span></b><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>and such that [C T1 … T<i>n</i>] </span><b style='mso-bidi-font-weight:
+normal'><span style='font-family:Symbol;mso-ascii-font-family:"Times New Roman";
+mso-hansi-font-family:"Times New Roman";mso-char-type:symbol;mso-symbol-font-family:
+Symbol'><span style='mso-char-type:symbol;mso-symbol-font-family:Symbol'>Î</span></span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman"'>
+Tree </span></b><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>if C </span><b style='mso-bidi-font-weight:normal'><span
+style='font-family:Symbol;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+"Times New Roman";mso-char-type:symbol;mso-symbol-font-family:Symbol'><span
+style='mso-char-type:symbol;mso-symbol-font-family:Symbol'>Î</span></span></b><b
+style='mso-bidi-font-weight:normal'><span style='font-family:"Times New Roman"'>
+NonTerminal</span></b><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>, <i>n</i> </span><span style='font-family:Symbol;mso-ascii-font-family:
+"Times New Roman";mso-hansi-font-family:"Times New Roman";mso-char-type:symbol;
+mso-symbol-font-family:Symbol;mso-bidi-font-weight:bold'><span
+style='mso-char-type:symbol;mso-symbol-font-family:Symbol'>³</span></span><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'> 0, and T1,…,T<i>n</i>
+</span><b style='mso-bidi-font-weight:normal'><span style='font-family:Symbol;
+mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:"Times New Roman";
+mso-char-type:symbol;mso-symbol-font-family:Symbol'><span style='mso-char-type:
+symbol;mso-symbol-font-family:Symbol'>Î</span></span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-family:"Times New Roman"'> Tree. </span></b><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'><span
+style="mso-spacerun: yes">  </span>For a tree [C T1 … T<i>n</i>], the
+non-terminal C is said to be the <i>root</i>.<span style="mso-spacerun: yes"> 
+</span>The <i>yield</i> of a tree is defined by <i>yield</i>(<i>w</i>) = <i>w</i>
+if <i>w</i> is a word, and <i>yield</i>([C T1 … T<i>n</i>] = <i>yield</i>(T1) …
+<i>yield</i>(T<i>n</i>); this is essentially the sequence of words appearing in
+the tree read left to right.<span style="mso-spacerun: yes">  </span>A <i>parse
+tree</i> is a tree every node of which was derived by a rule.<span
+style="mso-spacerun: yes">  </span>More formally, a tree [C T1 … T<i>n</i>] is
+a parse tree if<span style="mso-spacerun: yes">   </span>(C =&gt; <i>root</i>(T1)
+… <i>root</i>(T<i>n</i>)) is a grammar rule and T1,…,T<i>n</i> are themselves
+parse trees or single words.<span style="mso-spacerun: yes">  </span>If we take
+the yields of all of the parse trees for a grammar rooted at a given
+non-terminal C (often called the <i>start symbol </i>or<i> root category</i>),
+we have what is known as<span style="mso-spacerun: yes">  </span>a <i>context-free
+language </i>(a particular kind of <i><span style="mso-spacerun:
+yes"> </span>formal language</i>).<span style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><i><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">     </span><o:p></o:p></span></i></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>PARSING<o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><i><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>Parsing</span></i><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'> is essentially the task of determining for a given string of words what
+the valid parse trees are with that string as yield.<span style="mso-spacerun:
+yes">  </span>Obviously, only strings in the language will have parse trees,
+and thus parsers can be used to determine whether a string is in the language
+of a grammar. <o:p></o:p></span></p>
+
+<p class=MsoMacroText><i><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">     </span>Top-down search-based parsing</span></i><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'> (also known as
+<i>recursive descent parsing</i>) is a widely used method for parsing both
+computer languages [3] and natural languages [4].<span style="mso-spacerun:
+yes">  </span>The primary difference between computer languages and natural
+languages is that natural language grammars typically admit ambiguity.<span
+style="mso-spacerun: yes">  </span>A typical kind of ambiguity involves
+attachment of modifiers, as in the contrast between the attachment of the
+prepositional phrases in the following pair of trees that yields the string <i>she
+saw the boy with the telescope</i>:<span style="mso-spacerun: yes">  </span>[S
+[NP <i>she</i>] [VP <i>saw</i> [NP <i>the</i> [N [N <i>boy</i>] [PP <i>with the
+telescope</i>]]]]]] versus [S [NP <i>she</i>] [VP [VP <i>saw</i> [NP <i>the </i>[N
+<i>boy</i>]]] [PP <i>with the telescope</i>]]] (meaning in the first case that
+the boy had the telescope and in the second case, that she did).<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">     </span>The simplest way to define
+any search-based algorithm is to provide the search space (see [4], for example).<span
+style="mso-spacerun: yes">  </span>A <i>search space</i> is characterized by a
+mapping from an input to a <i>start state</i>, a collection of <i>final states</i>,
+and a <i>transition function</i> that takes you from one state to another.<span
+style="mso-spacerun: yes">  </span>For top-down search-based parsing, the
+states represent how much of the input string is left and which non-terminals
+need to be found.<span style="mso-spacerun: yes">  </span>Suppose we have an input
+string <i>Ws </i>that we are trying to parse into a tree rooted at non-terminal
+S (the start symbol) with respect to a given grammar.<span style="mso-spacerun:
+yes">  </span>Each state in the search space will be of the form Ws / Cs where
+Ws is a sequence of words and Cs is a sequence of non-terminals.<a
+style='mso-footnote-id:ftn2' href="#_ftn2" name="_ftnref2" title=""><span
+class=MsoFootnoteReference><span style='mso-special-character:footnote'><![if !supportFootnotes]>[2]<![endif]></span></span></a><span
+style="mso-spacerun: yes">   </span>The search space is:<a style='mso-footnote-id:
+ftn3' href="#_ftn3" name="_ftnref3" title=""><span class=MsoFootnoteReference><span
+style='mso-special-character:footnote'><![if !supportFootnotes]>[3]<![endif]></span></span></a>
+<i><o:p></o:p></i></span></p>
+
+<p class=MsoMacroText><i><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></i></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Start State:<span style="mso-spacerun:
+yes">  </span></span></b><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>Ws / [S]<o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Final State:<span style="mso-spacerun:
+yes">  </span></span></b><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>[ ] / [ ]</span><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'><o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Expand:<span style="mso-spacerun: yes">  
+</span></span></b><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>Ws / [C0 | Cs]<span style="mso-spacerun: yes">  </span>=&gt; Ws /
+[C1,…,Cn|Cs]<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">             </span>[if C0 =&gt; C1,…,Cn
+a rule of the grammar]<o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Match: </span></b><span style='font-family:
+"Times New Roman";mso-bidi-font-weight:bold'>[W | Ws] / [W | Cs] =&gt; Ws / Cs<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>The list of categories represents things we still need to find, whereas
+the list of words represents the words remaining to consume.<span
+style="mso-spacerun: yes">  </span>Thus we start in the state Ws / [S] with all
+of the input words remaining and the start-state as the only non-terminal being
+sought.<span style="mso-spacerun: yes">  </span>The final state represents the
+situation in which we have found all of the categories we were looking for and
+have consumed all of the input in so doing.<span style="mso-spacerun: yes"> 
+</span>The two transitions in this space correspond to the top-down expansion
+of a grammar rule and the matching of input to the grammar.<span
+style="mso-spacerun: yes">  </span>We can expand a category that we are looking
+for by replacing it with its daughters in a rule.<span style="mso-spacerun:
+yes">  </span>Similarly, if we are looking for a word and we have that word at
+the beginning of the remaining words, we can consume it.<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes"> </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Example:<span style="mso-spacerun: yes"> 
+</span></span></b><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>Suppose we have a very simple grammar for English sentences containing
+rules S =&gt; NP VP;<span style="mso-spacerun: yes">  </span>NP =&gt; Det N;
+Det =&gt; <i>the</i>; N =&gt; <i>kid</i>; VP =&gt; V; V =&gt; <i>ran</i>.<span
+style="mso-spacerun: yes">  </span>Then if we are parsing the string <i>the kid
+ran</i>, we have the following sequence of states: <o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes"> </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">   </span>[<i>the, kid, ran</i>] /
+[S]<span style="mso-spacerun: yes">                       </span>start
+state<span style="mso-spacerun: yes">    </span><span style='mso-tab-count:
+1'>               </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">   </span>[<i>the, kid, ran</i>] / [NP,
+VP]<span style="mso-spacerun: yes">             </span>expand S =&gt; NP VP<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">   </span><i>[the, kid, ran</i>] / [Det,
+N, VP]<span style="mso-spacerun: yes">        </span>expand NP =&gt; Det N<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">   </span>[<i>the, kid, ran</i>] / [<i>the</i>,
+N, VP]<span style="mso-spacerun: yes">         </span>expand Det =&gt; <i>the</i><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">   </span>[<i>kid, ran</i>] / [N,
+VP]<span style="mso-spacerun: yes">      </span><span style="mso-spacerun:
+yes">                 </span>match <i>the</i><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">   </span>[<i>kid, ran</i>] / [<i>kid</i>,
+VP]<span style="mso-spacerun: yes">                     </span>expand N =&gt; <i>kid<o:p></o:p></i></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">   </span>[<i>ran</i>] / [VP]<span
+style="mso-spacerun: yes">                                   </span>match <i>kid</i><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">   </span>[ran] / [V]<span
+style="mso-spacerun: yes">                                      </span>expand
+VP =&gt; V<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">   </span>[<i>ran</i>] / [<i>ran</i>]<span
+style="mso-spacerun: yes">                        </span><span
+style="mso-spacerun: yes">           </span>expand V =&gt; ran<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">   </span>[ ] / [ ]<span
+style="mso-spacerun: yes">                                           
+</span>match <i>ran<o:p></o:p></i></span></p>
+
+<p class=MsoMacroText><i><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></i></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>As in speech recognition, we are typically interested in all the possible
+parses for a given input string.<a style='mso-footnote-id:ftn4' href="#_ftn4"
+name="_ftnref4" title=""><span class=MsoFootnoteReference><span
+style='mso-special-character:footnote'><![if !supportFootnotes]>[4]<![endif]></span></span></a><span
+style="mso-spacerun: yes">  </span>As such, we will need to do an exhaustive
+search of the search space (usually known as <i>all-paths parsing</i>).<span
+style="mso-spacerun: yes">  </span>Note that a path through this search space
+uniquely determines a parse tree.<span style="mso-spacerun: yes">  </span>This
+tree can either be constructed from the steps taken during search, or it can be
+built online each time a rule is expanded.<span style="mso-spacerun: yes"> 
+</span>Either way, it is the final parse tree from which the semantics will be
+computed.<span style="mso-spacerun: yes">  </span>Typically, some degree of
+lexical lookahead is allowed rather than just blindly expanding rules top-down
+hoping to hit upon the right lexical item; this is achieved by only expanding
+rules whose right-hand sides begin with words if the appropriate word is there
+in the input. <o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">     </span>Typically, top-down
+search-based parses exclude certain forms of problematic grammars from
+consideration.<span style="mso-spacerun: yes">  </span>The primary candidates
+for exclusion are the left-recursive grammars, because they introduce infinite
+loops into the search space.<a style='mso-footnote-id:ftn5' href="#_ftn5"
+name="_ftnref5" title=""><span class=MsoFootnoteReference><span
+style='mso-special-character:footnote'><![if !supportFootnotes]>[5]<![endif]></span></span></a><span
+style="mso-spacerun: yes">  </span>For instance, the left-recursive rule N
+=&gt; N PP allows a noun to be followed by a prepositional phrase; this means
+that state Ws / [N | Cs] expands to Ws / [N, PP | Cs], which in turn produces
+Ws / [N, PP, PP | Cs] and so on <i>ad infinitum</i>. A grammar is said to be <i>left
+recursive </i>if there is a sequence of rules<a style='mso-footnote-id:ftn6'
+href="#_ftn6" name="_ftnref6" title=""><span class=MsoFootnoteReference><span
+style='mso-special-character:footnote'><![if !supportFootnotes]>[6]<![endif]></span></span></a>
+A0 =&gt; A1 …;<span style="mso-spacerun: yes">  </span>A1 =&gt; A2 …;<span
+style="mso-spacerun: yes">  </span>… ; A<i>n</i>-1 =&gt; A<i>n</i> …. Such that
+A0=A<i>n</i>.<span style="mso-spacerun: yes">  </span>So N =&gt; N PP is left
+recursive with <i>n</i>=1, and the pair A =&gt; B C, B =&gt; A D is left recursive
+with <i>n</i>=2.<span style="mso-spacerun: yes">  </span>Left recursive
+grammars form the limit case of top-down non-determinism, allowing an infinite
+number of states to be reachable from another state without consuming any
+input.<span style="mso-spacerun: yes">  </span>In general, we define the <i>degree
+of ambiguity</i> for a given state to be the number of states that are
+reachable from it without consuming any input.<span style="mso-spacerun: yes"> 
+</span>Left recursive grammars have an infinite degree of ambiguity.<span
+style="mso-spacerun: yes">  </span>If a grammar is not left recursive, every
+state has a finitely bounded degree of ambiguity.<span style="mso-spacerun:
+yes">  </span>The complexity of search-based parsing is directly proportional
+to the number of states that are reachable from the initial state.<span
+style="mso-spacerun: yes">  </span>If every state has a finite degree of
+ambiguity, at least that number will be finite.<span style="mso-spacerun:
+yes">  </span>Our goal is to reduce the number of states as much as possible
+without damaging the parse tree topology beyond our ability to reconstruct the
+semantics from it.<span style="mso-spacerun: yes">  </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">     </span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>A SIMPLE CASE<o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>Using the parser from SpeechWorks 6.5, we tested the efficiency of three
+forms of representing the same grammar.<span style="mso-spacerun: yes"> 
+</span>For the sake of simplicity, we focused on a very common and easily
+understood grammar – that for allowing a sequence of between 1 and N instances
+of a given non-terminal A.<span style="mso-spacerun: yes">  </span>We
+considered three ways such a grammar might be written.<a style='mso-footnote-id:
+ftn7' href="#_ftn7" name="_ftnref7" title=""><span class=MsoFootnoteReference><span
+style='mso-special-character:footnote'><![if !supportFootnotes]>[7]<![endif]></span></span></a><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Disjunctive Form<o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">     </span>S =&gt; A;<span
+style="mso-spacerun: yes">  </span>S =&gt; A A;<span style="mso-spacerun:
+yes">  </span>S =&gt; A A A;<span style="mso-spacerun: yes">  </span>S =&gt; A
+A A A; …<o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Left “Recursive” Form<o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'><span style="mso-spacerun: yes">    
+</span></span></b><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>S =&gt; A<i>n</i>;<span style="mso-spacerun: yes">  </span>A<i>n</i>
+=&gt; A; A<i>n </i>=&gt; A<i>n</i>-1<span style="mso-spacerun: yes"> 
+</span>A;<span style="mso-spacerun: yes">  </span>A<i>n</i>-1 =&gt; A; A<i>n</i>-1
+=&gt; A<i>n</i>-2 A; … ;<span style="mso-spacerun: yes">  </span>A1 =&gt; A<o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>Right “Recursive” Form<o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'><span style="mso-spacerun: yes">    
+</span></span></b><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>S =&gt; A<i>n</i>;<span style="mso-spacerun: yes">  </span>A<i>n</i>
+=&gt; A;<span style="mso-spacerun: yes">  </span>A<i>n</i> =&gt; A<span
+style="mso-spacerun: yes">  </span>A<i>n</i>-1;<span style="mso-spacerun:
+yes">  </span>A<i>n</i>-1 =&gt; A; A<i>n</i>-1 =&gt; A<span
+style="mso-spacerun: yes">  </span>A<i>n</i>-2; …; A1 =&gt; A<o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>Theoretical analysis of the degree of ambiguity of these grammars is
+reflected in their empirical run times.<span style="mso-spacerun: yes"> 
+</span>For both the disjunctive and the left “recursive” grammar (it’s not
+truly recursive – just a finite approximation of a recursive grammar), parsing
+a string of As of length <i>m</i> against a grammar that accepts from 1 to <i>n</i>
+instances of non-terminal A results in a number of states on the order of </span><b
+style='mso-bidi-font-weight:normal'><i><span style='font-family:"Times New Roman"'>O</span></i></b><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'>(<i>n m</i>) to
+be explored (see [2] or [5] for a definition of the </span><b style='mso-bidi-font-weight:
+normal'><i><span style='font-family:"Times New Roman"'>O </span></i></b><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'>notation).<span
+style="mso-spacerun: yes">  </span><span style="mso-spacerun: yes"> </span>For
+instance, in the disjunctive case, there are <i>n</i> states expanded before
+the first input is consumed, <i>n</i>-1 states expanded at step 2, <i>n</i>-2
+states expanded at step 3, and so on up to <i>n-m</i> states expanded after consuming
+<i>m </i>inputs, and (<i>n</i> + (<i>n</i>-1) + … + (<i>n-m</i>)) is </span><b
+style='mso-bidi-font-weight:normal'><i><span style='font-family:"Times New Roman"'>O</span></i></b><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'>(<i>n m</i>).<span
+style="mso-spacerun: yes">  </span>The left “recursive” case is slightly worse.
+On the other hand, the number of states explored in the right “recursive”
+grammar is linear in the input, or </span><b style='mso-bidi-font-weight:normal'><i><span
+style='font-family:"Times New Roman"'>O</span></i></b><span style='font-family:
+"Times New Roman";mso-bidi-font-weight:bold'>(<i>m</i>).<span
+style="mso-spacerun: yes">  </span>This is because there are at most two states
+explored per input token in the right “recursive” grammar, for a total of 2 + 2
++ … + 2 (<i>m</i> times), which is clearly </span><b style='mso-bidi-font-weight:
+normal'><i><span style='font-family:"Times New Roman"'>O</span></i></b><span
+style='font-family:"Times New Roman";mso-bidi-font-weight:bold'>(<i>m</i>).<a
+style='mso-footnote-id:ftn8' href="#_ftn8" name="_ftnref8" title=""><span
+class=MsoFootnoteReference><span style='mso-special-character:footnote'><![if !supportFootnotes]>[8]<![endif]></span></span></a><span
+style="mso-spacerun: yes">  </span>We do not consider the doubly recursive
+grammar of the form A =&gt; A A, which allows any parse tree to be generated;
+its complexity is exponential (its given by the Catalan numbers [5]). This case
+does arise in natural language through noun compounding, where N =&gt; N N, as
+in [N [N [N [N <i>towel</i>] [N <i>rack</i>]] [N <i>designer</i>]] [N [N <i>training</i>]
+[N <i>courses</i>]]].<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">     </span>Our empirical results support
+the theoretical analysis.<span style="mso-spacerun: yes">  </span>Using the
+SpeechWorks 6.5 parser, we explored grammars accepting between 1 and <i>n </i>words
+from a given non-terminal category A.<span style="mso-spacerun: yes"> 
+</span>In Figure 1, we show the results for the three grammars above.<a
+style='mso-footnote-id:ftn9' href="#_ftn9" name="_ftnref9" title=""><span
+class=MsoFootnoteReference><span style='mso-special-character:footnote'><![if !supportFootnotes]>[9]<![endif]></span></span></a><span
+style="mso-spacerun: yes">  </span>We consider the case where the non-terminal
+A expands to a set of 256 words, testing against 5000 randomly generated test
+with uniformly distributed lengths. Note that the quadratic codings take
+roughly 50 times as long to process in longer cases.<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>A REALISTIC CASE: COUNTING<o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>Although the above case was designed for illustrative simplicity, we have
+encountered similar cases in real applications.<span style="mso-spacerun:
+yes">  </span>One example from a real grammar involves agreement between a
+keyword and the number of instances.<span style="mso-spacerun: yes">  </span>A
+precise grammar for this case is: S =&gt; A <i>one</i>; S =&gt; A A <i>two</i>;
+S =&gt; A A A <i>three</i>;<span style="mso-spacerun: yes">  </span>….<span
+style="mso-spacerun: yes">  </span>The actual example involved a non-trivial
+expansion of the non-terminal A, and a number of subcases, but the above
+grammar illustrates the point.<span style="mso-spacerun: yes">  </span>As we
+saw in Figure 1, simply using the grammar as given above is not particularly
+efficient.<span style="mso-spacerun: yes">  </span>The obstacle in the way of
+directly implementing the right recursive approach above is that we need to
+count the number of occurrences and pick up an agreeing word at the end.<span
+style="mso-spacerun: yes">  </span>In order to do this, we can use a grammar of
+the following form, in which we represent the count as we proceed down the tree
+and make sure we pick up an agreeing element later on.<span
+style="mso-spacerun: yes">  </span>This is achieved with the grammar:<span
+style="mso-spacerun: yes">  </span>S =&gt; A S1;<span style="mso-spacerun:
+yes">  </span>S1 =&gt; <i>one</i>;<span style="mso-spacerun: yes">  </span>S1
+=&gt; A S2; S2 =&gt; <i>two</i>;<span style="mso-spacerun: yes">  </span>S2
+=&gt; A S3; …<span style="mso-spacerun: yes">  </span>The trick is to simply
+use the non-terminals as counters.<span style="mso-spacerun: yes">  </span>One
+problem is that the resulting tree structure is not what one might expect, but
+rather looks like [S [A …] [S1 [A …] [S2 <i>two</i>]]].<span
+style="mso-spacerun: yes">  </span>In particular, this can cause problems for
+the propagation of semantics.<span style="mso-spacerun: yes"> 
+</span>Fortunately, this problem is easily solved if the grammar formalism allows
+semantic rules to be attached to the grammar rules, as in standard compilers
+(see [3]).<span style="mso-spacerun: yes">  </span>For instance, if the word
+“two” has some distinguished semantic value, this can simply be propagated by
+the rules for S, S1, and S2.<span style="mso-spacerun: yes">   </span>In
+general, this problem can be handled by a technique known in the programming
+literature as <i>continuation passing</i> (see, for example, [6] or [7]).<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></span></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>THE GENERAL CASE<o:p></o:p></span></b></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'>In general, our goal can be seen as simply reducing non-determinism.<span
+style="mso-spacerun: yes">  </span>We can apply two kinds of transforms to our
+grammars to convert them to equivalent forms: <i>folding </i>and <i>unfolding</i>,
+techniques that are widely employed in optimizing compilers (see [3]).<i><span
+style="mso-spacerun: yes">  </span></i>An unfolding is a particular case of a
+general technique known as <i>partial evaluation</i> in which one rule is
+expanded inside of another.<span style="mso-spacerun: yes">  </span>For
+instance, it would take A =&gt; B C D and C =&gt; F <i>that</i> E and produce A
+=&gt; B F <i>that</i> E D.<span style="mso-spacerun: yes">    </span>A frequent
+general case of folding is applied when there are multiple rules that share the
+same prefix.<span style="mso-spacerun: yes">  </span>In particular, we look for
+rules with common prefixes and collapse them. For instance, if we have two
+rules A =&gt; B C D and A =&gt; B C E, then every time we are looking for an A
+we expand both rules.<span style="mso-spacerun: yes">  </span>We can fold the
+repeated sequence B C together with a rule B_C =&gt; B C and replace the two
+rules above with A =&gt; B_C D and A =&gt; B_C E.<span style="mso-spacerun:
+yes">  </span>Now only one rule is expanded.<span style="mso-spacerun: yes"> 
+</span>If there is a lot of this kind of duplication, as in our disjunctive
+grammar above, the savings can be significant.<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">     </span>Folding and unfolding can be
+used to normalize grammars.<span style="mso-spacerun: yes">  </span>For instance,
+every grammar can be converted to an equivalent grammar with no left recursion,
+the so-called <i>Greibach normal form</i>, in which every rule begins with a
+word; that is, is of the form A =&gt; b C1 … C<i>n</i>, for <i>n </i></span><span
+style='font-family:Symbol;mso-ascii-font-family:"Times New Roman";mso-hansi-font-family:
+"Times New Roman";mso-char-type:symbol;mso-symbol-font-family:Symbol;
+mso-bidi-font-weight:bold'><span style='mso-char-type:symbol;mso-symbol-font-family:
+Symbol'>³</span></span><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'> 0.<o:p></o:p></span></p>
+
+<p class=MsoMacroText><span style='font-family:"Times New Roman";mso-bidi-font-weight:
+bold'><span style="mso-spacerun: yes">     </span></span><span
+style='font-family:"Times New Roman"'>Unfortunately, it is impossible to fully
+determinize all context-free grammars (see [2]); some are intrinsically
+ambiguous.<span style="mso-spacerun: yes">  </span>Even the simple problem of
+context-free grammar equivalence is undecidable [2].<span style="mso-spacerun:
+yes">  </span>But we can automatically detect a lot of sharing, and unfold an
+arbitrary finite amount of duplication.<span style="mso-spacerun: yes"> 
+</span><o:p></o:p></span></p>
+
+<p class=MsoMacroText><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoMacroText><b style='mso-bidi-font-weight:normal'><span
+style='font-family:"Times New Roman"'>SUMMARY<o:p></o:p></span></b></p>
+
+<p class=MsoBodyText3>We described top-down search-based parsing, and described
+the measure of ambiguity that directly measures efficiency.<span
+style="mso-spacerun: yes">  </span>We demonstrated how much more efficient
+grammars are that reduce non-determinism, and provide a general mechanism for
+writing such grammars and converting existing grammars into more efficient
+forms. </p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'><b
+style='mso-bidi-font-weight:normal'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'><b
+style='mso-bidi-font-weight:normal'>REFERENCES<o:p></o:p></b></p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'>[1] <i>SpeechWorks
+6.5 Service Creation Guide.</i><span style="mso-spacerun: yes"> 
+</span>2000.<span style="mso-spacerun: yes">  </span>SpeechWorks International,
+Inc. </p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'>[2] J. E.
+Hopcroft, J. D. Ullman.<span style="mso-spacerun: yes">  </span>1979.<span
+style="mso-spacerun: yes">  </span><i>Introduction to Automata Theory,
+Languages and Computation</i>.<span style="mso-spacerun: yes">  </span>Addison-Wesley.</p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'>[3] Aho, A., R.
+Sethi, and J. D. Ullman.<span style="mso-spacerun: yes">  </span>1988. <i>Compilers:
+Principles, Techniques, and Tools</i>. Addison-Wesley.</p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'>[4] Jurafsky, D.
+and J. H. Martin. 2000. <i>Speech and Language Processing</i>. Prentice Hall.</p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'>[5] Cormen, T.
+H., C. E. Leiserson, and R. L. Rivest.<span style="mso-spacerun: yes"> 
+</span>1990.<span style="mso-spacerun: yes">  </span>Introduction to
+Algorithms.<span style="mso-spacerun: yes">  </span>MIT Press.</p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'>[6] Norvig,
+P.<span style="mso-spacerun: yes">  </span>1992. <i>Paradigms of Artificial
+Intelligence Programming. </i>Morgan-Kaufmann.</p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'>[7] Johnson,
+M.<span style="mso-spacerun: yes">  </span>1995.<span style="mso-spacerun:
+yes">  </span>Memoization in Top-down Parsing.<span style="mso-spacerun: yes"> 
+</span><i>Computational Linguistics</i> <b>21</b>:3, 405-418.</p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:264.75pt;
+ height:203.25pt' o:ole="">
+ <v:imagedata src="ICSLP00image001.wmz" o:title=""/>
+</v:shape><![endif]--><![if !vml]><img width=353 height=271
+src="ICSLP00image002.gif" v:shapes="_x0000_i1025"><![endif]><!--[if gte mso 9]><xml>
+ <o:OLEObject Type="Embed" ProgID="Excel.Chart.8" ShapeID="_x0000_i1025"
+  DrawAspect="Content" ObjectID="_1030962385">
+ </o:OLEObject>
+</xml><![endif]-->Figure 1.<span style="mso-spacerun: yes">  </span>Time vs.
+Input Length for different codings.</p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+<p class=MsoNormal style='margin-right:0in;text-align:justify'><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+<span style='font-size:12.0pt;mso-bidi-font-size:10.0pt;font-family:"Times New Roman";
+mso-fareast-font-family:"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:
+EN-US;mso-bidi-language:AR-SA'><br clear=all style='page-break-before:auto;
+mso-break-type:section-break'>
+</span>
+
+<div class=Section3>
+
+<p class=MsoNormal><![if !supportEmptyParas]>&nbsp;<![endif]><o:p></o:p></p>
+
+</div>
+
+<div style='mso-element:footnote-list'><![if !supportFootnotes]><br clear=all>
+
+<hr align=left size=1 width="33%">
+
+<![endif]>
+
+<div style='mso-element:footnote' id=ftn1>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn1' href="#_ftnref1"
+name="_ftn1" title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]>[1]<![endif]></span></span></a> This
+includes rejection as a specific instance.<span style="mso-spacerun: yes"> 
+</span>Examples include preferences for dates near a particular target such as
+today, rejecting invalid zip codes, invalid credit card numbers with failed
+checksums, etc.<span style="mso-spacerun: yes">  </span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn2>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn2' href="#_ftnref2"
+name="_ftn2" title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]>[2]<![endif]></span></span></a> <span
+style='mso-bidi-font-weight:bold'><span style="mso-spacerun: yes"> </span>We
+use the Prolog notation for lists, where [W|Ws] is a list whose first element
+is W and where Ws is a list consisting of the remaining elements in the
+list.<span style="mso-spacerun: yes">  </span>For instance, the list a,b,c
+would be represented as [a | [ b | [ c | [ ] ]]] where [ ] is the empty list
+containing no elements.<span style="mso-spacerun: yes">  </span>We will also
+write [a,b,c] and [a, b | [ c | [ ]] for the same list.</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn3>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn3' href="#_ftnref3"
+name="_ftn3" title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]>[3]<![endif]></span></span></a><span
+style="mso-spacerun: yes">  </span>SpeechWorks’ parser actually operates
+right-to-left rather than left-to-right, but we adopt the usual directional
+convention here;<span style="mso-spacerun: yes">  </span>the empirical data for
+left and right recursion are also reversed for consistency with this paper.</p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn4>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn4' href="#_ftnref4"
+name="_ftn4" title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]>[4]<![endif]></span></span></a> We will not
+be discussing probabilistic parsing and the pruning that usually goes along
+with it in this paper (see [4] for an introduction);<span style="mso-spacerun:
+yes">  </span>but we should point out that our optimizations also apply to
+probabilistic parsers with beam search.<span style="mso-spacerun: yes"> 
+</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn5>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn5' href="#_ftnref5"
+name="_ftn5" title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]>[5]<![endif]></span></span></a> Nuance’s
+grammar formalism and Sun’s Java Speech Grammar Formalism specification
+explicitly exclude left recursion from their grammars.</p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn6>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn6' href="#_ftnref6"
+name="_ftn6" title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]>[6]<![endif]></span></span></a> It is
+straightforward to test a grammar; we test for acyclicity of the directed graph
+with an edge from A to B if there is a rule A =&gt; B … in the grammar (see [5]
+for algorithms).<span style="mso-spacerun: yes">  </span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn7>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn7' href="#_ftnref7"
+name="_ftn7" title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]>[7]<![endif]></span></span></a> In the
+SpeechWorks grammar formalism, a grammar allowing from one to ten instances of
+non-terminal $A would be written as $A&lt;1-10&gt;.<span style="mso-spacerun:
+yes">  </span>This abbreviation is then expanded out to an efficient
+representation.<span style="mso-spacerun: yes">  </span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn8>
+
+<p class=MsoMacroText><a style='mso-footnote-id:ftn8' href="#_ftnref8"
+name="_ftn8" title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]>[8]<![endif]></span></span></a> <span
+style='font-family:"Times New Roman"'>We are not considering the cost of
+maintaining the states’ stacks; it is common to reduce this constant cost by
+precompiling potential state transitions.<span style="mso-spacerun: yes"> 
+</span>For instance, this is the principle behind LL parsing (see [3]).</span></p>
+
+</div>
+
+<div style='mso-element:footnote' id=ftn9>
+
+<p class=MsoFootnoteText><a style='mso-footnote-id:ftn9' href="#_ftnref9"
+name="_ftn9" title=""><span class=MsoFootnoteReference><span style='mso-special-character:
+footnote'><![if !supportFootnotes]>[9]<![endif]></span></span></a> Tests were
+run on a Dell Notebook with a 400 MHz Pentium II , 128Mb RAM and 256Kb cache. </p>
+
+</div>
+
+</div>
+
+</body>
+
+</html>

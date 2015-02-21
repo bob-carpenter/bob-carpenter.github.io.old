@@ -1,0 +1,113 @@
+<HTML>
+
+<HEAD>
+  <TITLE>
+    Type-Logical Semantics
+  </TITLE>
+</HEAD>
+
+
+<BODY>
+<H1>
+  <i>Type-Logical Semantics</i>
+</H1>
+
+<P>
+This page is devoted to the book:
+<UL>
+  <LI>    <a href="../../index.html">Bob Carpenter</a>.
+    1998.
+    <i>Type-Logical Semantics</i>.
+    <a href="http://mitpress.mit.edu/book-home.tcl?isbn=0262531496">
+    MIT Press</a>.
+    August 1998.  
+ ISBN 0-262-53149-6.
+ 575 pp.
+ $35.00 (paper)
+</UL>
+
+For more information on the book, including a 
+<a href="http://mitpress.mit.edu/book-table-of-contents.tcl?isbn=0262531496">table of contents</a> and the 
+back cover blurb, check out:
+<UL>
+<LI>     <a href="http://mitpress.mit.edu/book-home.tcl?isbn=0262531496">
+    MIT Press's page on <i>Type-Logical Semantics</i></a>.
+</UL>
+
+<H2>Ordering <i>Type-Logical Semantics</i></H2>
+
+Both MIT Press and Amazon can handle online orders, even overseas.
+
+<UL>
+<LI>
+<a href="http://mitpress.mit.edu/order-info.tcl?isbn=0262531496&product_type=book">
+Order from MIT Press</a>.
+<LI>
+<a href="http://www.amazon.com/exec/obidos/ASIN/0262531496/qid=917112862/sr=1-2/002-6530472-6247601">
+Order from amazon.com</a>.
+
+</UL>
+
+
+<H2>Type-Logical Theorem Prover</H2>
+<P>
+The CGI-based theorem prover for type-logical grammar that 
+was used to generate the examples in this book is available
+on line at:
+<UL>
+<LI> <a href="../../../tlg/index.html">Type-Logical Grammar Theorem Prover</a>.
+</UL>
+
+
+
+<H2>Suggestions, Questions or Corrections</H2>
+<P>
+If you have suggestions, questions or corrections, please send
+them to <a href="../../index.html">Bob Carpenter</a> at
+<a href="mailto:carp@colloquial.com">carp@colloquial.com</a>.
+
+
+</BODY>
+
+
+<ADDRESS>
+
+<HR>
+
+<TABLE>
+  <TR>
+    <TD>
+      <small><i>Directory:</i></small>
+      &nbsp &nbsp
+    </TD>
+    <TD>
+      <small>
+      <a href="../../index.html">Home</A>
+      &nbsp | &nbsp
+      <a href="../../Schedule/index.html">Schedule</A>
+      &nbsp | &nbsp
+      <a href="../../Projects/index.html">Projects</A>
+      &nbsp | &nbsp
+      <a href="../../Publications/index.html">Publications</A>
+      &nbsp | &nbsp
+      <a href="../../CV/index.html">CV</A>
+      &nbsp | &nbsp
+      <a href="../../Personal/index.html">Personal</A>
+      </small>
+    </TD>
+  </TR>
+</TABLE>
+  <HR>
+  <small>
+  <i>Copyright</i> &copy;1999.  All rights reserved. 
+   
+  &nbsp
+  <i>Contact:</i> 
+  <a href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</a>
+
+  &nbsp
+  <i>Updated:</i> &nbsp 22 January 1999 
+  </small>
+</ADDRESS>
+
+</HTML>

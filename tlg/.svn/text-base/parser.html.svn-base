@@ -1,0 +1,176 @@
+<HTML>
+
+<HEAD>
+  <TITLE>
+    Type-Logical Grammar Theorem Prover
+  </TITLE>
+</HEAD>
+
+
+<BODY>
+<H1>
+  Type-Logical Grammar Theorem Prover
+</H1>
+
+
+<FORM ACTION="http://www.ai.rug.nl/cgi-bin/cgiwrap/geertk/cgparser" TARGET="_blank">
+
+<TABLE>
+<TR>
+<TD>
+<INPUT TYPE=radio NAME=inputfrom VALUE="Typing">
+</TD>
+<TD>
+<b>Input:</b>
+</TD>
+<TD>
+<INPUT SIZE=20 NAME=parsestringone VALUE="">
+</TD>
+</TR>
+<TR>
+<TD>
+<INPUT TYPE=radio NAME=inputfrom VALUE="Corpus" CHECKED>
+</TD>
+<TD>
+<b>Select:</b>
+</TD>
+<TD>
+<SELECT NAME=parsestringtwo SIZE=4>
+  <OPTION SELECTED> Sandy ran
+  <OPTION> Sandy likes Terry
+  <OPTION> the kid ran
+  <OPTION> Sandy likes the picture of Terry
+  <OPTION> the kid in Pittsburgh 
+  <OPTION> the kid outside
+  <OPTION> the smart kid in Pittsburgh
+  <OPTION> the kid ran outside
+  <OPTION> the kid ran in Pittsburgh
+  <OPTION> Sandy likes the kid in Pittsburgh
+  <OPTION> Sandy gave Terry the paper
+  <OPTION> Sandy gave the paper to Terry
+  <OPTION> Sandy talked about Kim
+  <OPTION> Sandy talked about Kim to Terry
+  <OPTION> Sandy talked to Terry about Kim
+  <OPTION> Sandy believes Terry ran
+  <OPTION> Sandy ran and Terry jumped
+  <OPTION> Sandy ran and jumped
+  <OPTION> in or on the box
+  <OPTION> Sandy [np\s] and Terry [np\s] ran
+  <OPTION> the [np/n] vegetarian and [np/n] socialist ran
+  <OPTION> the [np/n] vegetarian [np\s] and [np/n] socialist [np\s]
+  <OPTION> big red [n]
+  <OPTION> the der(big red [n]) and der(small white [n]) box
+  <OPTION> [np\s] in Pittsburgh yesterday
+  <OPTION> Sandy ran der([np\s] in Pittsburgh yesterday) and der([np\s] in Cleveland today)
+  <OPTION> kid who likes Terry
+  <OPTION> kid who Terry likes [np]
+  <OPTION> kid who Terry liked [np] yesterday
+  <OPTION> kid who der(Terry likes [np]) but der(Sandy dislikes [np])
+  <OPTION> who Sandy likes [np]
+  <OPTION> everyone likes Sandy
+  <OPTION> Sandy likes everyone
+  <OPTION> someone likes everyone
+  <OPTION> some kid ran
+  <OPTION> someone likes every paper
+  <OPTION> [np] liked [np]
+  <OPTION> red [n/np] [np]
+</SELECT>
+</TABLE>
+
+<TABLE>
+<TR>
+  <TD>
+    <INPUT TYPE=submit VALUE="Parse String">
+  </TD>
+  <TD>
+    <INPUT TYPE=reset VALUE="Reset Input">
+  </TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+<TABLE>
+<TR>
+  <TD>
+   <b>Output Style:</b>
+   <SELECT NAME="outputform">
+   <OPTION SELECTED> Prawitz
+   <OPTION> Fitch
+   <!-- <OPTION> GIF -->
+   <OPTION> Text
+   </SELECT>
+  </TD>
+  <TD>
+    <b>Target Category:</b>
+    <SELECT NAME="outputsyn">
+    <OPTION SELECTED>Any
+    <OPTION>Finite S
+    <OPTION>Noun Phrase
+    </SELECT>
+  </TD>
+  <TD>
+    <b>Expand Meanings:</b>
+    <SELECT NAME="expandmng">
+    <OPTION SELECTED>No
+    <OPTION>Yes
+    </SELECT>
+  </TD>
+</TR>
+</TABLE>
+<!--
+  <b> Output Size:</b>
+  <SELECT NAME ="outputsize">
+  <OPTION> small
+  <OPTION> normalsize
+  <OPTION> large
+  <OPTION SELECTED> Large
+  <OPTION> LARGE
+  <OPTION> Huge
+  </SELECT>
+-->
+<INPUT TYPE="hidden" NAME="normalize" VALUE="Yes">
+</FORM>
+
+
+</BODY>
+
+
+<ADDRESS>
+
+<HR>
+
+<TABLE>
+  <TR>
+    <TD>
+      <small><i>Directory:</i></small>
+      &nbsp &nbsp
+    </TD>
+    <TD>
+      <small>
+      <a href="index.html">TLG Home</a>
+      &nbsp | &nbsp
+      <a href="help.html">Help</A>
+      &nbsp | &nbsp
+      <b>Parser</b>
+      &nbsp | &nbsp
+      <a href="lexicon.html">Lexicon</A>
+      </small>
+    </TD>
+  </TR>
+</TABLE>
+  <HR>
+  <small>
+  <i>Copyright</i> &copy;1999, 2002, 2004.  All rights reserved. 
+   
+  &nbsp
+  <i>Contact:</i> 
+  <a href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</a>
+
+  &nbsp
+  <i>Updated:</i> &nbsp 26 January 2004
+  </small>
+</ADDRESS>
+
+</HTML>
+
+

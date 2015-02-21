@@ -1,0 +1,136 @@
+<HTML>
+
+<HEAD>
+  <TITLE>
+    The Logic of Typed Feature Structures
+  </TITLE>
+</HEAD>
+
+
+<BODY>
+<H1>
+    The Logic of Typed Feature Structures
+</H1>
+
+<P>
+This page is devoted to the book:
+<UL>
+  <LI>    <a href="../../index.html">Bob Carpenter</a>.
+    1992.
+<cite>The Logic of Typed Feature Structures.</cite>
+Cambridge Tracts in Theoretical Computer Science 32.
+<a href="http://www.cup.org/Titles/419/0521419328.html">
+Cambridge University Press</a>.
+ISBN 0-521-41932-8 (hardback)
+</UL>
+
+Amazon provides a 
+<a href="http://www.amazon.com/exec/obidos/ts/book-contents/0521419328/qid=917113956/002-6530472-6247601">
+table of contents</a> and Cambridge provides the
+<a href="http://www.cup.org/Titles/419/0521419328.html">
+back cover blurb</a>.
+
+
+
+<H2>Ordering <i>The Logic of Typed Feature Structures</i></H2>
+
+Both Cambridge University Press and Amazon can handle online orders, even overseas.
+
+<UL>
+<LI>
+<a href="http://www.cup.org/Titles/419/0521419328.html">
+Order from Cambridge University Press inside of the US</a>.
+<LI>
+<a href="http://www.cup.cam.ac.uk/scripts/webbook.asp?isbn=0521419328">
+Order from Cambridge University Press outside of the US</a>.
+<LI>
+<a href="http://www.amazon.com/exec/obidos/ASIN/0521419328/qid%3D917113956/002-6530472-6247601">
+Order from amazon.com</a>.
+
+</UL>
+
+
+
+<H2>ALE: The Attribute Logic Engine</H2>
+
+<P>
+This book provides the theoretical basis for the
+freely available implementation of typed-feature structures
+for parsing, generation and logic programming, known as
+ALE.  
+<UL>
+<LI>
+     The <a href="http://www.sfs.nphil.uni-tuebingen.de/~gpenn/ale.html">
+     <b>Attribute Logic Engine (ALE)</b></a> Home Page.
+     
+     <BR> &nbsp &nbsp &nbsp
+     <small>now maintained by:
+     <a href="http://www.sfs.nphil.uni-tuebingen.de/~gpenn/">
+     Gerald Penn</A>.
+     </small>
+</UL>
+
+
+<h2> Errata </h2>
+
+A list of errata compiled by Dale Gerdemann can be found in:
+
+<ul>
+<a href ="errata.ps">
+Errata (65k postscript file)</a>
+</ul>
+
+</body>
+
+
+<H2>Suggestions, Questions or Corrections</H2>
+<P>
+If you have suggestions, questions or corrections, please send
+them to <a href="../../index.html">Bob Carpenter</a> at
+<a href="mailto:carp@colloquial.com">carp@colloquial.com</a>.
+
+
+</BODY>
+
+
+<ADDRESS>
+
+<HR>
+
+<TABLE>
+  <TR>
+    <TD>
+      <small><i>Directory:</i></small>
+      &nbsp &nbsp
+    </TD>
+    <TD>
+      <small>
+      <a href="../../index.html">Home</A>
+      &nbsp | &nbsp
+      <a href="../../Schedule/index.html">Schedule</A>
+      &nbsp | &nbsp
+      <a href="../../Projects/index.html">Projects</A>
+      &nbsp | &nbsp
+      <a href="../../Publications/index.html">Publications</A>
+      &nbsp | &nbsp
+      <a href="../../CV/index.html">CV</A>
+      &nbsp | &nbsp
+      <a href="../../Personal/index.html">Personal</A>
+      </small>
+    </TD>
+  </TR>
+</TABLE>
+  <HR>
+  <small>
+  <i>Copyright</i> &copy;1999.  All rights reserved. 
+   
+  &nbsp
+  <i>Contact:</i> 
+  <a href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</a>
+
+  &nbsp
+  <i>Updated:</i> &nbsp 22 January 1999 
+  </small>
+</ADDRESS>
+
+</HTML>

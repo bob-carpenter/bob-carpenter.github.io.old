@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>SpeechSmuggler VoiceXML</TITLE>
+<BODY>
+<H1>SpeechSmuggler</H1>
+
+<p>
+VoiceXML by <a href="http://www.colloquial.com/carp">Bob Carpenter</a>;
+voice talent by <a href="http://www.klein.com/dvk/">Dan Klein</a>.
+
+<h2>In the News:</h2>
+<P>
+SpeechSmuggler's catching on, and getting over 200 calls/day.
+<UL>
+<LI>
+<a href="http://www.tmcnet.com/tmcnet/columns/laura030901.htm">A review of 
+VoiceXML by Laura Guevin</a>
+<LI>
+There was a now expired review by Jimmy Guterman in 
+the digitalMass section of Boston.com.
+(reference near the end)
+<LI> 
+There was a mention on the FoRK-archive in October 2000 about
+getting strange looks while playing on the phone.  Now also
+expired.
+</UL>
+This index confirms that <a href="http://www.wisenut.com">Wisenut Search</a> is 
+making headway on <a href="http://www.google.com">Google</a>.
+
+<p>
+<b>SpeechSmuggler</b> is the exciting game of inter-borough trading.
+You're an aspiring merchant with a few bucks and an even larger
+debt.  You jet from borough to borough buying and selling your
+wares.  You can see the sights.  You can try to avoid Officer
+HardAss or buy a gun and get into a shootout.
+
+<p>
+Based on the Palm Pilot application <a href="http://pdaguy.com/dopewars/">DopeWars</a>
+by <a href="http://web.mit.edu/mattlee/www/">Matthew Lee (?)</a>,  Which itself has
+a long history.
+
+<p>
+<b>SpeechSmuggler</b> can be reached toll free from the United States
+by calling <b>1.800.555.TELL</b>.  You will need to ask for <b>extensions</b> and
+then give it the extension number <b>16666</b>.  
+
+<p>
+Here's the <a href="smuggler.vxml">VoiceXML source code for the SpeechSmuggler</a>.
+It exercises most of the basics of the language including JavaScript functions,
+variables, forms and control flow.
+
+<p>
+If you liked this game, try the <a href="http://www.colloquial.com/VoiceXML">Other
+VoiceXML applications on Colloquial</a>.
+
+<ADDRESS><SMALL>
+<HR>
+<I>Copyright</I> ©1999-2000. All rights reserved. &nbsp; <I>Contact:</I> <A 
+href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</A> &nbsp; 
+<I>Updated:</I> &nbsp; 28 March 2001</SMALL></ADDRESS></BODY></HTML>
+

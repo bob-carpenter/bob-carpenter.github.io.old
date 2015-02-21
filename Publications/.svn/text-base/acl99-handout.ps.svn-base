@@ -1,0 +1,806 @@
+%!PS-Adobe-2.0
+%%Creator: dvipsk 5.58f Copyright 1986, 1994 Radical Eye Software
+%%Title: handout.dvi
+%%Pages: 8
+%%PageOrder: Ascend
+%%BoundingBox: 0 0 612 792
+%%DocumentFonts: Times-Roman Times-Bold Times-Italic
+%%DocumentPaperSizes: Letter
+%%EndComments
+%DVIPSCommandLine: dvips -tletter -ohandout.ps handout
+%DVIPSParameters: dpi=600, comments removed
+%DVIPSSource:  TeX output 1999.06.18:1102
+%%BeginProcSet: tex.pro
+/TeXDict 250 dict def TeXDict begin /N{def}def /B{bind def}N /S{exch}N
+/X{S N}B /TR{translate}N /isls false N /vsize 11 72 mul N /hsize 8.5 72
+mul N /landplus90{false}def /@rigin{isls{[0 landplus90{1 -1}{-1 1}
+ifelse 0 0 0]concat}if 72 Resolution div 72 VResolution div neg scale
+isls{landplus90{VResolution 72 div vsize mul 0 exch}{Resolution -72 div
+hsize mul 0}ifelse TR}if Resolution VResolution vsize -72 div 1 add mul
+TR[matrix currentmatrix{dup dup round sub abs 0.00001 lt{round}if}
+forall round exch round exch]setmatrix}N /@landscape{/isls true N}B
+/@manualfeed{statusdict /manualfeed true put}B /@copies{/#copies X}B
+/FMat[1 0 0 -1 0 0]N /FBB[0 0 0 0]N /nn 0 N /IE 0 N /ctr 0 N /df-tail{
+/nn 8 dict N nn begin /FontType 3 N /FontMatrix fntrx N /FontBBox FBB N
+string /base X array /BitMaps X /BuildChar{CharBuilder}N /Encoding IE N
+end dup{/foo setfont}2 array copy cvx N load 0 nn put /ctr 0 N[}B /df{
+/sf 1 N /fntrx FMat N df-tail}B /dfs{div /sf X /fntrx[sf 0 0 sf neg 0 0]
+N df-tail}B /E{pop nn dup definefont setfont}B /ch-width{ch-data dup
+length 5 sub get}B /ch-height{ch-data dup length 4 sub get}B /ch-xoff{
+128 ch-data dup length 3 sub get sub}B /ch-yoff{ch-data dup length 2 sub
+get 127 sub}B /ch-dx{ch-data dup length 1 sub get}B /ch-image{ch-data
+dup type /stringtype ne{ctr get /ctr ctr 1 add N}if}B /id 0 N /rw 0 N
+/rc 0 N /gp 0 N /cp 0 N /G 0 N /sf 0 N /CharBuilder{save 3 1 roll S dup
+/base get 2 index get S /BitMaps get S get /ch-data X pop /ctr 0 N ch-dx
+0 ch-xoff ch-yoff ch-height sub ch-xoff ch-width add ch-yoff
+setcachedevice ch-width ch-height true[1 0 0 -1 -.1 ch-xoff sub ch-yoff
+.1 sub]{ch-image}imagemask restore}B /D{/cc X dup type /stringtype ne{]}
+if nn /base get cc ctr put nn /BitMaps get S ctr S sf 1 ne{dup dup
+length 1 sub dup 2 index S get sf div put}if put /ctr ctr 1 add N}B /I{
+cc 1 add D}B /bop{userdict /bop-hook known{bop-hook}if /SI save N @rigin
+0 0 moveto /V matrix currentmatrix dup 1 get dup mul exch 0 get dup mul
+add .99 lt{/QV}{/RV}ifelse load def pop pop}N /eop{SI restore userdict
+/eop-hook known{eop-hook}if showpage}N /@start{userdict /start-hook
+known{start-hook}if pop /VResolution X /Resolution X 1000 div /DVImag X
+/IE 256 array N 0 1 255{IE S 1 string dup 0 3 index put cvn put}for
+65781.76 div /vsize X 65781.76 div /hsize X}N /p{show}N /RMat[1 0 0 -1 0
+0]N /BDot 260 string N /rulex 0 N /ruley 0 N /v{/ruley X /rulex X V}B /V
+{}B /RV statusdict begin /product where{pop product dup length 7 ge{0 7
+getinterval dup(Display)eq exch 0 4 getinterval(NeXT)eq or}{pop false}
+ifelse}{false}ifelse end{{gsave TR -.1 .1 TR 1 1 scale rulex ruley false
+RMat{BDot}imagemask grestore}}{{gsave TR -.1 .1 TR rulex ruley scale 1 1
+false RMat{BDot}imagemask grestore}}ifelse B /QV{gsave newpath transform
+round exch round exch itransform moveto rulex 0 rlineto 0 ruley neg
+rlineto rulex neg 0 rlineto fill grestore}B /a{moveto}B /delta 0 N /tail
+{dup /delta X 0 rmoveto}B /M{S p delta add tail}B /b{S p tail}B /c{-4 M}
+B /d{-3 M}B /e{-2 M}B /f{-1 M}B /g{0 M}B /h{1 M}B /i{2 M}B /j{3 M}B /k{
+4 M}B /w{0 rmoveto}B /l{p -4 w}B /m{p -3 w}B /n{p -2 w}B /o{p -1 w}B /q{
+p 1 w}B /r{p 2 w}B /s{p 3 w}B /t{p 4 w}B /x{0 S rmoveto}B /y{3 2 roll p
+a}B /bos{/SS save N}B /eos{SS restore}B end
+%%EndProcSet
+%%BeginFont: Times-Roman
+% @@psencodingfile@{
+%   author = "S. Rahtz, P. MacKay, Alan Jeffrey, B. Horn, K. Berry",
+%   version = "0.6",
+%   date = "22 June 1996",
+%   filename = "8r.enc",
+%   email = "kb@@mail.tug.org",
+%   address = "135 Center Hill Rd. // Plymouth, MA 02360",
+%   codetable = "ISO/ASCII",
+%   checksum = "119     662    4424",
+%   docstring = "Encoding for TrueType or Type 1 fonts to be used with TeX."
+% @}
+% 
+% Idea is to have all the characters normally included in Type 1 fonts
+% available for typesetting. This is effectively the characters in Adobe
+% Standard Encoding + ISO Latin 1 + extra characters from Lucida.
+% 
+% Character code assignments were made as follows:
+% 
+% (1) the Windows ANSI characters are almost all in their Windows ANSI
+% positions, because some Windows users cannot easily reencode the
+% fonts, and it makes no difference on other systems. The only Windows
+% ANSI characters not available are those that make no sense for
+% typesetting -- rubout (127 decimal), nobreakspace (160), softhyphen
+% (173). quotesingle and grave are moved just because it's such an
+% irritation not having them in TeX positions.
+% 
+% (2) Remaining characters are assigned arbitrarily to the lower part
+% of the range, avoiding 0, 10 and 13 in case we meet dumb software.
+% 
+% (3) Y&Y Lucida Bright includes some extra text characters; in the
+% hopes that other PostScript fonts, perhaps created for public
+% consumption, will include them, they are included starting at 0x12.
+% 
+% (4) Remaining positions left undefined are for use in (hopefully)
+% upward-compatible revisions, if someday more characters are generally
+% available.
+% 
+% (5) hyphen appears twice for compatibility with both ASCII and Windows.
+% 
+/TeXBase1Encoding [
+% 0x00 (encoded characters from Adobe Standard not in Windows 3.1)
+  /.notdef /dotaccent /fi /fl
+  /fraction /hungarumlaut /Lslash /lslash
+  /ogonek /ring /.notdef
+  /breve /minus /.notdef 
+% These are the only two remaining unencoded characters, so may as
+% well include them.
+  /Zcaron /zcaron 
+% 0x10
+ /caron /dotlessi 
+% (unusual TeX characters available in, e.g., Lucida Bright)
+ /dotlessj /ff /ffi /ffl 
+ /.notdef /.notdef /.notdef /.notdef
+ /.notdef /.notdef /.notdef /.notdef
+ % very contentious; it's so painful not having quoteleft and quoteright
+ % at 96 and 145 that we move the things normally found there down to here.
+ /grave /quotesingle 
+% 0x20 (ASCII begins)
+ /space /exclam /quotedbl /numbersign
+ /dollar /percent /ampersand /quoteright
+ /parenleft /parenright /asterisk /plus /comma /hyphen /period /slash
+% 0x30
+ /zero /one /two /three /four /five /six /seven
+ /eight /nine /colon /semicolon /less /equal /greater /question
+% 0x40
+ /at /A /B /C /D /E /F /G /H /I /J /K /L /M /N /O
+% 0x50
+ /P /Q /R /S /T /U /V /W
+ /X /Y /Z /bracketleft /backslash /bracketright /asciicircum /underscore
+% 0x60
+ /quoteleft /a /b /c /d /e /f /g /h /i /j /k /l /m /n /o
+% 0x70
+ /p /q /r /s /t /u /v /w
+ /x /y /z /braceleft /bar /braceright /asciitilde
+ /.notdef % rubout; ASCII ends
+% 0x80
+ /.notdef /.notdef /quotesinglbase /florin
+ /quotedblbase /ellipsis /dagger /daggerdbl
+ /circumflex /perthousand /Scaron /guilsinglleft
+ /OE /.notdef /.notdef /.notdef
+% 0x90
+ /.notdef /.notdef /.notdef /quotedblleft
+ /quotedblright /bullet /endash /emdash
+ /tilde /trademark /scaron /guilsinglright
+ /oe /.notdef /.notdef /Ydieresis
+% 0xA0
+ /.notdef % nobreakspace
+ /exclamdown /cent /sterling
+ /currency /yen /brokenbar /section
+ /dieresis /copyright /ordfeminine /guillemotleft
+ /logicalnot
+ /hyphen % Y&Y (also at 45); Windows' softhyphen
+ /registered
+ /macron
+% 0xD0
+ /degree /plusminus /twosuperior /threesuperior
+ /acute /mu /paragraph /periodcentered
+ /cedilla /onesuperior /ordmasculine /guillemotright
+ /onequarter /onehalf /threequarters /questiondown
+% 0xC0
+ /Agrave /Aacute /Acircumflex /Atilde /Adieresis /Aring /AE /Ccedilla
+ /Egrave /Eacute /Ecircumflex /Edieresis
+ /Igrave /Iacute /Icircumflex /Idieresis
+% 0xD0
+ /Eth /Ntilde /Ograve /Oacute
+ /Ocircumflex /Otilde /Odieresis /multiply
+ /Oslash /Ugrave /Uacute /Ucircumflex
+ /Udieresis /Yacute /Thorn /germandbls
+% 0xE0
+ /agrave /aacute /acircumflex /atilde
+ /adieresis /aring /ae /ccedilla
+ /egrave /eacute /ecircumflex /edieresis
+ /igrave /iacute /icircumflex /idieresis
+% 0xF0
+ /eth /ntilde /ograve /oacute
+ /ocircumflex /otilde /odieresis /divide
+ /oslash /ugrave /uacute /ucircumflex
+ /udieresis /yacute /thorn /ydieresis
+] def
+%%EndFont
+%%BeginProcSet: texps.pro
+TeXDict begin /rf{findfont dup length 1 add dict begin{1 index /FID ne 2
+index /UniqueID ne and{def}{pop pop}ifelse}forall[1 index 0 6 -1 roll
+exec 0 exch 5 -1 roll VResolution Resolution div mul neg 0 0]/Metrics
+exch def dict begin Encoding{exch dup type /integertype ne{pop pop 1 sub
+dup 0 le{pop}{[}ifelse}{FontMatrix 0 get div Metrics 0 get div def}
+ifelse}forall Metrics /Metrics currentdict end def[2 index currentdict
+end definefont 3 -1 roll makefont /setfont load]cvx def}def
+/ObliqueSlant{dup sin S cos div neg}B /SlantFont{4 index mul add}def
+/ExtendFont{3 -1 roll mul exch}def /ReEncodeFont{/Encoding exch def}def
+end
+%%EndProcSet
+TeXDict begin 40258431 52099146 1000 600 600 (handout.dvi)
+@start /Fa 138[51 30 35 40 1[51 45 51 1[25 2[25 51 45
+30 40 51 40 1[45 13[51 66 1[56 71 5[35 1[71 1[61 1[66
+14[45 45 45 45 2[23 46[{ TeXBase1Encoding ReEncodeFont }29
+91.249977 /Times-Bold rf /Fb 104[81 29[40 40 61 40 45
+25 35 35 1[45 45 45 66 25 40 25 25 45 45 25 40 45 40
+45 45 9[76 1[66 51 45 56 1[56 66 61 76 51 1[40 30 66
+66 56 56 66 61 56 56 6[30 45 45 1[45 45 45 45 45 3[23
+30 3[30 30 37[45 2[{ TeXBase1Encoding ReEncodeFont }58
+91.249977 /Times-Italic rf /Fc 1 16 df<000FFC0000003FFF000000FFFFC00003
+FFFFF00007FFFFF8000FFFFFFC001FFFFFFE003FFFFFFF003FFFFFFF007FFFFFFF807FFF
+FFFF807FFFFFFF80FFFFFFFFC0FFFFFFFFC0FFFFFFFFC0FFFFFFFFC0FFFFFFFFC0FFFFFF
+FFC0FFFFFFFFC0FFFFFFFFC0FFFFFFFFC0FFFFFFFFC07FFFFFFF807FFFFFFF807FFFFFFF
+803FFFFFFF003FFFFFFF001FFFFFFE000FFFFFFC0007FFFFF80003FFFFF00000FFFFC000
+003FFF0000000FFC000022227BA72D>15 D E /Fd 137[60 66 40
+47 53 2[60 66 1[33 5[40 53 66 53 1[60 13[66 86 7[60 6[86
+16[60 60 49[{ TeXBase1Encoding ReEncodeFont }19 119.999947
+/Times-Bold rf /Fe 75[30 11[30 17[45 27[40 45 45 66 45
+45 25 35 30 45 45 45 45 71 25 45 25 25 45 45 30 40 45
+40 45 40 3[30 1[30 56 66 1[86 66 66 56 51 61 66 51 66
+66 81 56 66 35 30 66 66 51 56 66 61 61 66 6[25 45 45
+45 45 45 45 45 45 45 45 25 23 30 23 2[30 30 30 71 35[51
+2[{ TeXBase1Encoding ReEncodeFont }76 91.249977 /Times-Roman
+rf /Ff 138[50 28 39 33 2[50 50 1[28 2[28 50 50 1[44 50
+44 50 44 12[61 7[61 1[39 7[66 8[50 6[50 50 50 3[25 44[{
+ TeXBase1Encoding ReEncodeFont }24 100.000000 /Times-Roman
+rf /Fg 134[50 1[72 50 55 33 39 44 1[55 50 55 83 28 55
+1[28 55 50 33 44 55 44 55 50 13[55 72 2[78 1[94 2[50
+39 1[78 1[66 72 72 66 11[50 50 50 50 50 50 2[25 33 45[{
+ TeXBase1Encoding ReEncodeFont }41 100.000000 /Times-Bold
+rf /Fh 134[72 3[72 40 56 48 1[72 72 72 112 40 72 1[40
+1[72 1[64 3[64 12[88 80 6[88 7[104 96 1[104 65[{
+ TeXBase1Encoding ReEncodeFont }21 144.000000 /Times-Roman
+rf end
+%%EndProlog
+%%BeginSetup
+%%Feature: *Resolution 600dpi
+TeXDict begin
+%%PaperSize: Letter
+
+%%EndSetup
+%%Page: 1 1
+1 0 bop 704 456 a Fh(A)-6 b(CL)35 b(T)-6 b(utorial)33
+b(on)j(Spok)o(en)d(Dialogue)h(Systems)1081 708 y Fg(Bob)25
+b(Car)o(penter)i Ff(and)d Fg(J)o(ennifer)i(Chu-Carr)n(oll)1175
+825 y Ff(Lucent)e(T)-7 b(echnologies)24 b(Bell)h(Laboratories)1672
+1027 y(June)f(20,)h(1999)141 1376 y Fe(This)f(companion)i(document)f
+(pro)o(vides)h(lists)f(of)e(selected)j(references)h(and)d(related)h
+(conferences/journ)q(als)30 b(for)24 b(our)0 1488 y(tutorial)32
+b(material)g(on)f(spok)o(en)h(dialogue)h(systems.)51
+b(The)30 b(lists)h(pro)o(vided)i(are)e(intended)h(as)f(starting)h
+(points)g(for)f(those)0 1601 y(interested)26 b(in)c(in)l(v)o
+(estigating)27 b(particular)e(areas)f(related)g(to)f(dialogue)i
+(systems,)f(and)f(are)g(by)g(no)g(means)h(comprehensi)n(v)o(e.)0
+1894 y Fd(1)119 b(Selected)32 b(Refer)n(ences)0 2104
+y Fg(1.1)99 b(Ov)o(er)o(view)25 b(Books)136 2279 y Fc(\017)46
+b Fe(James)24 b(Allen.)29 b(1995.)h Fb(Natur)o(al)24
+b(Langua)o(g)o(e)i(Under)o(standing)p Fe(.)32 b(2nd)24
+b(Edition.)30 b(Addison-W)-7 b(esle)o(y)h(.)136 2466
+y Fc(\017)46 b Fe(Ricardo)36 b(Baeza-Y)-9 b(ates)35 b(and)g(Berthier)h
+(Ribeiro-Neto.)63 b(1999.)f Fb(Modern)35 b(Information)i(Retrie)o(val.)
+63 b Fe(Addison-)227 2579 y(W)-7 b(esle)o(y)h(.)136 2767
+y Fc(\017)46 b Fe(Thomas)24 b(M.)e(Co)o(v)o(er)h(and)h(Jo)o(y)g(A.)f
+(Thomas.)28 b(1991.)i Fb(Elements)24 b(of)g(Information)i(Theory)-5
+b(.)29 b Fe(W)l(ile)o(y)-6 b(.)136 2954 y Fc(\017)46
+b Fe(Renato)25 b(De)d(Mori)i(\(Editor\).)30 b(1998.)f
+Fb(Spok)o(en)d(Dialo)o(gues)f(W)-5 b(ith)24 b(Computer)o(s)p
+Fe(.)30 b(Academic)24 b(Press.)136 3142 y Fc(\017)46
+b Fe(Frederick)25 b(Jelinek.)31 b Fb(Statistical)26 b(Methods)f(for)f
+(Speec)o(h)h(Reco)o(gnition)p Fe(.)31 b(1999.)f(MIT)22
+b(Press.)136 3330 y Fc(\017)46 b Fe(Daniel)24 b(Jurafsk)o(y)i(and)e
+(James)g(Martin.)29 b(late)24 b(1999.)30 b Fb(Speec)o(h)25
+b(and)f(Langua)o(g)o(e)h(Pr)l(ocessing)p Fe(.)31 b(Prentice)25
+b(Hall.)136 3517 y Fc(\017)46 b Fe(Christopher)30 b(D.)c(Manning,)k
+(Hinrich)e(Sch)8 b(\250)-38 b(utze.)42 b(1999.)f Fb(F)-10
+b(oundations)31 b(of)c(Statistical)k(Natur)o(al)d(Langua)o(g)o(e)h(Pr)l
+(o-)227 3630 y(cessing)p Fe(.)i(MIT)22 b(Press.)136 3818
+y Fc(\017)46 b Fe(La)o(wrence)25 b(Rabiner)l(,)h(Biing-Hw)o(ang)g
+(Juang)g(\(editors\).)34 b(1993.)g Fb(Fundamentals)27
+b(of)d(Speec)o(h)i(Reco)o(gnition)p Fe(.)35 b(Pren-)227
+3931 y(tice)24 b(Hall.)136 4118 y Fc(\017)46 b Fe(Ehud)32
+b(Reiter)f(and)h(Robert)g(Dale.)51 b(2000.)i Fb(Building)33
+b(Natur)o(al)f(Langua)o(g)o(e)h(Gener)o(ation)g(Systems.)53
+b Fe(Cambridge)227 4231 y(Uni)n(v)o(ersity)25 b(Press.)136
+4419 y Fc(\017)46 b Fe(Richard)25 b(Sproat)f(\(editor\).)30
+b(1997.)g Fb(Multilingual)d(T)-8 b(e)n(xt-T)g(o-Speec)o(h)25
+b(Synthesis)p Fe(.)31 b(Kluwer)-5 b(.)136 4607 y Fc(\017)46
+b Fe(Gio)o(v)n(anni)37 b(V)-10 b(arile)35 b(and)h(Antonio)h(Zampolli)f
+(\(editors\).)67 b(1998.)e Fb(Surve)m(y)37 b(of)f(the)g(State)g(of)f
+(the)h(Art)f(in)g(Human)227 4719 y(Langua)o(g)o(e)26
+b(T)-8 b(ec)o(hnolo)o(gy)j(.)30 b Fe(Cambridge)25 b(Uni)n(v)o(ersity)g
+(Press.)136 4907 y Fc(\017)46 b Fe(Ste)n(v)o(e)24 b(Y)-10
+b(oung)26 b(and)f(Gerrit)g(Bloothooft)i(\(editors\).)34
+b(1997.)f Fb(Corpus-Based)27 b(Methods)f(in)e(Langua)o(g)o(e)j(and)e
+(Speec)o(h)227 5020 y(Pr)l(ocessing)p Fe(.)31 b(Kluwer)-5
+b(.)1927 5589 y(1)p eop
+%%Page: 2 2
+2 1 bop 0 91 a Fg(1.2)99 b(Discourse)25 b(Inter)o(pr)n(etation)0
+266 y Fa(1.2.1)92 b(Refer)n(ences)25 b(and)d(Ellipsis)i(Resolution)0
+432 y Fe([)30 440 y(Brennan)h Fb(et)e(al.)p Fe(,)g(1987)768
+432 y(])846 440 y(Susan)29 b(E.)d(Brennan,)31 b(Marilyn)e(W)-7
+b(alk)o(er)29 b(Friedman,)h(and)f(Carl)f(J.)f(Pollard.)50
+b(A)27 b(centering)k(ap-)106 553 y(proach)g(to)f(pronouns.)55
+b(In)30 b Fb(Pr)l(oceedings)i(of)d(the)h(25th)h(Annual)f(Meeting)h(of)f
+(the)f(Association)k(for)c(Computational)106 666 y(Linguistics)p
+Fe(,)d(pages)e(155\226162,)i(1987.)0 845 y([)30 853 y(Clark)e(and)g(W)l
+(ilk)o(es-Gibbs,)i(1990)1135 845 y(])1212 853 y(Herbert)c(Clark)f(and)h
+(Deanna)g(W)l(ilk)o(es-Gibbs.)30 b(Referring)23 b(as)e(a)f(collaborati)
+n(v)o(e)25 b(pro-)106 966 y(cess.)48 b(In)28 b(Philip)g(Cohen,)h(Jerry)
+g(Mor)n(gan,)h(and)e(Martha)h(Pollack,)g(editors,)i Fb(Intentions)g(in)
+c(Communication)p Fe(,)k(chap-)106 1079 y(ter)24 b(23,)f(pages)i
+(463\226493.)g(MIT)e(Press,)g(1990.)0 1259 y([)30 1267
+y(Dalrymple)i Fb(et)e(al.)p Fe(,)g(1995)849 1259 y(])927
+1267 y(Mary)35 b(Dalrymple,)j(Stuart)e(M.)d(Sheiber)l(,)39
+b(and)d(Fernando)g(C.)e(N.)f(Pereira.)71 b(Ellipsis)36
+b(and)106 1380 y(higher)n(-order)27 b(uni\002cation.)36
+b Fb(Linguistics)25 b(and)g(Philosophy)p Fe(,)g(14\(4\):399\226452,)j
+(1995.)0 1559 y([)30 1567 y(Grosz,)c(1981)473 1559 y(])550
+1567 y(Barbara)g(J.)e(Grosz.)33 b(F)o(ocusing)24 b(and)f(description)j
+(in)d(natural)h(language)i(dialogues.)34 b(In)23 b(A.)f(Joshi,)h(W)-7
+b(eb-)106 1680 y(ber)26 b(B.,)g(and)g(I.)g(Sag,)g(editors,)i
+Fb(Elements)f(of)f(Discour)o(se)i(Under)o(standing)p
+Fe(,)i(pages)e(85\226105.)f(Cambridge)h(Uni)n(v)o(ersity)106
+1793 y(Press,)23 b(1981.)0 1973 y([)30 1981 y(Grosz)h
+Fb(et)f(al.)p Fe(,)g(1995)677 1973 y(])755 1981 y(Barbara)j(J.)e
+(Grosz,)i(Ara)n(vind)g(K.)e(Joshi,)i(and)f(Scott)h(W)-7
+b(einstein.)39 b(Centering:)34 b(A)24 b(frame)n(w)o(ork)i(for)106
+2094 y(modeling)f(the)f(local)g(coherence)j(of)c(discourse.)36
+b Fb(Computational)26 b(Linguistics)p Fe(,)g(21\(2\):203\226225,)i
+(1995.)0 2273 y([)30 2281 y(Grosz)c(and)g(Sidner)l(,)g(1986)883
+2273 y(])961 2281 y(Barbara)k(J.)f(Grosz)h(and)g(Candace)g(L.)e(Sidner)
+-5 b(.)47 b(Attention,)30 b(intentions)g(and)e(the)g(structure)106
+2394 y(of)23 b(discourse.)36 b Fb(Computational)27 b(Linguistics)p
+Fe(,)e(12\(3\):175\226204,)j(July-September)e(1986.)0
+2574 y([)30 2582 y(Heeman)e(and)g(Hirst,)f(1995)917 2574
+y(])995 2582 y(Peter)35 b(A.)f(Heeman)i(and)g(Graeme)g(Hirst.)71
+b(Collaborating)39 b(on)d(referring)h(e)o(xpressions.)106
+2695 y Fb(Computational)26 b(Linguistics)p Fe(,)g(21\(3\):351\226382,)i
+(1995.)0 2874 y([)30 2882 y(Hobbs,)c(1979)493 2874 y(])571
+2882 y(Jerry)g(Hobbs.)34 b(Coherence)25 b(and)f(coreference.)37
+b Fb(Co)o(gnitive)25 b(Science)p Fe(,)g(3\(1\):67\22690,)i(1979.)0
+3062 y([)30 3070 y(K)n(ehler)l(,)d(1994)497 3062 y(])575
+3070 y(Andre)n(w)f(K)n(ehler)-5 b(.)33 b(Common)23 b(topics)i(and)e
+(coherent)j(situations:)32 b(Interpreting)27 b(ellipsis)e(in)e(the)h
+(conte)o(xt)106 3183 y(of)i(discourse)j(inference.)44
+b(In)26 b Fb(Pr)l(oceedings)i(of)e(the)h(32nd)g(Annual)g(Confer)m(ence)
+h(of)e(the)g(Association)j(for)d(Computa-)106 3296 y(tional)f
+(Linguistics)p Fe(,)g(pages)g(50\22657,)g(1994.)0 3475
+y([)30 3483 y(Sidner)l(,)f(1981)489 3475 y(])567 3483
+y(Candace)f(L.)e(Sidner)-5 b(.)31 b(F)o(ocusing)24 b(for)e
+(interpretation)27 b(of)22 b(pronouns.)33 b Fb(American)23
+b(J)n(ournal)h(of)e(Computa-)106 3596 y(tional)j(Linguistics)p
+Fe(,)g(7\(4\):217\226231,)j(1981.)0 3842 y Fa(1.2.2)92
+b(Intention)23 b(and)f(Plan)h(Recognition)0 4009 y Fe([)30
+4017 y(Allen)h(and)g(Perrault,)g(1980)922 4009 y(])1000
+4017 y(James)34 b(F)-7 b(.)33 b(Allen)h(and)h(C.)e(Raymond)h(Perrault.)
+69 b(Analyzing)36 b(intention)h(in)d(utterances.)106
+4129 y Fb(Arti\002cial)25 b(Intellig)o(ence)p Fe(,)i(15:143\226178,)g
+(1980.)0 4309 y([)30 4317 y(Carberry)e(and)f(Lambert,)g(1999)1064
+4309 y(])1141 4317 y(Sandra)h(Carberry)h(and)e(L)-5 b(ynn)25
+b(Lambert.)36 b(A)23 b(process)j(model)f(for)f(recognizing)k(com-)106
+4430 y(municati)n(v)o(e)d(acts)f(and)g(modeling)h(ne)o(gotiation)i
+(subdialogues.)37 b Fb(Computational)26 b(Linguistics)p
+Fe(,)g(25\(1\):1\22653,)g(1999.)0 4610 y([)30 4618 y(Carberry)-6
+b(,)25 b(1990)573 4610 y(])650 4618 y(Sandra)g(Carberry)-6
+b(.)34 b Fb(Plan)24 b(Reco)o(gnition)i(in)d(Natur)o(al)i(Langua)o(g)o
+(e)g(Dialo)o(gue)p Fe(.)35 b(MIT)22 b(Press,)i(1990.)0
+4797 y([)30 4805 y(Cohen)g(and)g(Perrault,)h(1979)958
+4797 y(])1035 4805 y(Philip)g(R.)e(Cohen)h(and)h(C.)e(Raymond)i
+(Perrault.)36 b(Elements)25 b(of)f(a)f(plan-based)28
+b(theory)d(of)106 4918 y(speech)g(acts.)34 b Fb(Co)o(gnitive)25
+b(Science)p Fe(,)g(3:177\226212,)i(1979.)0 5098 y([)30
+5106 y(Grosz)d(and)g(Sidner)l(,)g(1986)883 5098 y(])961
+5106 y(Barbara)k(J.)f(Grosz)h(and)g(Candace)g(L.)e(Sidner)-5
+b(.)47 b(Attention,)30 b(intentions)g(and)e(the)g(structure)106
+5219 y(of)23 b(discourse.)36 b Fb(Computational)27 b(Linguistics)p
+Fe(,)e(12\(3\):175\226204,)j(July-September)e(1986.)1927
+5589 y(2)p eop
+%%Page: 3 3
+3 2 bop 0 83 a Fe([)30 91 y(Grosz)24 b(and)g(Sidner)l(,)g(1990)883
+83 y(])961 91 y(Barbara)g(J.)e(Grosz)h(and)h(Candace)g(L.)d(Sidner)-5
+b(.)33 b(Plans)23 b(for)h(discourse.)34 b(In)23 b(Cohen,)h(Mor)n(gan,)
+106 204 y(and)g(Pollack,)g(editors,)h Fb(Intentions)h(in)e
+(Communication)p Fe(,)h(chapter)g(20,)f(pages)h(417\226444.)g(MIT)e
+(Press,)g(1990.)0 384 y([)30 392 y(Litman)h(and)g(Allen,)f(1987)897
+384 y(])975 392 y(Diane)30 b(Litman)h(and)g(James)g(Allen.)56
+b(A)29 b(plan)i(recognition)j(model)d(for)g(subdialogues)j(in)106
+505 y(con)l(v)o(ersation.)j Fb(Co)o(gnitive)25 b(Science)p
+Fe(,)g(11:163\226200,)i(1987.)0 684 y([)30 692 y(Mast)d
+Fb(et)f(al.)p Fe(,)g(1995)642 684 y(])720 692 y(Marion)28
+b(Mast,)g(Heinrich)h(Niemann,)g(Elmar)e(Noth,)h(and)g(Ernst)g(Gunter)g
+(Schukat-T)-7 b(alamazzini.)106 805 y(Automatic)33 b(classi\002cation)j
+(of)c(dialog)i(acts)f(with)f(semantic)i(classi\002cation)h(trees)e(and)
+g(polygrams.)63 b(In)33 b Fb(IJCAI-95)106 918 y(W)-8
+b(orkshop)25 b(on)f(Ne)o(w)e(Appr)l(oac)o(hes)j(to)f(Learning)h(for)f
+(Natur)o(al)g(Langua)o(g)o(e)h(Pr)l(ocessing)p Fe(,)h(pages)e
+(71\22678,)h(1995.)0 1098 y([)30 1106 y(Pollack,)f(1990)528
+1098 y(])606 1106 y(Martha)j(E.)e(Pollack.)44 b(Plans)27
+b(as)f(comple)o(x)i(mental)f(attitudes.)45 b(In)26 b(Philip)h(R.)f
+(Cohen,)h(Jerry)h(Mor)n(gan,)106 1219 y(and)c(Martha)g(E.)e(Pollack,)i
+(editors,)h Fb(Intentions)i(in)c(Communication)p Fe(,)i(pages)g
+(77\226104.)g(MIT)e(Press,)g(1990.)0 1398 y([)30 1406
+y(Reithinger)j(and)e(Maier)l(,)g(1995)1030 1398 y(])1107
+1406 y(Norbert)e(Reithinger)g(and)f(Elisabeth)i(Maier)-5
+b(.)27 b(Utilizing)22 b(statistical)h(dialogue)g(act)e(pro-)106
+1519 y(cessing)28 b(in)d(v)o(erbmobil.)43 b(In)26 b Fb(Pr)l(oceedings)i
+(of)e(the)g(33r)m(d)g(Annual)h(Meeting)g(of)f(the)g(Association)i(for)e
+(Computational)106 1632 y(Linguistics)p Fe(,)g(pages)e(116\226121,)i
+(1995.)0 1812 y([)30 1820 y(Ros)5 b(\264)-35 b(e)24 b
+Fb(et)f(al.)p Fe(,)g(1995)642 1812 y(])720 1820 y(Carolyn)j(P)-10
+b(.)24 b(Ros)5 b(\264)-35 b(e,)26 b(Barbara)g(Di)e(Eugenio,)j(Lori)e
+(S.)f(Le)n(vin,)i(and)g(Carol)f(V)-10 b(an)25 b(Ess-Dyk)o(ema.)40
+b(Dis-)106 1933 y(course)26 b(processing)i(of)d(dialogues)j(with)d
+(multiple)h(threads.)39 b(In)25 b Fb(Pr)l(oceedings)j(of)d(the)g(33r)m
+(d)g(Annual)h(Meeting)g(of)f(the)106 2046 y(Association)h(for)e
+(Computational)i(Linguistics)p Fe(,)g(pages)e(31\22638,)h(1995.)0
+2225 y([)30 2233 y(Stolck)o(e)g Fb(et)e(al.)p Fe(,)g(1998)732
+2225 y(])810 2233 y(Andreas)g(Stolck)o(e,)g(Elizabeth)h(Shriber)n(g,)g
+(Rebecca)f(Bates,)g(Noah)f(Coccaro,)i(Daniel)f(Jurafsk)o(y)-6
+b(,)106 2346 y(Rachel)28 b(Martin,)h(Marie)e(Meteer)l(,)j(Klaus)d
+(Ries,)h(P)o(aul)f(T)-7 b(aylor)l(,)29 b(and)f(Carol)f(V)-10
+b(an)27 b(Ess-Dyk)o(ema.)47 b(Dialog)28 b(act)f(model-)106
+2459 y(ing)i(for)h(con)l(v)o(ersational)j(speech.)53
+b(In)29 b Fb(W)-8 b(orking)30 b(Notes)f(of)g(the)g(AAAI)f(Spring)i
+(Symposium)h(on)e(Applying)h(Mac)o(hine)106 2572 y(Learning)25
+b(to)f(Discour)o(se)h(Pr)l(ocessing)p Fe(,)g(pages)g(98\226105,)g
+(1998.)35 b(Also)23 b(a)n(v)n(ailable)j(as)d(AAAI)f(TR)g(SS-98-01.)0
+2752 y([)30 2760 y(Samuel)i Fb(et)f(al.)p Fe(,)g(1998)733
+2752 y(])811 2760 y(K)n(en)37 b(Samuel,)k(Sandra)d(Carberry)-6
+b(,)42 b(and)d(K.)d(V)-5 b(ijay-Shank)o(er)g(.)81 b(Dialogue)39
+b(act)f(tagging)h(with)106 2873 y(transformation-based)33
+b(learning.)46 b(In)27 b Fb(Pr)l(oceedings)i(of)e(the)g(36th)h(Annual)f
+(Meeting)h(of)f(the)g(Association)j(for)d(Com-)106 2985
+y(putational)g(Linguistics)e(\(COLING-A)m(CL98\))p Fe(,)d(pages)j
+(1150\2261156,)h(1998.)0 3235 y Fg(1.3)99 b(Dialogue)24
+b(Management)0 3401 y Fe([)30 3409 y(Abella)g Fb(et)g(al.)p
+Fe(,)f(1996)703 3401 y(])780 3409 y(Alicia)k(Abella,)g(Michael)g(K.)e
+(Bro)n(wn,)g(and)i(Bruce)f(M.)f(Buntschuh.)44 b(De)n(v)o(elopment)27
+b(principles)106 3522 y(for)f(dialog-based)j(interf)o(aces.)41
+b(In)26 b Fb(Pr)l(oceedings)i(of)d(the)h(ECAI96)e(workshop)j(on)f
+(Dialo)o(gue)h(Pr)l(ocessing)g(in)e(Spok)o(en)106 3635
+y(Langua)o(g)o(e)h(Systems)p Fe(,)e(pages)h(1\2267,)e(1996.)0
+3814 y([)30 3822 y(Ca)o(wse)o(y)g Fb(et)g(al.)p Fe(,)g(1993)745
+3814 y(])823 3822 y(Alison)j(Ca)o(wse)o(y)-6 b(,)25 b(Julia)i
+(Galliers,)g(Brian)f(Logan,)f(Ste)n(v)o(en)h(Reece,)g(and)g(Karen)g
+(Sparck)g(Jones.)106 3935 y(Re)n(vising)i(beliefs)g(and)e(intentions:)
+38 b(A)26 b(uni\002ed)h(frame)n(w)o(ork)g(for)g(agent)g(interaction.)45
+b(In)27 b Fb(The)f(Ninth)g(Biennial)i(Con-)106 4048 y(fer)m(ence)22
+b(of)e(the)h(Society)h(for)e(the)h(Study)g(of)g(Arti\002cial)g
+(Intellig)o(ence)j(and)d(Simulation)i(of)d(Behaviour)p
+Fe(,)j(pages)e(130\226139,)106 4161 y(1993.)0 4341 y([)30
+4349 y(Chu-Carroll)k(and)f(Bro)n(wn,)f(1998)1117 4341
+y(])1195 4349 y(Jennifer)40 b(Chu-Carroll)h(and)e(Michael)h(K.)e(Bro)n
+(wn.)82 b(An)38 b(e)n(vidential)k(model)d(for)106 4462
+y(tracking)29 b(initiati)n(v)o(e)g(in)e(collaborati)n(v)o(e)j(dialogue)
+f(interactions.)48 b Fb(User)27 b(Modeling)i(and)e(User)n(-Adapted)j
+(Inter)o(action)p Fe(,)106 4575 y(8\(3-4\):215\226253,)e(1998.)0
+4754 y([)30 4762 y(Chu-Carroll)d(and)f(Carpenter)l(,)i(1998)1227
+4754 y(])1304 4762 y(Jennifer)44 b(Chu-Carroll)f(and)f(Bob)g(Carpenter)
+-5 b(.)93 b(Dialogue)43 b(management)g(in)106 4875 y(v)o(ector)n
+(-based)34 b(call)d(routing.)59 b(In)30 b Fb(Pr)l(oceedings)k(of)c(the)
+i(36th)f(Annual)h(Meeting)g(of)e(the)h(Association)j(of)c(Computa-)106
+4988 y(tional)25 b(Linguistics)h(\(COLING-A)m(CL98\))p
+Fe(,)21 b(pages)k(256\226262,)h(1998.)0 5168 y([)30 5176
+y(Clark)e(and)g(Schaefer)l(,)h(1989)949 5168 y(])1026
+5176 y(Herbert)f(H.)d(Clark)i(and)h(Edw)o(ard)f(F)-7
+b(.)21 b(Schaefer)-5 b(.)32 b(Contrib)n(uting)26 b(to)d(discourse.)34
+b Fb(Co)o(gnitive)106 5289 y(Science)p Fe(,)25 b(13:259\226294,)i
+(1989.)1927 5589 y(3)p eop
+%%Page: 4 4
+4 3 bop 0 83 a Fe([)30 91 y(Guinn,)24 b(1996)483 83 y(])561
+91 y(Curry)j(I.)f(Guinn.)44 b(Mechanisms)28 b(for)f(mix)o(ed-initiati)n
+(v)o(e)j(human-computer)g(collaborati)n(v)o(e)g(discourse.)106
+204 y(In)22 b Fb(Pr)l(oceedings)i(of)e(the)g(34th)h(Annual)g(Meeting)g
+(of)f(the)g(Association)i(for)e(Computational)j(Linguistics)p
+Fe(,)f(pages)f(278\226)106 317 y(285,)h(1996.)0 493 y([)30
+501 y(Kita)g Fb(et)f(al.)p Fe(,)g(1996)617 493 y(])694
+501 y(K)n(enji)k(Kita,)f(Y)-10 b(oshikazu)29 b(Fukui,)e(Masaaki)g
+(Nagata,)g(and)g(Tsuyoshi)h(Morimoto.)44 b(Automatic)27
+b(ac-)106 614 y(quisition)d(of)d(probabilistic)k(dialogue)f(models.)29
+b(In)22 b Fb(Pr)l(oceedings)i(of)d(the)g(4th)h(International)k(Confer)m
+(ence)d(on)e(Spok)o(en)106 727 y(Langua)o(g)o(e)26 b(Pr)l(ocessing)p
+Fe(,)f(pages)g(196\226199,)g(1996.)0 903 y([)30 911 y(Pieraccini)h
+Fb(et)d(al.)p Fe(,)g(1997)824 903 y(])901 911 y(Roberto)k(Pieraccini,)g
+(Esther)e(Le)n(vin,)g(and)h(W)l(ieland)h(Eck)o(ert.)38
+b(AMICA:)24 b(the)h(A)-10 b(T&T)23 b(mix)o(ed)106 1024
+y(initiati)n(v)o(e)30 b(con)l(v)o(ersational)j(architecture.)53
+b(In)28 b Fb(Pr)l(oceedings)k(of)c(the)h(5th)g(Eur)l(opean)h(Confer)m
+(ence)g(on)f(Speec)o(h)h(Com-)106 1137 y(munication)c(and)e(T)-8
+b(ec)o(hnolo)o(gy)p Fe(,)25 b(1997.)0 1313 y([)30 1321
+y(Sacks)f Fb(et)f(al.)p Fe(,)g(1974)672 1313 y(])750
+1321 y(Harv)o(e)o(y)29 b(Sacks,)h(Emanuel)f(A.)e(Sche)o(glof)n(f,)k
+(and)e(Gail)f(Jef)n(ferson.)52 b(A)28 b(simplest)i(systematics)h(for)
+106 1434 y(the)24 b(or)n(ganization)j(of)c(turn-taking)k(for)d(con)l(v)
+o(ersation.)37 b Fb(Langua)o(g)o(e)p Fe(,)25 b(50:696\226735,)i(1974.)0
+1610 y([)30 1618 y(Smith)c(and)h(Hipp,)g(1994)832 1610
+y(])909 1618 y(Ronnie)g(W)-8 b(.)21 b(Smith)i(and)h(D.)d(Richard)j
+(Hipp.)32 b Fb(Spok)o(en)25 b(Natur)o(al)f(Langua)o(g)o(e)h(Dialo)o(g)f
+(Systems)106 1731 y(\227)f(A)f(Pr)o(actical)j(Appr)l(oac)o(h)p
+Fe(.)34 b(Oxford)24 b(Uni)n(v)o(ersity)h(Press,)f(1994.)0
+1908 y([)30 1916 y(T)m(raum,)f(1996)495 1908 y(])572
+1916 y(Da)n(vid)j(R.)d(T)m(raum.)37 b(Con)l(v)o(ersational)29
+b(agenc)o(y:)k(The)25 b(T)m(rains-93)h(dialogue)h(manager)-5
+b(.)39 b(In)25 b Fb(Pr)l(oceedings)106 2028 y(of)e(the)h(T)-7
+b(wente)24 b(W)-8 b(orkshop)25 b(on)f(Dialo)o(gue)h(Mana)o(g)o(ement)g
+(in)f(Natur)o(al)g(Langua)o(g)o(e)i(Systems)p Fe(,)e(pages)h(1\22611,)f
+(1996.)0 2205 y([)30 2213 y(T)m(raum)f(and)h(Allen,)g(1994)874
+2205 y(])951 2213 y(Da)n(vid)19 b(R.)e(T)m(raum)h(and)h(James)g(F)-7
+b(.)17 b(Allen.)23 b(Discourse)d(obligations)h(in)e(dialogue)h
+(processing.)106 2326 y(In)i Fb(Pr)l(oceedings)j(of)d(the)g(32nd)h
+(Annual)g(Meeting)g(of)f(the)h(Association)h(for)e(Computational)j
+(Linguistics)p Fe(,)g(pages)e(1\2268,)106 2438 y(1994.)0
+2615 y([)30 2623 y(W)-7 b(alk)o(er)l(,)24 b(1996)511
+2615 y(])589 2623 y(Marilyn)38 b(A.)d(W)-7 b(alk)o(er)i(.)76
+b(The)36 b(ef)n(fect)h(of)g(resource)h(limits)f(and)g(task)h(comple)o
+(xity)g(on)f(collaborati)n(v)o(e)106 2736 y(planning)26
+b(in)d(dialogue.)36 b Fb(Arti\002cial)25 b(Intellig)o(ence)p
+Fe(,)i(85:181\226243,)f(1996.)0 2912 y([)30 2920 y(Whittak)o(er)g(and)e
+(Stenton,)g(1988)1073 2912 y(])1150 2920 y(Ste)n(v)o(e)34
+b(Whittak)o(er)j(and)d(Phil)g(Stenton.)69 b(Cues)35 b(and)g(control)h
+(in)e(e)o(xpert-client)k(dia-)106 3033 y(logues.)60 b(In)31
+b Fb(Pr)l(oceedings)j(of)d(the)h(26th)g(Annual)g(Meeting)h(of)e(the)h
+(Association)h(for)f(Computational)i(Linguistics)p Fe(,)106
+3146 y(pages)25 b(123\226130,)g(1988.)0 3393 y Fg(1.4)99
+b(Response)26 b(Generation)0 3567 y Fa(1.4.1)92 b(Content)23
+b(Selection)0 3734 y Fe([)30 3742 y(Appelt,)h(1985)503
+3734 y(])581 3742 y(Douglas)g(E.)e(Appelt.)34 b Fb(Planning)25
+b(English)g(Sentences)p Fe(.)36 b(Cambridge)25 b(Uni)n(v)o(ersity)g
+(Press,)e(1985.)0 3918 y([)30 3926 y(Ca)o(wse)o(y)-6
+b(,)23 b(1993)535 3918 y(])612 3926 y(Alison)j(Ca)o(wse)o(y)-6
+b(.)35 b(Planning)26 b(interacti)n(v)o(e)h(e)o(xplanations.)40
+b Fb(International)29 b(J)n(ournal)d(of)e(Man-Mac)o(hine)106
+4039 y(Studies)p Fe(,)h(pages)g(169\226199,)g(1993.)0
+4215 y([)30 4223 y(Chu-Carroll)g(and)f(Carberry)-6 b(,)25
+b(1998)1189 4215 y(])1267 4223 y(Jennifer)k(Chu-Carroll)g(and)f(Sandra)
+h(Carberry)-6 b(.)47 b(Collaborati)n(v)o(e)31 b(response)e(gen-)106
+4336 y(eration)c(in)f(planning)i(dialogues.)35 b Fb(Computational)27
+b(Linguistics)p Fe(,)e(24\(3\):355\226400,)j(1998.)0
+4512 y([)30 4520 y(Dale,)23 b(1992)427 4512 y(])505 4520
+y(Robert)28 b(Dale.)47 b Fb(Gener)o(ating)30 b(Referring)g(Expr)m
+(essions:)40 b(Building)29 b(Descriptions)i(in)c(a)h(Domain)g(of)g(Ob-)
+106 4633 y(jects)c(and)g(Pr)l(ocesses)p Fe(.)35 b(MIT)23
+b(Press,)g(1992.)0 4809 y([)30 4817 y(Flo)n(wers)h Fb(et)f(al.)p
+Fe(,)g(1982)751 4809 y(])828 4817 y(M.)29 b(Flo)n(wers,)h(R.)e
+(McGuire,)j(and)f(L.)e(Birnbaum.)53 b(Adv)o(ersary)31
+b(ar)n(guments)h(and)e(the)g(logic)g(of)106 4930 y(personal)23
+b(attacks.)30 b(In)21 b(Lehnert)h(and)g(Ringle,)g(editors,)h
+Fb(Str)o(ate)l(gies)h(for)e(Natur)o(al)g(Langua)o(g)o(e)h(Pr)l
+(ocessing)p Fe(,)g(chapter)g(10,)106 5043 y(pages)i(275\226294.)g
+(1982.)0 5219 y([)30 5227 y(Ho)o(vy)-6 b(,)23 b(1988)450
+5219 y(])528 5227 y(Eduard)32 b(H.)e(Ho)o(vy)-6 b(.)59
+b Fb(Gener)o(ating)33 b(Natur)o(al)f(Langua)o(g)o(e)i(Under)e(Pr)o(a)o
+(gmatic)g(Constr)o(aints)p Fe(.)61 b(La)o(wrence)106
+5340 y(Erlbaum)24 b(Associates,)h(Inc.,)e(1988.)1927
+5589 y(4)p eop
+%%Page: 5 5
+5 4 bop 0 83 a Fe([)30 91 y(McCo)o(y)-6 b(,)24 b(1988)522
+83 y(])599 91 y(Kathleen)i(F)-7 b(.)22 b(McCo)o(y)-6
+b(.)36 b(Reasoning)26 b(on)e(a)g(highlighted)k(user)c(model)h(to)f
+(respond)j(to)d(misconceptions.)106 204 y Fb(Computational)i
+(Linguistics)p Fe(,)g(14\(3\):52\22663,)h(1988.)0 380
+y([)30 388 y(McK)n(eo)n(wn,)c(1985)635 380 y(])712 388
+y(Kathleen)29 b(R.)c(McK)n(eo)n(wn.)43 b Fb(T)-8 b(e)n(xt)26
+b(Gener)o(ation)i(:)35 b(Using)27 b(Discour)o(se)i(Str)o(ate)l(gies)g
+(and)f(F)-10 b(ocus)27 b(Con-)106 501 y(str)o(aints)e(to)f(Gener)o(ate)
+g(Natur)o(al)h(Langua)o(g)o(e)g(T)-8 b(e)n(xt)p Fe(.)33
+b(Cambridge)25 b(Uni)n(v)o(ersity)g(Press,)e(1985.)0
+677 y([)30 685 y(Moore,)h(1995)498 677 y(])576 685 y(Johanna)h(D.)d
+(Moore.)34 b Fb(P)-7 b(articipating)27 b(in)c(Explanatory)j(Dialo)o
+(gues)p Fe(.)35 b(MIT)23 b(Press,)g(1995.)0 860 y([)30
+868 y(P)o(aris,)g(1988)436 860 y(])514 868 y(Cecile)31
+b(L.)e(P)o(aris.)57 b(T)-7 b(ailoring)32 b(object)g(descriptions)i(to)d
+(a)g(user')-5 b(s)32 b(le)n(v)o(el)f(of)g(e)o(xpertise.)58
+b Fb(Computational)106 981 y(Linguistics)p Fe(,)26 b(14\(3\):64\22678,)
+g(1988.)0 1157 y([)30 1165 y(Raskutti)f(and)f(Zuk)o(erman,)g(1994)1108
+1157 y(])1186 1165 y(Bha)n(v)n(ani)35 b(Raskutti)h(and)f(Ingrid)h(Zuk)o
+(erman.)69 b(Query)35 b(and)g(response)h(generation)106
+1278 y(during)f(information-seeking)j(interactions.)67
+b(In)33 b Fb(Pr)l(oceedings)j(of)c(the)i(4th)f(International)k(Confer)m
+(ence)e(on)e(User)106 1391 y(Modeling)p Fe(,)25 b(pages)g(25\22630,)f
+(1994.)0 1567 y([)30 1575 y(v)n(an)g(Beek)g Fb(et)f(al.)p
+Fe(,)g(1993)799 1567 y(])876 1575 y(Peter)j(v)n(an)f(Beek,)h(Robin)f
+(Cohen,)h(and)g(K)n(en)f(Schmidt.)39 b(From)25 b(plan)h(critiquing)i
+(to)d(clari\002ca-)106 1687 y(tion)f(dialogue)i(for)e(cooperati)n(v)o
+(e)i(response)g(generation.)36 b Fb(Computational)26
+b(Intellig)o(ence)p Fe(,)h(9\(2\):132\226154,)g(1993.)0
+1863 y([)30 1871 y(Y)-10 b(oung)24 b Fb(et)g(al.)p Fe(,)f(1994)698
+1863 y(])775 1871 y(R.)k(Michael)i(Y)-10 b(oung,)29 b(Johanna)h(D.)d
+(Moore,)i(and)g(Martha)f(E.)f(Pollack.)48 b(T)-7 b(o)n(w)o(ards)28
+b(a)f(principled)106 1984 y(representation)41 b(of)c(discourse)i
+(plans.)78 b(In)37 b Fb(Pr)l(oceedings)i(of)e(the)g(Sixteenth)j(Annual)
+d(Meeting)h(of)f(the)g(Co)o(gnitive)106 2097 y(Science)25
+b(Society)p Fe(,)g(pages)g(946\226951,)h(1994.)0 2341
+y Fa(1.4.2)92 b(Surface)23 b(Generation)0 2507 y Fe([)30
+2515 y(Bateman,)h(1996)579 2507 y(])656 2515 y(J.)g(Bateman.)35
+b(KPML)21 b(de)n(v)o(elopment)26 b(en)l(vironment.)38
+b(T)-6 b(echnical)25 b(report,)g(IPSI,)e(GMD,)f(Darmstadt,)106
+2628 y(German)o(y)-6 b(,)23 b(1996.)0 2804 y([)30 2812
+y(Elhadad,)i(1992)554 2804 y(])631 2812 y(Michael)50
+b(Elhadad.)117 b Fb(Using)50 b(Ar)m(gumentation)h(to)e(Contr)l(ol)h(Le)
+n(xical)h(Choice:)81 b(A)48 b(Functional)106 2925 y
+(Uni\002cation-Based)27 b(Appr)l(oac)o(h)p Fe(.)35 b(PhD)22
+b(thesis,)j(Columbia)f(Uni)n(v)o(ersity)-6 b(,)25 b(1992.)0
+3101 y([)30 3109 y(Knight)g(and)f(Hatzi)n(v)n(assiloglou,)j(1995)1292
+3101 y(])1369 3109 y(K)n(e)n(vin)f(Knight)g(and)g(V)-10
+b(asileios)27 b(Hatzi)n(v)n(assiloglou.)44 b(T)-7 b(w)o(o-le)n(v)o(el,)
+26 b(man)o(y-paths)106 3221 y(generation.)31 b(In)21
+b Fb(Pr)l(oceedings)j(of)d(the)g(33r)m(d)h(Annual)g(Meeting)g(of)f(the)
+g(Association)j(for)d(Computational)j(Linguistics)p Fe(,)106
+3334 y(pages)h(252\226260,)g(1995.)0 3510 y([)30 3518
+y(Langkilde)h(and)e(Knight,)g(1998)1054 3510 y(])1131
+3518 y(Irene)34 b(Langkilde)g(and)f(K)n(e)n(vin)f(Knight.)63
+b(Generation)34 b(that)f(e)o(xploits)h(corpus-based)106
+3631 y(statistical)29 b(kno)n(wledge.)43 b(In)26 b Fb(Pr)l(oceedings)i
+(of)e(the)h(36th)f(Annual)h(Meeting)g(of)f(the)h(Association)h(for)e
+(Computational)106 3744 y(Linguistics)g(\(COLING-A)m(CL98\))p
+Fe(,)21 b(pages)k(704\226710,)h(1998.)0 3920 y([)30 3928
+y(La)n(v)n(oie)f(and)f(Rambo)n(w)-6 b(,)22 b(1997)1001
+3920 y(])1079 3928 y(Benoit)h(La)n(v)n(oie)h(and)f(Owen)e(Rambo)n(w)-6
+b(.)31 b(A)21 b(f)o(ast)i(and)g(portable)i(realizer)f(for)f(te)o(xt)g
+(gener)n(-)106 4041 y(ation)i(systems.)34 b(In)23 b Fb(Pr)l(oceedings)j
+(of)e(the)g(F)l(ifth)f(Confer)m(ence)j(on)d(Applied)i(Natur)o(al)f
+(Langua)o(g)o(e)i(Pr)l(ocessing)p Fe(,)f(1997.)0 4216
+y([)30 4224 y(Mann,)f(1983)468 4216 y(])545 4224 y(W)l(illiam)f(C.)e
+(Mann.)32 b(An)22 b(o)o(v)o(ervie)n(w)g(of)h(the)g(penman)g(te)o(xt)g
+(generation)i(system.)32 b(In)22 b Fb(Pr)l(oceedings)j(of)e(the)106
+4337 y(National)i(Confer)m(ence)g(on)f(Arti\002cial)h(Intellig)o(ence)p
+Fe(,)i(pages)e(261\226265,)g(1983.)0 4513 y([)30 4521
+y(McDonald,)g(1980)645 4513 y(])722 4521 y(Da)n(vid)j(D.)d(McDonald.)45
+b Fb(Natur)o(al)28 b(Langua)o(g)o(e)h(Pr)l(oduction)g(as)e(a)g(Pr)l
+(ocess)g(of)g(Decision)i(Making)p Fe(.)106 4634 y(PhD)22
+b(thesis,)j(Massachusetts)i(Institute)f(of)d(T)-6 b(echnology)g(,)25
+b(1980.)0 4810 y([)30 4818 y(Sha)o(w)-6 b(,)22 b(1998)450
+4810 y(])528 4818 y(James)k(Sha)o(w)-6 b(.)39 b(Se)o(gre)o(gatory)27
+b(coordination)i(and)e(ellipsis)g(in)f(te)o(xt)f(generation.)44
+b(In)25 b Fb(Pr)l(oceedings)j(of)e(the)106 4930 y(36th)h(Annual)g
+(Meeting)g(of)f(the)g(Association)j(for)d(Computational)j(Linguistics)g
+(\(COLING-A)m(CL98\))p Fe(,)24 b(pages)k(1220\226)106
+5043 y(1226,)c(1998.)0 5219 y([)30 5227 y(Shieber)h Fb(et)e(al.)p
+Fe(,)g(1990)738 5219 y(])816 5227 y(Stuart)g(M.)e(Shieber)l(,)k
+(Gertjan)e(v)n(an)g(Noord,)h(Fernando)g(C.)e(N.)f(Pereira,)i(and)h
+(Robert)f(C.)f(Moore.)106 5340 y(Semantic-head-dri)n(v)o(en)28
+b(generation.)36 b Fb(Computational)26 b(Linguistics)p
+Fe(,)g(16\(1\),)e(1990.)1927 5589 y(5)p eop
+%%Page: 6 6
+6 5 bop 0 83 a Fe([)30 91 y(Stede,)24 b(1998)458 83 y(])535
+91 y(Manfred)31 b(Stede.)54 b(A)29 b(generati)n(v)o(e)j(perspecti)n(v)o
+(e)h(on)d(v)o(erb)g(alternations.)57 b Fb(Computational)33
+b(Linguistics)p Fe(,)106 204 y(24\(3\):401\226430,)28
+b(1998.)0 450 y Fa(1.4.3)92 b(Others)0 616 y Fe([)30
+624 y(Meteer)l(,)25 b(1991)510 616 y(])587 624 y(Marie)e(W)-8
+b(.)21 b(Meteer)-5 b(.)33 b(Bridging)24 b(the)f(generation)j(gap)d
+(between)h(te)o(xt)f(planning)i(and)e(linguistic)i(realiza-)106
+737 y(tion.)34 b Fb(Computational)26 b(Intellig)o(ence)p
+Fe(,)h(7\(4\):296\226304,)g(1991.)0 917 y([)30 925 y(Reiter)d(and)g
+(Dale,)f(1997)826 917 y(])904 925 y(Ehud)30 b(Reiter)g(and)g(Robert)g
+(Dale.)53 b(Building)31 b(applied)h(natural)f(language)h(generation)h
+(sys-)106 1038 y(tems.)g Fb(Natur)o(al)24 b(Langua)o(g)o(e)i
+(Engineering)p Fe(,)g(3:57\22687,)f(1997.)0 1287 y Fg(1.5)99
+b(Dialogue)24 b(Ev)o(aluation)0 1453 y Fe([)30 1461 y(Danieli)h(and)f
+(Gerbino,)g(1995)998 1453 y(])1076 1461 y(Morena)19 b(Danieli)h(and)f
+(Elisabetta)h(Gerbino.)k(Metrics)c(for)f(e)n(v)n(aluating)i(dialogue)g
+(strate-)106 1574 y(gies)j(in)f(a)g(spok)o(en)i(language)h(system.)33
+b(In)24 b Fb(Pr)l(oceedings)i(of)d(the)g(AAAI)f(Spring)j(Symposium)f
+(on)g(Empirical)g(Methods)106 1687 y(in)f(Discour)o(se)j(Interpr)m
+(etation)h(and)d(Gener)o(ation)p Fe(,)i(pages)e(34\22639,)h(1995.)0
+1867 y([)30 1875 y(Fraser)l(,)f(1997)479 1867 y(])557
+1875 y(Norman)34 b(M.)f(Fraser)-5 b(.)68 b(Spok)o(en)35
+b(dialogue)i(system)e(e)n(v)n(aluation:)53 b(A)33 b(\002rst)h(frame)n
+(w)o(ork)h(for)g(reporting)106 1988 y(results.)70 b(In)35
+b Fb(Pr)l(oceedings)i(of)d(the)h(5th)g(Eur)l(opean)h(Confer)m(ence)h
+(on)d(Speec)o(h)i(Communication)h(and)e(T)-8 b(ec)o(hnolo)o(gy)p
+Fe(,)106 2101 y(pages)25 b(1907\2261910,)h(1997.)0 2280
+y([)30 2288 y(Litman)e Fb(et)f(al.)p Fe(,)g(1998)723
+2280 y(])800 2288 y(Diane)j(J.)e(Litman,)h(Shimei)g(P)o(an,)g(and)h
+(Marilyn)g(A.)e(W)-7 b(alk)o(er)i(.)39 b(Ev)n(aluating)27
+b(response)g(strate)o(gies)106 2401 y(in)c(a)f(web-based)j(spok)o(en)g
+(dialogue)g(agent.)33 b(In)23 b Fb(Pr)l(oceedings)i(of)e(the)g(36th)h
+(Annual)g(Meeting)g(of)e(the)i(Association)h(for)106
+2514 y(Computational)h(Linguistics)p Fe(,)g(pages)f(780\226786,)g
+(1998.)0 2694 y([)30 2702 y(Polifroni)g Fb(et)f(al.)p
+Fe(,)f(1992)784 2694 y(])861 2702 y(Joseph)36 b(Polifroni,)i(L)-5
+b(ynette)35 b(Hirschman,)i(Stephanie)f(Senef)n(f,)g(and)f(V)-5
+b(ictor)34 b(Zue.)66 b(Experi-)106 2815 y(ments)35 b(in)g(e)n(v)n
+(aluating)j(interacti)n(v)o(e)f(spok)o(en)g(language)g(systems.)71
+b(In)35 b Fb(Pr)l(oceedings)j(of)c(the)i(D)m(ARP)-8 b(A)31
+b(Speec)o(h)37 b(and)106 2927 y(Natur)o(al)24 b(Langua)o(g)o(e)i(W)-8
+b(orkshop)p Fe(,)25 b(pages)f(28\22633,)h(1992.)0 3107
+y([)30 3115 y(Price)f Fb(et)f(al.)p Fe(,)g(1992)647 3107
+y(])725 3115 y(P)o(atti)g(Price,)g(L)-5 b(ynette)25 b(Hirschman,)g
+(Elizabeth)g(Shriber)n(g,)g(and)f(Elizabeth)h(W)-7 b(ade.)34
+b(Subject-based)106 3228 y(e)n(v)n(aluation)27 b(measures)f(for)f
+(interacti)n(v)o(e)i(spok)o(en)g(language)g(systems.)38
+b(In)24 b Fb(Pr)l(oceedings)k(of)c(the)h(D)m(ARP)-8 b(A)22
+b(Speec)o(h)k(and)106 3341 y(Natur)o(al)e(Langua)o(g)o(e)i(W)-8
+b(orkshop)p Fe(,)25 b(pages)f(34\22639,)h(1992.)0 3521
+y([)30 3529 y(Simpson)f(and)g(Fraser)l(,)g(1993)974 3521
+y(])1052 3529 y(Andre)n(w)h(Simpson)i(and)f(Norman)g(M.)e(Fraser)-5
+b(.)41 b(Black)26 b(box)g(and)h(glass)f(box)h(e)n(v)n(aluation)106
+3641 y(of)j(the)g(SUNDIAL)d(system.)55 b(In)30 b Fb(Pr)l(oceedings)j
+(of)d(the)g(3r)m(d)g(Eur)l(opean)i(Confer)m(ence)g(on)e(Speec)o(h)h
+(Communication)106 3754 y(and)24 b(T)-8 b(ec)o(hnolo)o(gy)p
+Fe(,)25 b(pages)g(1423\2261426,)h(1993.)0 3934 y([)30
+3942 y(Smith)d(and)h(Gordon,)g(1997)927 3934 y(])1005
+3942 y(Ronnie)32 b(W)-8 b(.)30 b(Smith)h(and)g(Ste)n(v)o(en)h(A.)d
+(Gordon.)59 b(Ef)n(fects)32 b(of)f(v)n(ariable)i(initiati)n(v)o(e)g(on)
+f(lin-)106 4055 y(guistic)42 b(beha)n(vior)h(in)d(human-computer)k
+(spok)o(en)e(natural)g(language)h(dialogue.)89 b Fb(Computational)43
+b(Linguistics)p Fe(,)106 4168 y(23\(1\):141\226168,)28
+b(1997.)0 4347 y([)30 4355 y(W)-7 b(alk)o(er)24 b Fb(et)g(al.)p
+Fe(,)f(1997)720 4347 y(])797 4355 y(Marilyn)33 b(W)-7
+b(alk)o(er)l(,)35 b(Donald)e(Hindle,)i(Jeanne)f(Fromer)l(,)g(Guiseppe)g
+(Di)d(F)o(abbrizio,)k(and)e(Craig)106 4468 y(Mestel.)27
+b(Ev)n(aluating)22 b(competing)g(agent)f(strate)o(gies)i(for)d(a)g(v)n
+(oice)h(email)g(agent.)27 b(In)20 b Fb(Pr)l(oceeding)i(of)e(the)h(5th)g
+(Eur)l(opean)106 4581 y(Confer)m(ence)k(on)f(Speec)o(h)h(Communication)
+g(and)g(T)-8 b(ec)o(hnolo)o(gy)p Fe(,)25 b(1997.)0 4761
+y([)30 4769 y(W)-7 b(alk)o(er)24 b Fb(et)g(al.)p Fe(,)f(1998)720
+4761 y(])797 4769 y(Marilyn)33 b(A.)c(W)-7 b(alk)o(er)l(,)34
+b(Diane)e(J.)e(Litman,)j(Candace)f(A.)e(Kamm,)i(and)f(Alicia)h(Abella.)
+58 b(Ev)n(al-)106 4882 y(uating)34 b(spok)o(en)g(dialogue)h(agents)f
+(with)f(P)-8 b(ARADISE:)29 b(T)-7 b(w)o(o)31 b(case)i(studies.)64
+b Fb(Computer)33 b(Speec)o(h)h(and)f(Langua)o(g)o(e)p
+Fe(,)106 4995 y(12\(3\):317\226347,)28 b(1998.)1927 5589
+y(6)p eop
+%%Page: 7 7
+7 6 bop 0 91 a Fg(1.6)99 b(Integrated)26 b(Spok)o(en)h(Dialogue)d
+(Systems)0 258 y Fe([)30 266 y(Allen)g Fb(et)f(al.)p
+Fe(,)g(1996)662 258 y(])740 266 y(James)32 b(F)-7 b(.)30
+b(Allen,)k(Bradford)f(W)-8 b(.)30 b(Miller)l(,)35 b(Eric)c(K.)f
+(Ringger)l(,)36 b(and)c(T)-6 b(eresa)32 b(Sik)o(orski.)61
+b(A)31 b(rob)n(ust)106 379 y(system)f(for)f(natural)i(spok)o(en)g
+(dialogue.)54 b(In)29 b Fb(Pr)l(oceedings)j(of)d(the)g(34th)h(Annual)g
+(Meeting)h(of)e(the)g(Association)j(for)106 491 y(Computational)26
+b(Linguistics)p Fe(,)g(pages)f(62\22670,)f(1996.)0 671
+y([)30 679 y(Aust)g(and)g(Schr)8 b(\250)-38 b(oer)l(,)24
+b(1998)883 671 y(])961 679 y(Harald)c(Aust)g(and)h(Olaf)f(Schr)8
+b(\250)-38 b(oer)-5 b(.)26 b(Application)d(de)n(v)o(elopment)f(with)e
+(the)g(PHILIPS)e(dialog)106 792 y(system.)34 b(In)23
+b Fb(Pr)l(oceedings)k(of)c(the)h(International)j(Symposium)e(on)f(Spok)
+o(en)h(Dialo)o(gue)p Fe(,)g(pages)g(27\22634,)g(1998.)0
+972 y([)30 980 y(Lamel,)e(1998)488 972 y(])566 980 y(Lori)35
+b(Lamel.)72 b(Spok)o(en)37 b(language)i(dialog)e(system)f(de)n(v)o
+(elopment)j(and)d(e)n(v)n(aluation)i(at)e(LIMSI.)71 b(In)106
+1092 y Fb(Pr)l(oceedings)26 b(of)e(the)f(International)28
+b(Symposium)d(on)e(Spok)o(en)j(Dialo)o(gue)p Fe(,)f(pages)f(9\22617,)h
+(1998.)0 1272 y([)30 1280 y(Meng)f Fb(et)f(al.)p Fe(,)g(1996)672
+1272 y(])750 1280 y(H.)e(Meng,)i(S.)e(Busayaponchai,)26
+b(J.)c(Glass,)h(D.)e(Goddeau,)j(L.)d(Hetherington,)26
+b(E.)21 b(Hurle)o(y)-6 b(,)23 b(C.)e(P)o(ao,)106 1393
+y(J.)32 b(Polifroni,)37 b(S.)31 b(Senef)n(f,)k(and)f(V)-12
+b(.)31 b(Zue.)63 b(WHEELS:)30 b(A)i(con)l(v)o(ersational)37
+b(system)d(in)f(the)g(automobile)i(classi\002eds)106
+1506 y(domain.)53 b(In)30 b Fb(Pr)l(oceedings)i(of)d(the)h
+(International)k(Confer)m(ence)d(on)f(Spok)o(en)h(Langua)o(g)o(e)h(Pr)l
+(ocessing)p Fe(,)g(pages)f(542\226)106 1619 y(545,)24
+b(1996.)0 1798 y([)30 1806 y(Sadek)g Fb(et)g(al.)p Fe(,)e(1996)682
+1798 y(])760 1806 y(M.D.)32 b(Sadek,)38 b(A.)33 b(Ferrieux,)k(A.)c
+(Cozannet,)39 b(P)-10 b(.)32 b(Bretier)l(,)38 b(F)-7
+b(.)33 b(P)o(anaget,)k(and)e(J.)f(Simonin.)68 b(Ef-)106
+1919 y(fecti)n(v)o(e)33 b(human-computer)j(cooperati)n(v)o(e)f(spok)o
+(en)f(dialogue:)48 b(The)32 b(A)l(GS)f(demonstrator)-5
+b(.)64 b(In)32 b Fb(Pr)l(oceedings)j(of)d(the)106 2032
+y(International)c(Confer)m(ence)d(on)f(Spok)o(en)h(Langua)o(g)o(e)h(Pr)
+l(ocessing)p Fe(,)f(1996.)141 2245 y(There)g(are)f(man)o(y)g(man)o(y)g
+(more)g(inte)o(grated)j(spok)o(en)f(dialogue)g(systems,)f(mainly)g(in)f
+(Eurospeech)j(and)e(ICSLP)d(pro-)0 2358 y(ceedings.)0
+2650 y Fd(2)119 b(Rele)n(v)o(ant)31 b(J)n(our)n(nals)f(and)h(Confer)n
+(ences)136 2857 y Fc(\017)46 b Fb(Computational)27 b(Linguistics)p
+Fe(,)e(MIT)d(Press.)136 3045 y Fc(\017)46 b Fb(International)28
+b(J)n(ournal)d(for)f(Human)f(Computer)i(Inter)o(action)p
+Fe(,)h(Academic)e(Press.)136 3233 y Fc(\017)46 b Fb(Natur)o(al)25
+b(Langua)o(g)o(e)g(Engineering)p Fe(,)h(Cambridge)f(Uni)n(v)o(ersity)g
+(Press.)136 3420 y Fc(\017)46 b Fb(Computer)25 b(Speec)o(h)f(and)h
+(Langua)o(g)o(e)p Fe(,)g(Academic)f(Press.)136 3608 y
+Fc(\017)46 b Fb(Speec)o(h)25 b(Communication)p Fe(.)136
+3796 y Fc(\017)46 b Fb(Arti\002cial)25 b(Intellig)o(ence)p
+Fe(,)i(Else)n(vier)-5 b(.)136 3983 y Fc(\017)46 b Fb(Computational)27
+b(Intellig)o(ence)p Fe(.)136 4171 y Fc(\017)46 b Fb(User)24
+b(Modeling)h(and)f(User)n(-Adapted)i(Inter)o(action)p
+Fe(,)g(Kluwer)-5 b(.)136 4358 y Fc(\017)46 b Fb(A)m(CL:)22
+b(Annual)j(Meeting)f(of)g(the)g(Association)i(for)d(Computational)k
+(Linguistics)p Fe(.)136 4546 y Fc(\017)46 b Fb(EA)m(CL:)22
+b(Confer)m(ence)j(of)f(the)g(Eur)l(opean)h(Chapter)f(of)g(the)g(A)m(CL)
+p Fe(.)136 4734 y Fc(\017)46 b Fb(N)n(AA)m(CL:)21 b(Confer)m(ence)k(of)
+f(the)g(North)g(American)g(Chapter)h(of)e(the)h(A)m(CL)e
+Fe(\(starting)j(in)f(2000\).)136 4921 y Fc(\017)46 b
+Fb(COLING:)22 b(Inter)o(action)k(Confer)m(ence)f(on)f(Computational)i
+(Linguistics)p Fe(.)136 5109 y Fc(\017)46 b Fb(ANLP:)22
+b(A)m(CL)f(Applied)k(Natur)o(al)f(Langua)o(g)o(e)i(Pr)l(ocessing)f
+(Confer)m(ence)p Fe(.)136 5297 y Fc(\017)46 b Fb(ICSLP:)23
+b(International)k(Confer)m(ence)f(on)d(Spok)o(en)j(Langua)o(g)o(e)f(Pr)
+l(ocessing)p Fe(.)1927 5589 y(7)p eop
+%%Page: 8 8
+8 7 bop 136 91 a Fc(\017)46 b Fb(Eur)l(ospeec)o(h:)31
+b(Eur)l(opean)26 b(Confer)m(ence)f(on)f(Speec)o(h)h(Communication)g
+(and)f(T)-8 b(ec)o(hnolo)o(gy)p Fe(.)136 279 y Fc(\017)46
+b Fb(IWNLG:)22 b(International)28 b(W)-8 b(orkshop)25
+b(on)e(Natur)o(al)i(Langua)o(g)o(e)g(Gener)o(ation)p
+Fe(.)136 467 y Fc(\017)46 b Fb(UM:)23 b(International)k(Confer)m(ence)f
+(on)d(User)h(Modeling)p Fe(.)136 654 y Fc(\017)46 b Fb(CHI:)23
+b(A)m(CM)f(SIGCHI)g(Confer)m(ence)k(on)d(Human)h(F)-7
+b(actor)o(s)25 b(in)e(Computing)i(Systems)p Fe(.)136
+842 y Fc(\017)46 b Fb(Co)o(gSci:)30 b(Annual)25 b(Meeting)f(of)g(the)g
+(Co)o(gnitive)h(Science)g(Society)p Fe(.)136 1029 y Fc(\017)46
+b Fb(AAAI:)22 b(National)j(Confer)m(ence)h(on)d(Arti\002cial)i
+(Intellig)o(ence)p Fe(.)136 1217 y Fc(\017)46 b Fb(IJCAI:)23
+b(International)28 b(J)n(oint)c(Confer)m(ence)i(on)d(Arti\002cial)i
+(Intellig)o(ence)p Fe(.)1927 5589 y(8)p eop
+%%Trailer
+end
+userdict /end-hook known{end-hook}if
+%%EOF

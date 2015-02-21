@@ -1,0 +1,2534 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE vxml PUBLIC "-//Tellme Networks//Voice Markup Language 1.0//EN" "http://resources.tellme.com/toolbox/vxml-tellme.dtd">
+		      
+<!--
+SpeechSmuggler!
+Copyright (C) 2000-2001 Bob Carpenter. All Rights Reserved.
+
+THIS CODE IS MADE AVAILABLE SOLELY ON AN "AS IS" BASIS, WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION,
+WARRANTIES THAT THE CODE IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A
+PARTICULAR PURPOSE OR NON-INFRINGING.
+-->
+
+<vxml version="2.0" application="http://www.colloquial.com/VoiceXML/SpeechSmuggler/smugglerAppRoot.vxml">
+
+<meta name="title" content="SpeechSmuggler"/>
+<meta name="author" content="Bob Carpenter"/>
+<meta name="email" content="SpeechSmuggler@colloquial.com"/>
+<meta name="version" content="beta"/>
+
+  <script>
+    <![CDATA[
+      function number_to_wave_array(number,wave_array)
+      {
+        if (number == 0) {
+      	  wave_array[wave_array.length] = "zero";
+        }
+        if (number > 999999999) {
+      	  number_to_wave_array(Math.floor(number/1000000000),wave_array);
+      	  wave_array[wave_array.length] = "billion";
+      	  number = number % 1000000000;
+        }
+        if (number > 999999) {
+      	  number_to_wave_array(Math.floor(number/1000000),wave_array);
+      	  wave_array[wave_array.length] = "million";
+          number = number % 1000000;
+        }
+        if (number > 999) {
+      	  number_to_wave_array(Math.floor(number/1000),wave_array);
+      	  wave_array[wave_array.length] = "thousand";
+      	  number = number % 1000;
+        }
+        if (number > 100) {
+      	  number_to_wave_array(Math.floor(number/100),wave_array);
+      	  wave_array[wave_array.length] = "hundred";
+      	  number = number % 100;
+        }
+        if (number >= 20) {
+      	  var decades = Math.floor(number / 10);
+      	  if (decades == 9) { wave_array[wave_array.length] = "ninety"; }
+      	  else if (decades == 8) { wave_array[wave_array.length] = "eighty"; }
+      	  else if (decades == 7) { wave_array[wave_array.length] = "seventy"; }
+          else if (decades == 6) { wave_array[wave_array.length] = "sixty"; }
+      	  else if (decades == 5) { wave_array[wave_array.length] = "fifty"; }
+      	  else if (decades == 4) { wave_array[wave_array.length] = "forty"; }
+      	  else if (decades == 3) { wave_array[wave_array.length] = "thirty"; }
+      	  else if (decades == 2) { wave_array[wave_array.length] = "twenty"; }
+      	  number = number % 10;
+        } 
+        if (number == 19) { wave_array[wave_array.length] = "nineteen"; }
+        else if (number == 18) { wave_array[wave_array.length] = "eighteen"; }
+        else if (number == 17) { wave_array[wave_array.length] = "seventeen"; }
+        else if (number == 16) { wave_array[wave_array.length] = "sixteen"; }
+        else if (number == 15) { wave_array[wave_array.length] = "fifteen"; }
+        else if (number == 14) { wave_array[wave_array.length] = "fourteen"; }
+        else if (number == 13) { wave_array[wave_array.length] = "thirteen"; }
+        else if (number == 12) { wave_array[wave_array.length] = "twelve"; }
+        else if (number == 11) { wave_array[wave_array.length] = "eleven"; }
+        else if (number == 10) { wave_array[wave_array.length] = "ten"; }
+        else if (number == 9) { wave_array[wave_array.length] = "nine"; }
+        else if (number == 8) { wave_array[wave_array.length] = "eight"; }
+        else if (number == 7) { wave_array[wave_array.length] = "seven"; }
+        else if (number == 6) { wave_array[wave_array.length] = "six"; }
+        else if (number == 5) { wave_array[wave_array.length] = "five"; }
+        else if (number == 4) { wave_array[wave_array.length] = "four"; }
+        else if (number == 3) { wave_array[wave_array.length] = "three"; }
+        else if (number == 2) { wave_array[wave_array.length] = "two"; }
+        else if (number == 1) { wave_array[wave_array.length] = "one"; }
+        return wave_array;
+      }
+
+      function pickRandNum(high) 
+      {
+        return ( Math.floor( Math.random()*high ) );
+      }
+
+      function pickRandNum(high,dummyToPreventCaching)
+      {
+        var number = dummyToPreventCaching * 2;
+        return ( Math.floor( Math.random()*high ) );
+      }
+  
+      function filledPockets ()
+      {
+        return ( parseInt(coke)
+                 + parseInt(heroin)
+                 + parseInt(acid)
+                 + parseInt(pot) 
+                 + parseInt(speed) );
+      }
+    ]]>
+  </script>
+
+<link event="help">
+  <grammar>
+    [dtmf-0 help~0.001]
+  </grammar>
+</link>
+
+
+
+<!-- ******************** intro1_1 ******************** -->
+<form id = "intro1_1">
+<block>
+  <audio src="http://www.klein.com/SpeechSmuggler/prompt1.wav">Welcome to Speech Smuggler! The exciting game of inter-borough trading.</audio>
+  <break time="300ms"/>
+  <goto next="#askDetailed1_2"/>
+</block>
+</form>
+
+<!-- ******************** askDetailed1_2 ******************** -->
+<form id="askDetailed1_2">
+
+  <block>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt2.wav">Would you like me to read you the long and boring instructions?</audio>
+  </block>
+
+  <field name="option">
+
+<grammar>
+<![CDATA[
+  YES_NO
+]]>
+</grammar>
+
+
+    <prompt>
+<!-- <audio src="http://www.klein.com/SpeechSmuggler/prompt3.wav">Yes or no?</audio>
+-->
+    </prompt>
+
+    <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt4.wav">You're going to have to speak up, speak when spoken to, enunciate, the rain in Spain falls mainly on the plain, and that sort of thing. I just asked you if you want me to bore us both with the rules.</audio>
+      <reprompt/>
+    </noinput>
+
+    <nomatch>
+      <audio src="http://www.klein.com/SpeechSmuggler/prompt5.wav">Let's stick to the program here from the get go. Do you need me to tell you everything?</audio>
+      <reprompt/>
+    </nomatch>  
+
+
+    <filled>
+      <assign name="askDetailed1_2" expr="option"/> 
+      <if cond="askDetailed1_2 == 'yes'">
+        <goto next="#detailedInstructions1_3"/>
+      </if>
+      <if cond="askDetailed1_2 == 'no'">
+        <goto next="#initialize1_4"/>
+      </if>
+    </filled>
+
+    <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt6.wav">You want help already? What kind of pantywaist are you?</audio>
+      <break time="150ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt7.wav">OK. You're playing Speech Smuggler. That's Speech followed by Smuggler, all one word. I already told you the rules are long and boring. But if you say yes, I can read them. Would you like me to read them and bore us both?</audio>
+      <reprompt/>
+    </help>
+
+    <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt8.wav">You've been a bad monkey.</audio>
+      <reprompt/>
+    </catch>
+  </field>
+</form>
+
+
+<!-- ******************** detailedInstructions1_3 ******************** -->
+<form id="detailedInstructions1_3">
+<block>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt9.wav">Make as much money as you can.</audio>
+  <break time="200ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt10.wav">Ask for help if you need it.</audio>
+  <break time="200ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt11.wav">Now get going!</audio>
+  <goto next="#initialize1_4"/>
+</block>
+</form>
+
+<!-- ******************** initialize1_4 ******************** -->
+<form id="initialize1_4">
+<block>
+  <assign name="days" expr="7"/>
+  <assign name="location" expr="'nowhere'"/>
+  <assign name="cash" expr="2000"/>
+  <assign name="debt" expr="3500"/>
+  <assign name="savings" expr="0"/>
+  <assign name="coke" expr="0"/>
+  <assign name="heroin" expr="0"/>
+  <assign name="acid" expr="0"/>
+  <assign name="pot" expr="0"/>
+  <assign name="speed" expr="0"/>
+  <assign name="pockets" expr="100"/>
+  <assign name="copsAlive" expr="1"/>
+  <assign name="gun" expr="0"/>
+  <assign name="cokeNorm" expr="20000"/>
+  <assign name="heroinNorm" expr="10000"/>
+  <assign name="acidNorm" expr="5000"/>
+  <assign name="potNorm" expr="2500"/>
+  <assign name="speedNorm" expr="1000"/>
+  <assign name="cokePrice" expr="cokeNorm"/>
+  <assign name="heroinPrice" expr="heroinNorm"/>
+  <assign name="acidPrice" expr="acidNorm"/>
+  <assign name="potPrice" expr="potNorm"/>
+  <assign name="speedPrice" expr="speedNorm"/>
+  <assign name="inflationRate" expr="'5'"/>
+  <assign name="bankRate" expr="'10'"/>
+  <assign name="sharkRate" expr="'15'"/>
+
+<audio src="http://www.klein.com/SpeechSmuggler/prompt12.wav">You have a few bucks. But you're even deeper in hock to the loan shark. You haven't started saving for the future. You are not believed to be armed. Your stash is empty. Bummer, dude.</audio>
+
+  <goto next="#jet2_1"/>
+</block>
+</form>
+
+
+<!-- ******************** jet2_1 ******************** -->
+<form id="jet2_1">
+<block>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt13.wav">You only have</audio>
+<log>Days=<value expr="days"/></log>
+<foreach item="wavefile" array="number_to_wave_array(days,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt14.wav">days left.</audio>
+<goto next="#jet2_1a"/>
+</block>
+</form>
+
+
+<form id="jet2_1a">
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+
+<grammar>
+<![CDATA[
+  [
+    (?the bronx) { <option "bronx"> }
+    brooklyn { <option "brooklyn">}
+    [(new york city) manhattan] { <option "manhattan">}
+    queens { <option "queens">}
+    (staten island) { <option "statenIsland"> }
+    nowhere { <option "nowhere"> }
+  ]
+]]>
+</grammar>
+
+<field name="option">
+  <prompt>
+    <if cond="location == 'nowhere'">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt15.wav">You're no where, man.</audio>
+    <else/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt16.wav">You are currently in</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + location + '.wav'"><value expr="location"/></audio>
+    </if>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt17.wav">Where do you want to go?</audio>
+  </prompt>
+
+    <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt18.wav">You can travel to any of the five boroughs: the Bronx! Brooklyn! Manhattan! Queens! or Staten Island!</audio>
+      <reprompt/>
+    </noinput>
+
+    <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt19.wav">Please say just the name of the borough. The Bronx! Brooklyn! Manhattan! Queens! or Staten Island!</audio>
+      <reprompt/>
+    </nomatch>
+
+    <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt20.wav">You can travel to any of the five boroughs. the Bronx! Brooklyn! Manhattan! Queens! or Staten Island! You will find different things in each borough, so keep your ears open.</audio>
+      <reprompt/>
+    </help>
+
+    <filled>
+      <assign name="jet2_1" expr="option"/>
+         <if cond="jet2_1 == location">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt21.wav">You're standing there, dude.</audio>
+          <goto next="#jet2_1a"/>
+         </if>
+      <if cond='jet2_1=="bronx"'>
+        <goto next="#bronx3_1_1"/>
+      </if>
+
+      <if cond='jet2_1=="brooklyn"'>
+        <goto next="#brooklyn3_2_1"/>
+      </if>
+
+      <if cond='jet2_1=="manhattan"'>
+        <goto next="#manhattan3_3_1"/>
+      </if>
+
+      <if cond='jet2_1=="queens"'>
+        <goto next="#queens3_4_1"/>
+      </if>
+
+      <if cond='jet2_1=="statenIsland"'>
+        <goto next="#statenIsland3_5_1"/>
+      </if>
+
+      <if cond='jet2_1=="nowhere"'>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt22.wav">You can't get nowhere from here.</audio>
+        <goto next="#jet2_1a"/>
+      </if>
+
+      <goto next="#jet2_1a"/>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt23.wav">You've been a bad squirrel.</audio>
+      <reprompt/>
+    </catch>
+   
+  </field>
+</form>
+
+<!-- ******************** bronx3_1_1 ******************** -->
+<form id="bronx3_1_1">
+<block>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt24.wav">Welcome to the Bronx.</audio>
+  <assign name="location" expr="'bronx'"/>
+  <goto next="#bronx3_1_2"/>
+</block>
+</form>
+
+<!-- ******************** bronx3_1_2 ******************** -->
+<form id="bronx3_1_2">
+
+<block>
+  <if cond="pickRandNum(100) &lt; 20">
+    <goto next="#cops4_1"/>
+  </if>
+</block>
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+
+<grammar>
+<![CDATA[
+  YES_NO
+]]>
+</grammar>
+
+
+<field name="option">
+
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt25.wav">Would you like to visit the loan shark?</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt26.wav">Speak up, dude.</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt27.wav">A simple yes or no answer will suffice.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt28.wav">A loan shark is not a fish. It's a person who loans you money. One lives in the Bronx. You can visit if you say the word.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="bronx3_1_2" expr="option"/>
+    <if cond='bronx3_1_2=="yes"'>
+      <goto next="#bronx3_1_4"/>
+    </if>
+    <if cond='bronx3_1_2=="no"'>
+      <goto next="#cops4_1"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt29.wav">You've been a very nasty dolphin.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+<!-- ******************** bronx3_1_4 ******************** -->
+<form id="bronx3_1_4">
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+<![CDATA[
+  [
+    borrow {<option "borrow">}
+    payback {<option "payback">}
+    neither {<option "neither">}
+  ]
+]]>
+</grammar>
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt30.wav">Do you want to borrow, payback or neither?</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt31.wav">Speak up, I can't hear you.</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt32.wav">I only know how to do three things. Borrow. Payback. Neither.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt33.wav">I'm the loan shark. I'll loan you money. But I charge a pretty stiff interest rate, known in my business as a vig. If you come up with some green, you can grease my palm with it. Or you can do neither and stop bothering me.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="bronx3_1_4" expr="option"/>
+    <if cond='bronx3_1_4=="borrow"'>
+      <goto next="#bronx3_1_5"/>
+    </if>
+    <if cond='bronx3_1_4=="payback"'>
+      <goto next="#bronx3_1_8"/>
+    </if>
+    <if cond='bronx3_1_4=="neither"'>
+      <goto next="#cops4_1"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt34.wav">Bad donkey. Bad donkey.</audio>
+    <reprompt/>
+  </catch>
+</field>
+</form>
+
+<!-- ******************** bronx3_1_5 ******************** -->
+<form id="bronx3_1_5">
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+  <![CDATA[
+    US_DOLLARS
+  ]]>
+</grammar>
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt35.wav">How much do you want to borrow?</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt36.wav">You seem to be breaking up.</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt37.wav">Please say a whole dollar amount.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt38.wav">You can say a whole dollar amount ranging from a little to a lot. But no pennies, please. And I won't loan you more than thirty times your current cash, which seems to be a paltry</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt39.wav">clams.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="bronx3_1_5" expr="option"/>
+    <assign name="loanAmt" expr="parseInt(bronx3_1_5)"/>
+    <if cond="parseInt(bronx3_1_5) > (30 * parseInt(cash))">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt40.wav">Ain't no way I'm going to spot you</audio>
+<foreach item="wavefile" array="number_to_wave_array(bronx3_1_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt41.wav">clams. Try asking for a little less than that next time.</audio>
+       <goto next="#bronx3_1_4"/>
+    <else/>
+      <script>
+        <![CDATA[
+          cash=
+                       parseInt(cash) 
+                       + parseInt(loanAmt)+ '';
+          debt=
+                       parseInt(debt) 
+                       + parseInt(loanAmt)+'';
+        ]]>
+      </script>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt42.wav">I just loaned you</audio>
+<foreach item="wavefile" array="number_to_wave_array(bronx3_1_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt43.wav">clams, giving you a total of</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt44.wav">bucks. But don't forget you owe me</audio>
+<foreach item="wavefile" array="number_to_wave_array(debt,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt45.wav">smackeroos.</audio>
+      <goto next="#cops4_1"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt46.wav">You're a slimy snake.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+<!-- ******************** bronx3_1_8 ******************** -->
+<form id="bronx3_1_8">
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+  <![CDATA[
+    US_DOLLARS
+  ]]>
+</grammar>
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt47.wav">How much do you want to repay me?</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt48.wav">Are you mumbling?</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt49.wav">Please say a whole dollar amount.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt50.wav">You can say a whole dollar amount ranging from nothing to what you owe me, which is a whopping</audio>
+<foreach item="wavefile" array="number_to_wave_array(debt,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt51.wav">smackers, but not exceeding what you have, which is a measly</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt52.wav">small ones.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="bronx3_1_8" expr="option"/>
+    <assign name="repayAmt" expr="parseInt(bronx3_1_8)"/>
+    <if cond="parseInt(bronx3_1_8) > parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt53.wav">Show me the</audio>
+<foreach item="wavefile" array="number_to_wave_array(bronx3_1_8,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt54.wav">bucks. I don't see no</audio>
+<foreach item="wavefile" array="number_to_wave_array(bronx3_1_8,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt55.wav">bucks. What're you trying to pull over here?</audio>
+       <goto next="#bronx3_1_4"/>
+    </if>
+      <script>
+        <![CDATA[
+          cash=
+                       (parseInt(cash) 
+                        - parseInt(repayAmt));
+          debt=
+                       (parseInt(debt) 
+                        - parseInt(repayAmt));
+        ]]>
+      </script>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt56.wav">I count</audio>
+<foreach item="wavefile" array="number_to_wave_array(bronx3_1_8,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt57.wav">bucks here that you're repaying me. That leaves you with</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt58.wav">smackers.</audio>
+    <if cond="0 &gt; debt">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt59.wav">Hey, you didn't owe me that much. But my mother taught me to never turn down a gift.</audio>
+      <assign name="debt" expr="0"/>
+    <elseif cond="parseInt(debt) == 0"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt60.wav">Never thought I'd see the day you were free and clear of me. Get outta here.</audio>
+    <else/> 
+<audio src="http://www.klein.com/SpeechSmuggler/prompt61.wav">But don't forget you still owe me</audio>
+<foreach item="wavefile" array="number_to_wave_array(debt,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt62.wav">dineros. With interest.</audio>
+    </if>
+    <goto next="#cops4_1"/>
+   </filled>
+ 
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt63.wav">You're a wicked spider.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+
+<!-- ******************** brooklyn3_2_1 ******************** -->
+<form id="brooklyn3_2_1">
+<block>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt64.wav">Welcome to Brooklyn.</audio>
+  <assign name="location" expr="'brooklyn'"/>
+  <goto next="#brooklyn3_2_2"/>
+</block>
+</form>
+
+<!-- ******************** brooklyn3_2_2 ******************** -->
+<form id="brooklyn3_2_2">
+
+<block>
+  <if cond="pickRandNum(100) &lt; 50">
+    <goto next="#cops4_1"/>
+  </if>
+  <if cond="gun &gt; 0">
+    <goto next="#cops4_1"/>
+  </if>
+</block>
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+<![CDATA[
+  YES_NO
+]]>
+</grammar>
+
+<field name="option">
+  <prompt>
+<break time="1000ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt65.wav">Hey buddy. Wanna buy a handgun? Only four hundred bucks.</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt66.wav">Oy. I. can't. hear. you.</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt67.wav">A simple yes or no will suffice, governor.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt68.wav">A gun is a device that is used to shoot people. If you have a gun, you can get in an exciting shootout with the cops. Just like in the movies. Sometimes, you can buy a gun in Brooklyn.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="brooklyn3_2_2" expr="option"/>
+    <if cond='brooklyn3_2_2=="yes"'>
+      <goto next="#brooklyn3_2_3"/>
+    </if>
+    <if cond='brooklyn3_2_2=="no"'>
+      <goto next="#cops4_1"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt69.wav">You've been a troubled porpoise.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+
+<!-- ******************** brooklyn3_2_3 ******************** -->
+<form id="brooklyn3_2_3">
+<block>
+  <if cond="parseInt(cash) &lt; 400">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt70.wav">You're a bit skint, mate. You'll need more than</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt71.wav">lollipops if you want to buy a bamboozler.</audio>
+    <goto next="#cops4_1"/>
+  </if>
+  <if cond="parseInt(gun) > 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt72.wav">You already have a gun. Who do you think you are, Jesse James?</audio>
+    <goto next="#cops4_1"/>
+  </if>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt73.wav">One gun, coming right up squire.</audio>
+  <assign name="cash" expr="parseInt(cash) - 400"/>
+  <assign name="gun" expr="1"/>
+  <goto next="#cops4_1"/>
+</block>
+</form>
+
+
+<!-- ******************** manhattan3_3_1 ******************** -->
+<form id="manhattan3_3_1">
+<block>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt74.wav">Welcome to New York City.</audio>
+  <assign name="location" expr="'manhattan'"/>
+  <goto next="#manhattan3_3_2"/>
+</block>
+</form>
+
+<!-- ******************** manhattan3_3_2 ******************** -->
+<form id="manhattan3_3_2">
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+<![CDATA[
+  YES_NO
+]]>
+</grammar>
+
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt75.wav">Would you like to visit the bank, sir?</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt76.wav">Pardon sir.</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt77.wav">Please say yes or no, sir.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt78.wav">A bank isn't by the river. It's an institution where you can deposit and withdraw money. And if you leave money there, you get interest. You might even enjoy just looking around.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="manhattan3_3_2" expr="option"/>
+    <if cond='manhattan3_3_2=="yes"'>
+      <goto next="#manhattan3_3_4"/>
+    </if>
+    <if cond='manhattan3_3_2=="no"'>
+      <goto next="#cops4_1"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt79.wav">You've been a clean goldfish.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+<!-- ******************** manhattan3_3_4 ******************** -->
+<form id="manhattan3_3_4">
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+<![CDATA[
+  [
+    deposit {<option "deposit">}
+    withdraw {<option "withdraw">}
+    [no nothing neither (you can't)] {<option "neither">}
+  ]
+]]>
+</grammar>
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt80.wav">How may we be of assistance, sir?</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt81.wav">Pardon, sir.</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt82.wav">Pardon our lack of services, sir. We're just a small branch office. We would be happy to accept your deposit or allow you to make a withdrawl. Or you can say neither.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt83.wav">I'm the banker. I'll let you deposit or withdraw money. I pay a fair interest rate, which might keep up with inflation. You may, of course, select to do neither.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="manhattan3_3_4" expr="option"/>
+    <if cond='manhattan3_3_4=="withdraw"'>
+      <goto next="#manhattan3_3_5"/>
+    </if>
+    <if cond='manhattan3_3_4=="deposit"'>
+      <goto next="#manhattan3_3_8"/>
+    </if>
+    <if cond='manhattan3_3_4=="neither"'>
+      <goto next="#cops4_1"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt84.wav">Stubborn mule.</audio>
+    <reprompt/>
+  </catch>
+</field>
+</form>
+
+<!-- ******************** manhattan3_3_5 ******************** -->
+<form id="manhattan3_3_5">
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+  <![CDATA[
+    US_DOLLARS
+  ]]>
+</grammar>
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt85.wav">How much would you be withdrawing today, sir?</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt86.wav">Pardon, sir.</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt87.wav">I am sorry, sir, but I am afraid we are unable to make change or conduct transactions in foreign currencies. Please say a whole dollar amount.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt88.wav">You can say a whole dollar amount up to your current cash, which is which is</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt89.wav">dollars. Or you can withdraw from your savings account, which currently holds</audio>
+<foreach item="wavefile" array="number_to_wave_array(savings,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt90.wav">dollars. But no change for the phone or the parking meter.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="manhattan3_3_5" expr="option"/>
+    <assign name="withdrawlAmt" expr="parseInt(manhattan3_3_5)"/>
+    <if cond="parseInt(manhattan3_3_5) > parseInt(savings)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt91.wav">I do not know how to tell you this sir, but our records indicate that you only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(savings,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt92.wav">dollars in your account. Maybe there is something else you would care to do.</audio>
+       <goto next="#manhattan3_3_4"/>
+    <else/>
+      <script>
+        <![CDATA[
+          cash=
+                       parseInt(cash) 
+                       + parseInt(withdrawlAmt)+'';
+          savings=
+                       parseInt(savings) 
+                       - parseInt(withdrawlAmt)+'';
+        ]]>
+      </script>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt93.wav">Here is your receipt for a withdrawl of</audio>
+<foreach item="wavefile" array="number_to_wave_array(manhattan3_3_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt94.wav">dollars, giving you a total liquidity of</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt95.wav">dollars. The balance of your savings account is</audio>
+<foreach item="wavefile" array="number_to_wave_array(savings,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt96.wav">. Have a good day, sir.</audio>
+      <goto next="#manhattan3_3_4"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt97.wav">You're a slimy snake.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+<!-- ******************** manhattan3_3_8 ******************** -->
+<form id="manhattan3_3_8">
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+  <![CDATA[
+    US_DOLLARS
+  ]]>
+</grammar>
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt98.wav">For what amount will you be making a deposit today, sir?</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt99.wav">Pardon me, sir.</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt100.wav">I am afraid we only accept whole U S dollar amounts for deposit, sir.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt101.wav">You can deposit any amount from nothing to your total cash on hand, which is</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt102.wav">dollars. Or you can say zero if you've changed your minds.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="manhattan3_3_8" expr="option"/>
+    <assign name="depositAmt" expr="parseInt(manhattan3_3_8)"/>
+    <if cond="parseInt(depositAmt) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt103.wav">I'm afraid we only accept cash deposits, sir. Your current liquidity appears to be</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt104.wav">dollars.</audio>
+       <goto next="#manhattan3_3_4"/>
+    </if>
+      <script>
+        <![CDATA[
+          cash=
+                       (parseInt(cash) 
+                        - parseInt(depositAmt));
+          savings=
+                       (parseInt(savings) 
+                        + parseInt(depositAmt));
+        ]]>
+      </script>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt105.wav">Here is your receipt for a deposit of</audio>
+<foreach item="wavefile" array="number_to_wave_array(manhattan3_3_8,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt106.wav">dollars. It is always a pleasure doing business with you sir. You appear to have a nice liquidity of</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt107.wav">dollars.</audio>
+    <goto next="#manhattan3_3_4"/>
+   </filled>
+ 
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt108.wav">You're a chirping cricket.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+
+
+
+<!-- ******************** queens3_4_1 ******************** -->
+<form id="queens3_4_1">
+<block>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt109.wav">Welcome to Queens.</audio>
+  <assign name="location" expr="'queens'"/>
+  <goto next="#queens3_4_2"/>
+</block>
+</form>
+
+
+<!-- ******************** queens3_4_2 ******************** -->
+<form id="queens3_4_2">
+
+<block>
+  <if cond="pickRandNum(100) &lt; 50">
+    <goto next="#cops4_1"/>
+  </if>
+</block>
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+<![CDATA[
+  YES_NO
+]]>
+</grammar>
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt110.wav">Would you like to buy a coat, a coat with more pockets for your stash?</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt111.wav">Step right up and buy a bigger jacket. What're you waiting for?</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt112.wav">I'm afraid you'll have to put it in black and white for me, or in this case, put it in yes and no.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt113.wav">A coat is a device for keeping you warm. But we don't care about that, because we don't even know what month it is. More importantly, a coat is a device for holding things. The more pockets in your coat, the more you can hold. Just like a press photographer. Sometimes, you can buy a bigger coat in Queens.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="queens3_4_2" expr="option"/>
+    <if cond='queens3_4_2=="yes"'>
+      <goto next="#queens3_4_3"/>
+    </if>
+    <if cond='queens3_4_2=="no"'>
+      <goto next="#cops4_1"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt114.wav">Have you seen an avenging locust.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+
+<!-- ******************** queens3_4_3 ******************** -->
+<form id="queens3_4_3">
+<block>
+  <if cond="parseInt(cash) &lt; 200">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt115.wav">I'm afraid jackets don't come cheap. This one will set you back 200 bucks. And you only seem to have a pitiful</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt116.wav">dollars.</audio>
+    <goto next="#cops4_1"/>
+  </if>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt117.wav">One jacket with more pockets. Ladies and gentlmen, do like this man did here. He traded in his threadbare coat of</audio>
+<foreach item="wavefile" array="number_to_wave_array(pockets,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt118.wav">pockets.</audio>
+  <script>
+    <![CDATA[
+      cash=
+                    parseInt(cash) 
+                       - 200;
+      pockets=
+                   parseInt(pockets)+40;
+    ]]>
+  </script>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt119.wav">For a nice new coat with</audio>
+<foreach item="wavefile" array="number_to_wave_array(pockets,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt120.wav">pockets. And nice creases, too.</audio>
+  <goto next="#cops4_1"/>
+</block>
+</form>
+
+
+<!-- ******************** statenIsland3_5_1 ******************** -->
+<form id="statenIsland3_5_1">
+<block>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt121.wav">Welcome to Staten Island.</audio>
+  <assign name="location" expr="'statenIsland'"/>
+  <goto next="#statenIsland3_5_2"/>
+</block>
+</form>
+
+<!-- ******************** statenIsland3_5_2 ******************** -->
+<form id="statenIsland3_5_2">
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+<![CDATA[
+  YES_NO
+]]>
+</grammar>
+
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt122.wav">Would you like to take a ferry ride or see the Verrazano Narrows Bridge?</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt123.wav">I don't care if you don't say anything. You're seeing the bridge and ferry.</audio>
+    <goto next="#cops4_1"/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt124.wav">I don't care what you say. You're seeing the bridge and ferry.</audio>
+    <goto next="#cops4_1"/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt125.wav">There is no help. You're stuck in Staten Island and you're seeing the bridge and taking the ferry whether you like it or not.</audio>
+    <goto next="#cops4_1"/>
+  </help>
+
+  <filled>
+    <assign name="statenIsland3_5_2" expr="option"/>
+    <if cond='statenIsland3_5_2=="yes"'>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt126.wav">Good. I like to see enthusiasm for the fifth borough.</audio>
+      <goto next="#cops4_1"/>
+    </if>
+    <if cond='statenIsland3_5_2=="no"'>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt127.wav">Don't be stubborn. It's not that bad. You'll like it. I might even drive past Fresh Kills to show you that it doesn't smell as bad as most people think. It'll be educational.</audio>
+      <goto next="#cops4_1"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt128.wav">You're suburban road kill.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+
+<!-- ******************** cops4_1 ******************** -->
+<form id="cops4_1">
+<block>
+  <if cond="parseInt(copsAlive) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt129.wav">You walk by Officer Hard Ass's grave.</audio>
+    <goto next="#market5_1"/>
+  </if>
+  <if cond="pickRandNum(100) &lt; 50">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt130.wav">No sign of the coppers.</audio>
+    <goto next="#market5_1"/>
+  </if>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt131.wav">Uh oh. Officer Hard Ass just saw you.</audio>
+  <goto next="#cops4_2"/>
+</block>
+</form>
+
+<!-- ******************** cops4_2 ******************** -->
+<form id="cops4_2">
+<block>
+  <if cond="parseInt(gun) &gt; 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt132.wav">You feel the weight of the gun in your pants.</audio>
+    <goto next="#cops4_5"/>
+  <else/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt133.wav">You're unarmed and harmless. You have to run for it.</audio>
+    <goto next="#cops4_3"/>
+  </if>
+  <goto next="#market5_1"/>
+</block>
+</form>
+
+<!-- ******************** cops4_3 ******************** -->
+<form id="cops4_3">
+<block>
+  
+  <if cond="pickRandNum(100) &lt; 80">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt134.wav">You made a clean getaway.</audio>
+    <goto next="#market5_1"/>
+  <elseif cond="pickRandNum(100) &lt; 30"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt135.wav">You were run down like a dog. What a Loser. My grandmother can run faster than you.</audio>
+    <goto next="#cops4_4"/>
+  <elseif cond="pickRandNum(100) &lt; 30"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt136.wav">Officer Hard Ass is gaining on you.</audio>
+    <goto next="#cops4_3"/>
+  <else/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt137.wav">You're pulling away from Officer Hard Ass.</audio>
+    <goto next="#cops4_3"/>
+  </if>
+</block>
+</form>
+
+
+<!-- ******************** cops4_4 ******************** -->
+<form id="cops4_4">
+<block>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt138.wav">You are in Officer Hard Ass's custody. You don't like the feel of handcuffs. Uh oh. You're being frisked.</audio>
+  <if cond="filledPockets() == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt139.wav">Whoa, dude. You're clean. Officer Hard Ass is kicking you free.</audio>
+  <else/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt140.wav">What do we have here? Let's take a look in these pockets. Looks like I caught myself a filthy drug dealer.</audio>
+    <if cond="parseInt(coke) > 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt141.wav">Goodbye cocaine.</audio>
+      <assign name="coke" expr="0"/>
+    </if>
+    <if cond="parseInt(heroin) > 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt142.wav">Sigh a nara smack.</audio>
+      <assign name="coke" expr="0"/>
+    </if>
+    <if cond="parseInt(acid) > 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt143.wav">Chow, L S D.</audio>
+      <assign name="acid" expr="0"/>
+    </if>
+    <if cond="parseInt(pot) > 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt144.wav">Bway nose dee ahz, ganja.</audio>
+      <assign name="pot" expr="0"/>
+    </if>
+    <if cond="parseInt(speed) > 0">
+      <break time="150ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt145.wav">Aw rev wahr, speed.</audio>
+      <assign name="speed" expr="0"/>
+    </if>
+   </if>
+   <goto next="#market5_1"/>   
+</block>
+</form>
+
+
+<!-- ******************** cops4_5 ******************** -->
+
+<form id="cops4_5">
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+<![CDATA[
+  [
+    fight {<option "fight">}
+    flee {<option "flee">}
+  ]
+]]>
+</grammar>
+
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt146.wav">Do you want to Fight or Flee?</audio>
+  </prompt>
+
+  <noinput count="1">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt147.wav">This hesitation could get you caught. Better say something.</audio>
+    <goto next="#cops4_5"/>
+  </noinput>
+
+  <noinput count="2">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt148.wav">You just stood there like a deer trapped in the headlights.</audio>
+    <goto next="#cops4_4"/>
+  </noinput>
+
+  <nomatch count="1">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt149.wav">What are you talking about? Officer Hard Ass just saw you, twinkletoes.</audio>
+    <goto next="#cops4_5"/>
+  </nomatch>
+
+  <nomatch count="2">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt150.wav">You're babbling incoherently. You should be running.</audio>
+    <goto next="#cops4_4"/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt151.wav">You've been seen by the cops. Specifically, one Officer Hard Ass, your nemesis. The Batman to your Joker. The Spiderman to your Kingpin. Like an animal, you can choose one of two options: fight or flee. What'll it be?</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="cops4_5" expr="option"/>
+    <if cond='cops4_5=="fight"'>
+      <goto next="#cops4_6"/>
+    </if>
+    <if cond='cops4_5=="flee"'>
+      <goto next="#cops4_3"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt152.wav">You're an ugly duckling.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+<!-- ******************** cops4_6 ******************** -->
+<form id="cops4_6">
+<block>
+  <if cond="pickRandNum(100) &lt; 25">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt153.wav">You wounded Officer Hard Ass. You leave him lying there and make a dirty getaway.</audio>
+    <goto next="#market5_1"/>
+  </if>
+  <if cond="pickRandNum(100) &lt; 20">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt154.wav">Officer Hard Ass wounded you. He's walking over to where you're writing in pain.</audio>
+    <goto next="#cops4_4"/>
+  </if>
+  <if cond="pickRandNum(100) &lt; 20">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt155.wav">Whoa dude. You killed officer Hard Ass. Oh man. That's too intense. He won't be bothering you again.</audio>
+    <assign name="copsAlive" expr="0"/>
+    <goto next="#market5_1"/>
+  </if>
+  <if cond="pickRandNum(100) &lt; 15">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt156.wav">You've been shot. Ah. You're bleeding. This may be it. You see your life flash before your eyes. But this is only a game you say. Too bad. You're dead as a doornail. Rest in peace. And remember. Crime doesn't pay.</audio>
+    <goto next="#gameover7_1"/>
+  </if>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt157.wav">You missed each other.</audio>
+  <goto next="#cops4_5"/>
+</block>
+</form>
+
+
+<!-- ******************** market5_1 ******************** -->
+
+<form id="market5_1">
+<block>
+  <if cond="pickRandNum(100) &lt; 60">
+    <assign name="cokePrice" 
+            expr="cokeNorm * (pickRandNum(1000) + 500) / 1000"/>
+  <else/>
+    <assign name="cokePrice" 
+            expr="0"/>
+  </if>
+
+  <if cond="pickRandNum(100) &lt; 70">
+    <assign name="heroinPrice" 
+            expr="parseInt(heroinNorm) * (pickRandNum(1000) + 500) / 1000"/>
+  <else/>
+    <assign name="heroinPrice" 
+            expr="0"/>
+  </if>
+
+  <if cond="pickRandNum(100) &lt; 50">
+    <assign name="acidPrice" 
+            expr="parseInt(acidNorm) * (pickRandNum(1000) + 500) / 1000"/>
+  <else/>
+    <assign name="acidPrice" 
+            expr="0"/>
+  </if>
+
+  <if cond="pickRandNum(100) &lt; 101">
+    <assign name="potPrice" 
+            expr="parseInt(potNorm) * (pickRandNum(1000) + 500) / 1000"/>
+  <else/>
+    <assign name="potPrice" 
+            expr="0"/>
+  </if>
+
+
+  <if cond="pickRandNum(100) &lt; 80">
+    <assign name="speedPrice" 
+            expr="parseInt(speedNorm) * (pickRandNum(1000) + 500) / 1000"/>
+  <else/>
+    <assign name="speedPrice" 
+            expr="0"/>
+  </if>
+
+  <goto next="#market5_2"/>
+
+</block>
+</form>
+
+
+<!-- ******************** market5_2 ******************** -->
+<form id="market5_2">
+<block>
+
+
+  <if cond="pickRandNum(100) &lt; 70">
+    <goto next="#market5_3"/>
+  </if>
+
+  <if cond="pickRandNum(100) &lt; 20">
+    <if cond="parseInt(cokePrice) &gt; 0">
+      <if cond="pickRandNum(100) &lt; 30">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt158.wav">Movie producers are paying through the nose for coke.</audio>
+        <assign name="cokePrice" 
+                expr="parseInt(cokePrice) * 10"/>
+        <goto next="#market5_2"/>
+      <else/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt159.wav">There's been a crackdown, and nose candy prices are through the roof.</audio>
+        <assign name="cokePrice" 
+                expr="parseInt(cokePrice) * 3"/>
+        <goto next="#market5_2"/>
+      </if>
+    </if>
+
+  <elseif cond="pickRandNum(100) &lt; 25"/>
+    <if cond="parseInt(heroinPrice) &gt; 0">
+      <if cond="pickRandNum(100) &lt; 30">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt160.wav">Junkies will pay anything to kiss god.</audio>
+        <assign name="heroinPrice" 
+                expr="parseInt(heroinPrice) * 10"/>
+        <goto next="#market5_2"/>
+      <else/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt161.wav">There's been a bust; smack's hard to find.</audio>
+        <assign name="heroinPrice" 
+                expr="parseInt(heroinPrice) * 3"/>
+        <goto next="#market5_2"/>
+      </if>
+    </if>
+
+  <elseif cond="pickRandNum(100) &lt; 33"/>
+    <if cond="parseInt(acidPrice) &gt; 0">
+      <if cond="pickRandNum(100) &lt; 30">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt162.wav">Deadheads are paying outrageous prices for acid.</audio>
+        <assign name="acidPrice" 
+                expr="parseInt(acidPrice) * 10"/>
+        <goto next="#market5_2"/>
+      <else/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt163.wav">The lab caught fire and L S D is scarce.</audio>
+        <assign name="acidPrice" 
+                expr="parseInt(acidPrice) * 3"/>
+        <goto next="#market5_2"/>
+      </if>
+    </if>
+
+  <elseif cond="pickRandNum(100) &lt; 50"/>
+    <if cond="potPrice &gt; 0">
+      <if cond="pickRandNum(100) &lt; 30">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt164.wav">Reefer madness has sent pot prices through the roof.</audio>
+        <assign name="potPrice" 
+                expr="parseInt(potPrice) * 10"/>
+        <goto next="#market5_2"/>
+      <else/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt165.wav">A hydroponic greenhouse was shut down and good bud is hard to find.</audio>
+        <assign name="potPrice" 
+                expr="parseInt(potPrice) * 3"/>
+        <goto next="#market5_2"/>
+      </if>
+    </if>
+
+  <else/>
+    <if cond="parseInt(speedPrice) &gt; 0">
+      <if cond="pickRandNum(100) &lt; 30">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt166.wav">Hackers are paying through the nose for speed.</audio>
+        <assign name="speedPrice" 
+                expr="parseInt(speedPrice) * 10"/>
+        <goto next="#market5_2"/>
+      <else/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt167.wav">There's been a methamphetamine bust at the biker hangout.</audio>
+        <assign name="speedPrice" 
+                expr="parseInt(speedPrice) * 3"/>
+        <goto next="#market5_2"/>
+      </if>
+    </if>
+  </if>
+  <goto next="#market5_1"/>
+</block>
+</form>
+
+<!-- ******************** market5_3 ******************** -->
+<form id="market5_3">
+  <block>
+    <if cond="parseInt(cash) > 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt168.wav">You have</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt169.wav">bucks.</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt170.wav">You owe the loan shark</audio>
+<foreach item="wavefile" array="number_to_wave_array(debt,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt171.wav">clams.</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt172.wav">Your current bank balance is</audio>
+<foreach item="wavefile" array="number_to_wave_array(savings,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt173.wav">dollars.</audio>
+    </if>
+
+    <if cond="filledPockets() == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt174.wav">Your stash is empty. Bummer, dude.</audio>
+    <else/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt175.wav">Your stash contains:</audio>
+      <if cond="parseInt(coke) > 0">
+        <break time="150ms"/>
+<foreach item="wavefile" array="number_to_wave_array(coke,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt176.wav">units of coke.</audio>
+      </if>
+      <if cond="parseInt(heroin) > 0">
+        <break time="150ms"/>
+<foreach item="wavefile" array="number_to_wave_array(heroin,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt177.wav">units of heroin.</audio>
+      </if>
+      <if cond="parseInt(acid) > 0">
+        <break time="150ms"/>
+<foreach item="wavefile" array="number_to_wave_array(acid,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt178.wav">units of acid.</audio>
+      </if>
+      <if cond="parseInt(pot) > 0">
+        <break time="150ms"/>
+<foreach item="wavefile" array="number_to_wave_array(pot,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt179.wav">units of pot.</audio>
+      </if>
+      <if cond="parseInt(speed) > 0">
+        <break time="150ms"/>
+<foreach item="wavefile" array="number_to_wave_array(speed,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt180.wav">units of speed.</audio>
+      </if>
+    </if>
+
+
+<audio src="http://www.klein.com/SpeechSmuggler/prompt181.wav">Here's what the market looks like in</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + location + '.wav'">location</audio>
+    <if cond="parseInt(cokePrice) &gt; 0">
+      <break time="200ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt182.wav">Coke is selling for</audio>
+<foreach item="wavefile" array="number_to_wave_array(cokePrice,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt183.wav">bucks.</audio>
+    </if>
+    <if cond="parseInt(coke) &gt; 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt184.wav">You have</audio>
+<foreach item="wavefile" array="number_to_wave_array(coke,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt185.wav">units of coke.</audio>
+    </if>
+
+    <if cond="parseInt(heroinPrice) &gt; 0">
+      <break time="200ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt186.wav">Heroin is selling for</audio>
+<foreach item="wavefile" array="number_to_wave_array(heroinPrice,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt187.wav">bucks.</audio>
+    </if>
+    <if cond="parseInt(heroin) &gt; 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt188.wav">You have</audio>
+<foreach item="wavefile" array="number_to_wave_array(heroin,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt189.wav">units of heroin.</audio>
+    </if>
+
+    <if cond="parseInt(acidPrice) &gt; 0">
+      <break time="200ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt190.wav">Acid is selling for</audio>
+<foreach item="wavefile" array="number_to_wave_array(acidPrice,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt191.wav">bucks.</audio>
+    </if>
+    <if cond="parseInt(acid) &gt; 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt192.wav">You have</audio>
+<foreach item="wavefile" array="number_to_wave_array(acid,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt193.wav">units of acid.</audio>
+    </if>
+
+    <if cond="parseInt(potPrice) &gt; 0">
+      <break time="200ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt194.wav">Marijuana is selling for</audio>
+<foreach item="wavefile" array="number_to_wave_array(potPrice,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt195.wav">bucks.</audio>
+    </if>
+    <if cond="parseInt(pot) &gt; 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt196.wav">You have</audio>
+<foreach item="wavefile" array="number_to_wave_array(pot,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt197.wav">units of pot.</audio>
+    </if>
+
+    <if cond="parseInt(speedPrice) &gt; 0">
+      <break time="200ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt198.wav">Speed is selling for</audio>
+<foreach item="wavefile" array="number_to_wave_array(speedPrice,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt199.wav">bucks.</audio>
+    </if>
+    <if cond="parseInt(speed) &gt; 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt200.wav">You have</audio>
+<foreach item="wavefile" array="number_to_wave_array(speed,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt201.wav">units of speed.</audio>
+    </if>
+
+    <goto next="#market5_4"/>
+  </block>
+</form>
+
+
+<!-- ******************** market5_4 ******************** -->
+<form id="market5_4">
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+<![CDATA[
+  [
+    buy {<option "buy">}
+    sell {<option "sell">}
+    (buy [coke cocaine (nose candy) (bolivian marching powder)]) {<option "buyCoke">}
+    (sell [coke cocaine (nose candy) (bolivian marching powder)]) {<option "sellCoke">}
+    (buy [heroin horse smack (the big aitch)]) {<option "buyHeroin">}
+    (sell [heroin horse smack (the big aitch)]) {<option "sellHeroin">}
+    (buy [acid tabs (ell ess dee)]) {<option "buyAcid">}
+    (sell [acid tabs (ell ess dee)]) {<option "sellAcid">}
+    (buy [pot (mary jane) marijuana bud (a [spliff joint doob doobie])]) {<option "buyPot">}
+    (sell [pot (mary jane) marijuana bud (a [spliff joint doob doobie])]) {<option "sellPot">}
+    (buy [speed uppers amphetamines dexies dexedrine methamphetamines]) {<option "buySpeed">}
+    (sell [speed uppers amphetamines dexies dexedrine methamphetamines]) {<option "sellSpeed">}
+    (?drug menu) {<option "drugMenu">}
+    jet {<option "jet">}
+    (?(look in) my pockets) {<option "pockets">}
+  ]
+]]>
+</grammar>
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt202.wav">Would you like to buy, sell, or jet?</audio>
+    <break time="1000ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt203.wav">Drugs possibly on the menu include coke, heroin, acid, pot and speed. You can buy or sell any drug, or jet if you want to leave</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + location + '.wav'">location</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt204.wav">Am I going deaf? I didn't hear anything?</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt205.wav">You can buy or sell a drug on the menu or you can jet. Or you can look at the drug menu or in your own pockets.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt206.wav">You're at the drug bazaar. Here you can buy and sell all the drugs that are available. To hear what's available, say. Drug Menu! To look in your own pockets, say. Pockets! To buy or sell a drug, say the command and the drug name. For instance. Buy Speed! or Sell Pot! You can also say Jet when you are ready to leave</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + location + '.wav'">location</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt207.wav">for another borough.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="market5_4" expr="option"/>
+    <if cond='market5_4=="drugMenu"'>
+      <goto next="#market5_3"/>
+    </if>
+
+    <if cond='market5_4=="pockets"'>
+      <goto next="#market5_3"/>
+    </if>
+
+    <if cond='market5_4=="jet"'>
+      <goto next="#newday6"/>
+    </if>
+
+    <if cond='market5_4=="buy"'>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt208.wav">If you want to buy, you have to buy something. You can't just buy. You can say. Buy coke. Buy heroin. Buy pot. And so on ad infinitum.</audio>
+      <goto next="#market5_4"/>
+    </if>
+
+    <if cond='market5_4=="sell"'>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt209.wav">If you want to sell, you have to sell something. You can't just sell. You can say. Sell coke. Sell heroin. Sell pot. And so on ad nauseum.</audio>
+      <goto next="#market5_4"/>
+    </if>
+
+    <if cond='market5_4=="buyCoke"'>
+      <if cond="parseInt(cokePrice) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt210.wav">There's no market for coke here.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <if cond="parseInt(cokePrice) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt211.wav">You can't afford any coke.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <assign name="transactionType" expr="'buy'"/>
+      <assign name="transactionDrug" expr="'coke'"/>
+      <goto next="#market5_5"/>
+    </if>
+
+    <if cond='market5_4=="buyHeroin"'>
+      <if cond="parseInt(heroinPrice) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt212.wav">There's no market for heroin here.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <if cond="parseInt(heroinPrice) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt213.wav">You can't afford any heroin.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <assign name="transactionType" expr="'buy'"/>
+      <assign name="transactionDrug" expr="'heroin'"/>
+      <goto next="#market5_5"/>
+    </if>
+
+    <if cond='market5_4=="buyAcid"'>
+      <if cond="parseInt(acidPrice) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt214.wav">There's no market for acid here.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <if cond="parseInt(acidPrice) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt215.wav">You can't afford any acid.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <assign name="transactionType" expr="'buy'"/>
+      <assign name="transactionDrug" expr="'acid'"/>
+      <goto next="#market5_5"/>
+    </if>
+
+    <if cond='market5_4=="buyPot"'>
+      <if cond="parseInt(potPrice) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt216.wav">There's no market for pot here.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <if cond="parseInt(potPrice) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt217.wav">You can't afford any pot.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <assign name="transactionType" expr="'buy'"/>
+      <assign name="transactionDrug" expr="'pot'"/>
+      <goto next="#market5_5"/>
+    </if>
+
+    <if cond='market5_4=="buySpeed"'>
+      <if cond="parseInt(speedPrice) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt218.wav">There's no market for speed here.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <if cond="parseInt(speedPrice) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt219.wav">You can't afford any speed.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <assign name="transactionType" expr="'buy'"/>
+      <assign name="transactionDrug" expr="'speed'"/>
+      <goto next="#market5_5"/>
+    </if>
+
+    <if cond='market5_4="sellCoke"'>
+      <if cond="parseInt(coke) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt220.wav">You don't have any coke.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <if cond="parseInt(cokePrice) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt221.wav">There is no market for coke here.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <assign name="transactionType" expr="'sell'"/>
+      <assign name="transactionDrug" expr="'coke'"/>
+      <goto next="#market5_5"/>
+    </if>
+
+    <if cond='market5_4=="sellHeroin"'>
+      <if cond="parseInt(heroin) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt222.wav">You don't have any heroin.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <if cond="parseInt(heroinPrice) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt223.wav">There is no market for heroin here.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <assign name="transactionType" expr="'sell'"/>
+      <assign name="transactionDrug" expr="'heroin'"/>
+      <goto next="#market5_5"/>
+    </if>
+
+    <if cond='market5_4=="sellAcid"'>
+      <if cond="parseInt(acid) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt224.wav">You don't have any acid.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <if cond="parseInt(acidPrice) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt225.wav">There is no market for acid here.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <assign name="transactionType" expr="'sell'"/>
+      <assign name="transactionDrug" expr="'acid'"/>
+      <goto next="#market5_5"/>
+    </if>
+
+    <if cond='market5_4=="sellPot"'>
+      <if cond="parseInt(pot) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt226.wav">You don't have any pot.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <if cond="parseInt(cokePrice) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt227.wav">There is no market for pot here.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <assign name="transactionType" expr="'sell'"/>
+      <assign name="transactionDrug" expr="'pot'"/>
+      <goto next="#market5_5"/>
+    </if>
+
+    <if cond='market5_4=="sellSpeed"'>
+      <if cond="parseInt(speed) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt228.wav">You don't have any speed.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <if cond="parseInt(speedPrice) == 0">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt229.wav">There is no market for speed here.</audio>
+        <goto next="#market5_4"/>
+      </if>
+      <assign name="transactionType" expr="'sell'"/>
+      <assign name="transactionDrug" expr="'speed'"/>
+      <goto next="#market5_5"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt230.wav">You're a salty dog.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+
+<!-- ******************** market5_5 ******************** -->
+<form id="market5_5">
+<block>
+</block>
+
+<grammar>
+<![CDATA[
+  [
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+<grammar>
+<![CDATA[
+    NATURAL_NUMBER_THRU_999
+]]>
+</grammar>
+
+<grammar>
+<![CDATA[
+  [
+    [max maximum (all ?(of it))] {<option "max">}
+    [(none ?(of it)) nothing] {<option "none">}
+  ]
+]]>
+</grammar>
+
+
+
+<field name="option">
+  <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt231.wav">How many units of</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionDrug + '.wav'">transactionDrug</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt232.wav">do you want to</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionType + '.wav'">transactionType</audio>
+  </prompt>
+
+  <noinput>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt233.wav">What? The silent treatment from you? Don't want to</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionType + '.wav'">transactionType</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt234.wav">some</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionDrug + '.wav'">transactionDrug</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt235.wav">any more?</audio>
+    <reprompt/>
+  </noinput>
+
+  <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt236.wav">Say a number, any number, and you too can</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionType + '.wav'">transactionType</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionDrug + '.wav'">transactionDrug</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt237.wav">. Or just say maximum to</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionType + '.wav'">transactionType</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt238.wav">the maximum amount of</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionDrug + '.wav'">transactionDrug</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt239.wav">or None if you don't want to transactionType any.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt240.wav">You have to tell me how many units of</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionDrug + '.wav'">transactionDrug</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt241.wav">you want to</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionType + '.wav'">transactionType</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt242.wav">. You can say Maximum to</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionType + '.wav'">transactionType</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt243.wav">as much</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionDrug + '.wav'">transactionDrug</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt244.wav">as you can, or just say None if you've changed your mind.</audio>
+    <reprompt/>
+  </help>
+
+  <filled>
+    <assign name="market5_5" expr="option"/>
+   <if cond="market5_5 == 'none'">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt245.wav">O K. So we're not going to</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionType + '.wav'">transactionType</audio>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt246.wav">any</audio>
+<audio expr="'http://www.klein.com/SpeechSmuggler/' + transactionDrug + '.wav'">transactionDrug</audio>
+      <goto next="#market5_4"/>
+   </if>
+    <if cond="transactionType == 'sell'">
+
+      <if cond="transactionDrug == 'coke'">
+        <if cond="market5_5 == 'max'">
+          <assign name="market5_5" expr="coke"/>
+        </if>
+        <if cond="parseInt(market5_5) > parseInt(coke)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt247.wav">You don't have</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt248.wav">units of coke to sell. You only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(coke,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt249.wav">units.</audio>
+          <goto next="#market5_4"/>
+        </if>
+        <assign name="coke" expr="parseInt(coke) - parseInt(market5_5)"/>
+        <assign name="cash" expr="parseInt(cash) + ( parseInt(market5_5) * parseInt(cokePrice) )"/>
+        <assign name="sellCash" expr="parseInt(market5_5) * parseInt(cokePrice)"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt250.wav">You sold</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt251.wav">units of coke and cleared</audio>
+<foreach item="wavefile" array="number_to_wave_array(sellCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt252.wav">bucks.</audio>
+        <goto next="#market5_3"/>
+
+      <elseif cond="transactionDrug == 'heroin'"/>
+        <if cond="market5_5 == 'max'">
+          <assign name="market5_5" expr="heroin"/>
+        </if>
+        <if cond="parseInt(market5_5) > parseInt(heroin)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt253.wav">You don't have</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt254.wav">units of heroin to sell. You only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(heroin,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt255.wav">units.</audio>
+          <goto next="#market5_4"/>
+        </if>
+        <assign name="heroin" expr="parseInt(heroin) - parseInt(market5_5)"/>
+        <assign name="cash" expr="parseInt(cash) + ( parseInt(market5_5) * parseInt(heroinPrice) )"/>
+        <assign name="sellCash" expr="parseInt(market5_5) * parseInt(heroinPrice)"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt256.wav">You sold</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt257.wav">units of heroin and cleared</audio>
+<foreach item="wavefile" array="number_to_wave_array(sellCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt258.wav">bucks.</audio>
+        <goto next="#market5_3"/>
+
+      <elseif cond="transactionDrug == 'acid'"/>
+        <if cond="market5_5 == 'max'">
+          <assign name="market5_5" expr="acid"/>
+        </if>
+        <if cond="parseInt(market5_5) > parseInt(acid)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt259.wav">You don't have</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt260.wav">units of acid to sell. You only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(acid,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt261.wav">units.</audio>
+          <goto next="#market5_4"/>
+        </if>
+        <assign name="acid" expr="parseInt(acid) - parseInt(market5_5)"/>
+        <assign name="cash" expr="parseInt(cash) + ( parseInt(market5_5) * parseInt(acidPrice) )"/>
+        <assign name="sellCash" expr="parseInt(market5_5) * parseInt(acidPrice)"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt262.wav">You sold</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt263.wav">units of acid and cleared</audio>
+<foreach item="wavefile" array="number_to_wave_array(sellCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt264.wav">bucks.</audio>
+        <goto next="#market5_3"/>
+
+      <elseif cond="transactionDrug == 'pot'"/>
+        <if cond="market5_5 == 'max'">
+          <assign name="market5_5" expr="pot"/>
+        </if>
+        <if cond="parseInt(market5_5) > parseInt(pot)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt265.wav">You don't have</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt266.wav">units of pot to sell. You only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(pot,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt267.wav">units.</audio>
+          <goto next="#market5_4"/>
+        </if>
+        <assign name="pot" expr="parseInt(pot) - parseInt(market5_5)"/>
+        <assign name="cash" expr="parseInt(cash) + ( parseInt(market5_5) * parseInt(potPrice) )"/>
+        <assign name="sellCash" expr="parseInt(market5_5) * parseInt(potPrice)"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt268.wav">You sold</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt269.wav">units of pot and cleared</audio>
+<foreach item="wavefile" array="number_to_wave_array(sellCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt270.wav">bucks.</audio>
+        <goto next="#market5_3"/>
+
+      <elseif cond="transactionDrug == 'speed'"/>
+        <if cond="market5_5 == 'max'">
+          <assign name="market5_5" expr="speed"/>
+        </if>
+        <if cond="parseInt(market5_5) > parseInt(speed)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt271.wav">You don't have</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt272.wav">units of speed to sell. You only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(speed,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt273.wav">units.</audio>
+          <goto next="#market5_4"/>
+        </if>
+        <assign name="speed" expr="parseInt(speed) - parseInt(market5_5)"/>
+        <assign name="cash" expr="parseInt(cash) + ( parseInt(market5_5) * parseInt(speedPrice) )"/>
+        <assign name="sellCash" expr="parseInt(market5_5) * parseInt(speedPrice)"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt274.wav">You sold</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt275.wav">units of speed and cleared</audio>
+<foreach item="wavefile" array="number_to_wave_array(sellCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt276.wav">bucks.</audio>
+        <goto next="#market5_3"/>
+      </if>
+
+
+    <elseif cond="transactionType == 'buy'"/>
+    
+      <if cond="transactionDrug == 'coke'">
+        <if cond="market5_5 == 'max'">
+          <assign name="market5_5" expr="Math.floor(cash / cokePrice)"/>
+        </if>
+        <assign name="buyCash" expr="parseInt(market5_5) * parseInt(cokePrice)"/>
+        <if cond="parseInt(buyCash) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt277.wav">You can't afford</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt278.wav">units of coke. At</audio>
+<foreach item="wavefile" array="number_to_wave_array(cokePrice,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt279.wav">bucks per unit, that's a total of</audio>
+<foreach item="wavefile" array="number_to_wave_array(buyCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt280.wav">dollars. You only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt281.wav">bucks.</audio>
+          <goto next="#market5_4"/>
+        </if>
+        <assign name="coke" expr="parseInt(coke) + parseInt(market5_5)"/>
+        <assign name="cash" expr="parseInt(cash) - parseInt(buyCash)"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt282.wav">You just bought</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt283.wav">units of coke for</audio>
+<foreach item="wavefile" array="number_to_wave_array(buyCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt284.wav">bucks, leaving you with</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt285.wav">dollars cash.</audio>
+        <goto next="#market5_3"/>
+
+      <elseif cond="transactionDrug == 'heroin'"/>
+        <if cond="market5_5 == 'max'">
+          <assign name="market5_5" expr="Math.floor(cash / heroinPrice)"/>
+        </if>
+        <assign name="buyCash" expr="parseInt(market5_5) * parseInt(heroinPrice)"/>
+        <if cond="parseInt(buyCash) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt286.wav">You can't afford</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt287.wav">units of heroin. At</audio>
+<foreach item="wavefile" array="number_to_wave_array(heroinPrice,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt288.wav">bucks per unit, that's a total of</audio>
+<foreach item="wavefile" array="number_to_wave_array(buyCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt289.wav">dollars. You only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt290.wav">bucks.</audio>
+          <goto next="#market5_4"/>
+        </if>
+        <assign name="heroin" expr="parseInt(heroin) + parseInt(market5_5)"/>
+        <assign name="cash" expr="parseInt(cash) - parseInt(buyCash)"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt291.wav">You just bought</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt292.wav">units of heroin for</audio>
+<foreach item="wavefile" array="number_to_wave_array(buyCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt293.wav">bucks, leaving you with</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt294.wav">dollars cash.</audio>
+        <goto next="#market5_3"/>
+
+      <elseif cond="transactionDrug == 'acid'"/>
+        <if cond="market5_5 == 'max'">
+          <assign name="market5_5" expr="Math.floor(cash / acidPrice)"/>
+        </if>
+        <assign name="buyCash" expr="parseInt(market5_5) * parseInt(acidPrice)"/>
+        <if cond="parseInt(buyCash) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt295.wav">You can't afford</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt296.wav">units of acid. At</audio>
+<foreach item="wavefile" array="number_to_wave_array(acidPrice,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt297.wav">bucks per unit, that's a total of</audio>
+<foreach item="wavefile" array="number_to_wave_array(buyCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt298.wav">dollars. You only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt299.wav">bucks.</audio>
+          <goto next="#market5_4"/>
+        </if>
+        <assign name="acid" expr="parseInt(acid) + parseInt(market5_5)"/>
+        <assign name="cash" expr="parseInt(cash) - parseInt(buyCash)"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt300.wav">You just bought</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt301.wav">units of acid for</audio>
+<foreach item="wavefile" array="number_to_wave_array(buyCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt302.wav">bucks, leaving you with</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt303.wav">dollars cash.</audio>
+        <goto next="#market5_3"/>
+
+      <elseif cond="transactionDrug == 'pot'"/>
+        <if cond="market5_5 == 'max'">
+          <assign name="market5_5" expr="Math.floor(cash / potPrice)"/>
+        </if>
+        <assign name="buyCash" expr="parseInt(market5_5) * parseInt(potPrice)"/>
+        <if cond="parseInt(buyCash) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt304.wav">You can't afford</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt305.wav">units of pot. At</audio>
+<foreach item="wavefile" array="number_to_wave_array(potPrice,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt306.wav">bucks per unit, that's a total of</audio>
+<foreach item="wavefile" array="number_to_wave_array(buyCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt307.wav">dollars. You only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt308.wav">bucks.</audio>
+          <goto next="#market5_4"/>
+        </if>
+        <assign name="pot" expr="parseInt(pot) + parseInt(market5_5)"/>
+        <assign name="cash" expr="parseInt(cash) - parseInt(buyCash)"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt309.wav">You just bought</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt310.wav">units of pot for</audio>
+<foreach item="wavefile" array="number_to_wave_array(buyCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt311.wav">bucks, leaving you with</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt312.wav">dollars cash.</audio>
+        <goto next="#market5_3"/>
+
+      <elseif cond="transactionDrug == 'speed'"/>
+        <if cond="market5_5 == 'max'">
+          <assign name="market5_5" expr="Math.floor(cash / speedPrice)"/>
+        </if>
+        <assign name="buyCash" expr="parseInt(market5_5) * parseInt(speedPrice)"/>
+        <if cond="parseInt(buyCash) &gt; parseInt(cash)">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt313.wav">You can't afford</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt314.wav">units of speed. At</audio>
+<foreach item="wavefile" array="number_to_wave_array(speedPrice,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt315.wav">bucks per unit, that's a total of</audio>
+<foreach item="wavefile" array="number_to_wave_array(buyCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt316.wav">dollars. You only have</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt317.wav">bucks.</audio>
+          <goto next="#market5_4"/>
+        </if>
+        <assign name="speed" expr="parseInt(speed) + parseInt(market5_5)"/>
+        <assign name="cash" expr="parseInt(cash) - parseInt(buyCash)"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt318.wav">You just bought</audio>
+<foreach item="wavefile" array="number_to_wave_array(market5_5,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt319.wav">units of speed for</audio>
+<foreach item="wavefile" array="number_to_wave_array(buyCash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt320.wav">bucks, leaving you with</audio>
+<foreach item="wavefile" array="number_to_wave_array(cash,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt321.wav">dollars cash.</audio>
+        <goto next="#market5_3"/>
+      </if>
+    </if>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt322.wav">You're a wily coyote.</audio>
+    <goto next="#market5_4"/>
+
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt323.wav">You're a speedy roadrunner.</audio>
+    <reprompt/>
+  </catch>
+   
+</field>
+</form>
+
+
+<!-- ******************** newday6 ******************** -->
+<form id="newday6">
+<block>
+  <script>
+    <![CDATA[
+      savings=
+                    Math.floor(parseFloat(savings) * (100 + parseFloat(bankRate)) / 100.0);
+      debt=
+                    Math.floor(parseFloat(debt) * (100 + parseFloat(sharkRate)) / 100.0);
+    ]]>
+  </script>
+
+  <assign name="days" expr="parseInt(days) - 1"/>
+  <if cond="parseInt(days) == 0">
+    <goto next="#gameover7_1"/>
+  </if>
+  <goto next="#jet2_1"/>
+</block>
+</form>
+
+
+<!-- ******************** gameover7_1 ******************** -->
+<form id="gameover7_1">
+<block>
+  <assign name="finalScore" 
+          expr="parseInt(cash) + parseInt(savings) - parseInt(debt)"/>
+  <if cond="finalScore &gt; 100000">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt324.wav">You retired a millionaire in the Caribbean with</audio>
+<foreach item="wavefile" array="number_to_wave_array(finalScore,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt325.wav">dollars.</audio>
+  <elseif cond="finalScore &gt; 0"/> 
+<audio src="http://www.klein.com/SpeechSmuggler/prompt326.wav">You didn't do half bad. You got out of the business with</audio>
+<foreach item="wavefile" array="number_to_wave_array(finalScore,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt327.wav">dollars.</audio>
+  <else/>
+     <assign name="finalDebt" expr="-finalScore"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt328.wav">Oh no. You're</audio>
+<foreach item="wavefile" array="number_to_wave_array(finalDebt,new Array())">
+  <audio expr="'http://www.klein.com/SpeechSmuggler/' + wavefile  + '.wav'"><value expr="wavefile"/></audio>
+</foreach>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt329.wav">bucks in debt to the loan shark. He has some nasty associates. Uh oh. The loan shark's thugs found you. Watch out. Argh. They broke your fingers. Did I say uh oh before? They were just starting. Better not listen to what's coming next.</audio>
+  </if>
+  <goto next="#gameover7_2"/>
+</block>
+</form>
+
+
+<!-- ******************** gameover7_2 ******************** -->
+<form id="gameover7_2">
+<block>
+  <break time="1000ms"/>
+</block>
+
+<grammar>
+<![CDATA[
+  YES_NO
+]]>
+</grammar>
+
+<field name="option">
+    <prompt>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt330.wav">Would you like to try again?</audio>
+    </prompt>
+
+    <noinput count="1">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt331.wav">I'm giving you one last chance. Would you like to play again?</audio>
+      <reprompt/>
+    </noinput>
+
+    <noinput count="2">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt332.wav">I warned you. Bye bye sucker.</audio>
+    <goto next="#exit"/>
+    </noinput>
+
+    <nomatch>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt333.wav">A simple yes or no will suffice, knucklehead.</audio>
+      <reprompt/>
+    </nomatch>  
+
+    <help>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt334.wav">You want help in the game over dialogue? Are you dumb, or just stupid?</audio>
+      <break time="150ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt335.wav">You can play another game if you want. And this time, stay in character. You're a tough, not some whiner asking for help all the time.</audio>
+      <reprompt/>
+    </help>
+
+    <filled>
+    <assign name="gameover7_2" expr="option"/>
+      <if cond='gameover7_2=="yes"'>
+        <goto next="#initialize1_4"/>
+      </if>
+      <if cond='gameover7_2=="no"'>
+        <goto next="#quit8"/>
+      </if>
+      <goto next="#quit8"/>
+    </filled>
+
+    <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt336.wav">You've been a bad monkey.</audio>
+      <reprompt/>
+    </catch>
+</field>
+</form>
+
+<!-- ******************** quit8 ******************** -->
+<form id = "quit8">
+<field name="option">
+  <prompt>
+    <break time="300ms"/>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt337.wav">O K. But remember. Quitters never win and winners never quit. Are you sure you want to quit?</audio>
+  </prompt>
+
+  <filled>
+    <assign name="quit8" expr="option"/>
+    <if cond='quit8=="no"'>
+<audio src="http://www.klein.com/SpeechSmuggler/prompt338.wav">Too bad. No second chances for quitters.</audio>
+    <goto next="#exit"/>
+    </if>
+  </filled>
+
+  <catch event="error">
+<audio src="http://www.klein.com/SpeechSmuggler/prompt339.wav">You really didn't think you'd get in the last word, did you?</audio>
+    <goto next="#exit"/>
+  </catch>
+</field>
+</form>
+
+
+<form id = "exit">
+<block>
+<break time="1000ms"/>
+<audio>Terminating Speech Smuggler.</audio>
+<break time="10000ms"/>
+    <disconnect/>
+</block>
+</form>
+
+<form id = "construction">
+  <block>
+    <audio>Speech Smuggler is being upgraded to Voice X M L two point oh.</audio>
+    <audio>Your calls are important to us.</audio>
+    <audio>Please try back in a week.</audio>
+    <break time="500ms"/>
+    <audio>Goodbye.</audio>
+    <disconnect/>
+  </block>
+</form>
+
+
+</vxml>

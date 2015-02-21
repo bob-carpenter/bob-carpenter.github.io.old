@@ -1,0 +1,227 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE vxml PUBLIC "-//Tellme Networks//Voice Markup Language 1.0//EN" "http://resources.tellme.com/toolbox/vxml-tellme.dtd">
+		      
+<!--
+Magic Eight Call.
+Copyright (C) 2000 Mitzi Morris. All Rights Reserved.
+
+THIS CODE IS MADE AVAILABLE SOLELY ON AN "AS IS" BASIS, WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, WITHOUT LIMITATION,
+WARRANTIES THAT THE CODE IS FREE OF DEFECTS, MERCHANTABLE, FIT FOR A
+PARTICULAR PURPOSE OR NON-INFRINGING.
+-->
+
+<vxml application="http://resources.tellme.com/lib/universals.vxml">
+
+<meta name="title" content="Magic Eight Call"/>
+<meta name="author" content="Mitzi Morris"/>
+<meta name="email" content="EightCall@colloquial.com"/>
+<meta name="version" content="1.0"/>
+
+<grammar>
+<![CDATA[
+  [
+    [yes yup ya] {<option "yes">}
+    [no nah nope] {<option "no">}
+    [help] {<option "help">}
+  ]
+]]>
+</grammar>
+
+
+<form id="intro">
+<block>
+  <!-- initialize global count -->
+  <assign name="document.eightcall.count" expr="0"/>
+
+  <audio>Welcome to the magic eight Call.</audio>
+  <pause>300</pause>
+  <audio>The magic eight Ball is a registered trademark of Tyco. Buy one today.
+     The magic eight Call reaches into the future, to find the answers to 
+     your questions.  
+     It knows what will be, and is willing to share this with you. 
+  </audio>
+  <pause>300</pause>
+</block>
+
+<field name = "short_intro" bargein="false">
+  <prompt>
+    <audio>
+Are you an experienced caller?  
+    </audio>
+  </prompt>
+
+  <filled>
+    <result name="yes"><goto next="#ask_question"/></result>
+    <result name="no"><goto next="#long_intro"/></result>
+  </filled>
+ 
+  <nomatch>
+    <audio>Please say yes or no.</audio>
+    <reprompt/>
+  </nomatch>
+
+  <noinput>
+    <audio>Sorry, I didn't hear you</audio>
+    <reprompt/>
+  </noinput>
+
+  <help>
+    <goto next="#long_intro"/>
+  </help>
+</field>
+</form>
+
+<form id = "long_intro">
+<block>
+    <audio>
+      Ask a question that can be answered with yes or no.
+      Here's an example  of a yes or no question.
+          Should I buy a Tyco magic Eight Ball?
+      Here's a question that can't be answered with yes or no.
+          How many Tyco magic Eight Balls should I buy?
+    </audio>
+    <goto next="#ask_question"/>
+</block>
+</form>
+
+
+<form id = "ask_question">
+<field name = "question" bargein="false">
+  <prompt>
+    <audio>
+	Ask your question now, and let the magic Eight Call show you the way.
+    </audio>
+  </prompt>
+
+  <default>
+    <goto next = "#answer"/>
+  </default>
+
+  <noinput>
+    <audio>
+       Sorry, I didn't hear you. 
+    </audio>
+    <reprompt/>
+  </noinput>
+</field>
+</form>
+
+<form id = "answer">
+<block>
+    <script type="Javascript">
+    <![CDATA[
+    function getAnswer()
+    {
+      switch (Math.floor(Math.random()*20) + 1)
+      {
+      case 1:
+        return "Outlook Good.";
+      case 2:
+        return "Outlook Not So Good.";
+      case 3:
+        return "My Reply Is No.";
+      case 4:
+        return "Don't Count On It.";
+      case 5:
+        return "You May Rely On It.";
+      case 6:
+        return "Ask Again Later.";
+      case 7:
+        return "Most Likely.";
+      case 8:
+        return "Cannot Predict Now.";
+      case 9:
+        return "Yes.";
+      case 10:
+        return "Yes Definitely.";
+      case 11:
+        return "Better Not Tell You Now.";
+      case 12:
+        return "It Is Certain.";
+      case 13:
+        return "Very Doubtful.";
+      case 14:
+        return "It Is Decidedly So.";
+      case 15:
+        return "Concentrate and Ask Again.";
+      case 16:
+        return "Signs Point to Yes.";
+      case 17:
+        return "My Sources Say No.";
+      case 18:
+        return "Without a Doubt.";
+      case 19:
+        return "Reply Hazy, Try Again.";
+      case 20:
+        return "As I See It, Yes.";
+      }
+    }
+    ]]>
+    </script>
+
+  <assign name="document.eightball.answer" expr="getAnswer()" />
+  <audio>
+	{document.eightball.answer}
+  </audio>
+  <pause>500</pause>
+
+<!-- increment count -->
+  <assign name="document.eightcall.count" expr="parseInt({document.eightcall.count})+1"/>
+
+  <if cond="{document.eightcall.count} &lt; 3">
+   <goto next = "#another_question"/>
+  <else/>
+   <pause>500</pause>
+   <audio>
+     The magic Eight Call has answered Three questions.
+     Use them wisely.
+   </audio>
+   <goto next = "#goodbye"/>
+  </if>
+</block>
+</form>
+
+<form id = "another_question">
+<field name = "another_question" bargein="false">
+  <prompt>
+    <audio>Would you like to ask another question?</audio>
+  </prompt>
+
+  <filled>
+    <result name="yes"><goto next="#ask_question"/></result>
+    <result name="no">
+        <audio>O K, then.</audio>
+        <goto next="#goodbye"/>
+    </result>
+  </filled>
+
+  <default>
+    <audio>
+      The magic Eight Call only understands a simple Yes or No.
+    </audio>
+    <reprompt/>
+  </default>
+</field>
+</form>
+
+<form id = "goodbye">
+<field name = "goodbye">
+  <prompt>
+    <pause>300</pause>
+    <audio>
+      Goodbye for now.  
+      Remember to call the magic Eight Call whenever you need advice.
+    </audio>
+  </prompt>
+
+  <default>
+    <disconnect/>
+  </default>
+</field>
+</form>
+
+</vxml>
+
+

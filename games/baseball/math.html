@@ -1,0 +1,1082 @@
+<HTML>
+
+<HEAD>
+<TITLE>Little Professor Baseball: Mathematics and Statistics of
+Baseball Simulation</TITLE>
+</HEAD>
+
+<BODY>
+<FONT FACE="Arial">
+
+<IMG  HSPACE=0 ALIGN=RIGHT HEIGHT=172 WIDTH=161 SRC="images/field.gif">
+<FONT SIZE=+3><font color=red>Little Professor Baseball</font></font>
+<BR>
+<I>We do the arithmetic, so you can play baseball.</I>
+
+<P>
+<FONT SIZE=-1>
+<I>
+Here at Little Professor Baseball, we not only do the arithmetic,
+we also tell you how it's done.  So sharpen your pencil and pull up a
+chair.  Here's where the little professor gives the (ball)game away.
+Math Warning: this is no walk in the (ball)park.
+</I>
+</FONT>
+
+<BR>
+&nbsp;
+<P>
+<FONT SIZE=+3 color=red><B>On the Mathematical and Statistical Foundations of Baseball Simulation</B></font>
+<BR>
+by <b>The Little Professor</b>
+
+<P>
+An appropriate place to begin is with a simple criterion for
+simulations that are intended to be accurate simulations.
+
+<P>
+<FONT SIZE=+1 color=red><b>The First Principle of Accurate Simulation</b></FONT>
+<BR>
+The expected outcome of a simulated event matches the average outcome
+of that event as measured over the intended time frame, typically an 
+entire season or career.
+
+<P>
+&nbsp;
+<BR>
+<FONT color=red SIZE=+2><b>Part I: Batting</b></FONT>
+<BR>
+Batting by itself is the simplest aspect of the game to model, though
+judging from Mark Cooper's <i>Baseball Games</i>, even accuracy for an
+average at bat was slow in emerging.  Perhaps that was because modern
+statistical thinking was evolving and entering the public discourse
+along with the game of baseball itself.  Conceptually,
+it is simplest to begin by modeling a single batter.
+
+<P>
+<FONT color=red SIZE=+1><b>Batting Average Over a Season: A First Example</b></FONT>
+<BR>
+The first example is of a very simple simulation of a batter's batting
+average over a season that satisfies the first principle of accurate
+simulation. Take Manny Ramirez of Boston, who in 2002 batted .349 in
+436 at bats.  An accurate model would be to give him a hit chance of
+.349 for a hit in each at bat.  The simulation of an at bat involves
+generating a random number between 0.0 and 1.0 with a uniform
+distribution and determining if it is less than or equal to .349.  If
+it is, the simulation produces a hit; otherwise, it produces an out.
+Simulating an entire season involves simulating 436 at bats. The
+expected value of simulating 436 at bats with a per at-bat likelihood
+of .349 is simply .349 * 436 = 152, exactly the number of hits Ramirez
+had in 2002.  Thus this simulation satisfies the first principle of
+accuracy. 
+
+<P>
+<FONT color=red>Exercise: Computer Simulation: Histograms</font>
+<BR>
+<font size=-1>
+Simulate Manny Ramirez's batting average by generating the outcomes of
+436 at bats individually and computing the resulting batting average.  Was
+the result close to the expected value of .349?  Repeat 1000 times and
+plot a histogram of the results with bins defined to 3 decimal places.
+(That is, compute the number of times the simulation predicted a .000
+average, a .001 average, a .002 average, ..., a .349 average, a .348 average,
+..., a .999 average and a 1.000 average.  What's the likelihood that
+Ramirez will beat 1.000 or 0.000 in 436 at bats?
+</font>
+
+<P>
+If the granularity of the model were not an individual at bat, but an
+entire season, then there are any number of models that satisfy the
+first principle.  For instance, the entire season could be
+simulated with one roll with a .349 chance of producing a 1.000
+batting average and a .651 chance of producing a 0.000 batting
+average.  The expected outcome is the same, because .349 * 1.00 + .651
+* 0.00 = .349.  The critical flaw with this second model is that it
+assigns roughly a 35 percent chance of Ramirez batting 1.000 for a
+season, which is patently absurd.  It also assigns no chance to his
+batting his actual average .349, or likely alternatives such as .347
+or .359.  In statistical terms, the model has the right expected mean,
+but the wrong expected variance.  What this means is that if 10
+seasons are simulated with each model, the expected variance of the
+first model is much much lower than the second model.  And somehow,
+that seems closer to reality, leading to a second criterion for accuracy.
+
+<P>
+<FONT color=red SIZE=+1><b>The Second Principle of Accurate Simulation</b></FONT>
+<BR>
+The variance of the model should be equal to the actual variance.
+
+<P>
+Unfortunately, it's not clear what the "right" variance is for a
+model, because a season is only played once.  Under the assumption
+that each at bat is independent and has a chance of a hit equal to the
+season average, then the expected variance will be correct.  This
+seems a reasonable assumption to make, as illustrated in the following
+exercise.
+
+<P>
+<FONT color=red>Exercise: Computer Simulation: Histograms</font>
+<BR>
+<font size=-1>
+Consider a batter with a .298 average who comes to the plate 5, 10, 25, 50, 100,
+200 or 400 times during a season.  For each number of at bats,
+plot the result of 1000 simulations.  Do the distributions look
+like bell curves?  They should, because they're drawn from normal
+distributions.  How do the histrograms differ based on the
+number of events simulated?   What is the expected variance for
+each number of at bats?
+</font>
+
+<P>
+<FONT color=red SIZE=+1><b>At Bats: Extending the number of outcomes</b></FONT>
+<BR>
+Although the batting average example only had one outcome, a similar
+average-based model may be extended to multiple outcomes.  For instance,
+Bernie Williams batted 612 times, had 204 hits, 37 doubles, 2 triples
+and 19 home runs; he also walked an additional 83 times, for a total
+of 695 plate appearances.  A plate appearance may be simply modeled by assigning
+the possible outcomes the following likelihoods.
+
+<PRE><B>
+    204/695 1B
+     37/695 2B
+      2/695 3B
+     19/695 HR
+     83/695 BB
+</B></PRE>
+
+Note that the remaining 350 outcomes were outs.  This distribution can
+be converted into a tabular format suitable for printing on a card by
+indicating the numbers in a cumulative fashion.
+
+<PRE><B>
+    Bernie Williams (2002 Season)
+
+    OUT  000
+    BB   350 (= 0 + 350)
+    1B   433 (= 350 + 83)
+    2B   637 (= 433 + 204)
+    3B   674 (= 637 + 37)
+    HR   676 (= 674 + 2)
+</B></PRE>
+
+To use this distribution, a number between 0 and 694 inclusive (for a
+total of 695 = 694 - 0 + 1 possible outcomes) is generated at random
+from a uniform distribution.  Then the best outcome (for the batter)
+is chosen that is greater than or equal to the number generated.  In
+that way, the number next to the outcome is the minimal number
+required to produce that outcome.  For example, an outcome from the
+random number generator of 643 would represent a double, whereas 312
+would be an out and 676 a home run.  With this arrangement of
+outcomes, a higher random number is better for the batter.  This
+feature is one of the distinguishing features of <i>Little Professor
+Baseball</i>'s rolling system.  In addition, the outcome is easier to
+determine than in other game,s because an exact number need not be
+looked up, just a range.
+
+<P>
+<FONT color=red>Exercise: More Outcomes</font> 
+<BR>
+<font size=-1>
+Bernie Williams struck out 97 times.  Generate a new table for Bernie Williams that
+indicates the difference beween strikeouts and hit outs. 
+</font>
+
+<P>
+The main problem with the last representation is that it requires an
+event on the 0 to 694 scale to be generated, which is not particularly
+straightforward with dice.  By normalizing to a 000 to 999 scale, each
+player can use an ordered sequence of three ten-outcome dice, one
+representing each digit in the outcome.  The canonical dice for Little
+Professor Baseball are black, grey and white, with the black being the
+hundreds position, the grey the tens and the white the ones.  Your
+colors and orders may vary. To determine the normalized table, just
+multiply each number by 1000/695, producing the following result.
+
+<PRE><B>
+     Bernie Williams (2002 Season)
+
+     OUT  000
+     BB   504
+     1B   623
+     2B   917
+     3B   970
+     HR   973
+</B></PRE>
+
+Note that the numbers were rounded to the nearest integer, which
+introduces some arithmetic accuracy error.  A three-digit decimal
+representation of the original outcomes introduces the same degree of
+rounding error.  Also note that the worst outcome will always have a
+number of 0, so it may be removed from the table without loss of
+information.
+
+<P>
+<FONT color=red>Exercise: Cadaco's All-Star Baseball</font>
+<BR>
+<font size=-1>
+Generate a team for Ethan Allen's All-Star Baseball.  
+The set of outcomes is: strikeout, ground ball, fly ball,
+base on balls, single, double, triple and home run.  Outcomes are
+determined by spinner, so the 360 degrees of the circle needs to be
+broken into areas proportional to the likelihood of various outcomes. 
+</font>
+
+<P>
+Take a break and play a game.  You deserved it.  If you've done all
+the exercises, you are hereby awarded an honorary B.B.S.Sc., otherwise
+known as a Bachelor's of Baseball Simulation Science.
+
+
+
+<P>
+&nbsp;
+<BR>
+<FONT SIZE=+2 color=red><b>Part II: Pitcher vs. Hitter</b></FONT>
+
+<BR>
+Simulating pitching versus hitting introduces considerably more
+complexity into the modeling of individual players.  For simplicity
+throughout, the target of the simulation is a hitter facing a pitcher
+for a single at-bat. As such, individual pitches are not modeled,
+nor is pitch count/fatigue, situation or lefty versus righty
+differentials.  Statistics will be drawn from season averages.  Note
+that exactly the same techniques as are used to model an at-bat could
+be used to model a pitch, an inning, or even a whole game.
+
+<P>
+<FONT SIZE=+1 color=red><b>Pitcher versus Hitter: On-base versus out</b></font>
+
+<BR>
+Historically, games have taken two tacks to determining the balance of
+contribution to the outcome made by a pitcher facing a hitter.  The
+Strat-o-Matic route assumes that an initial roll determines whether to
+read the outcome from the hitter or pitcher's cards.  The APBA method
+uses a double indirection of a 36-outcome roll of two labeled six-sided
+dice that is then mapped to an outcome from 1-42 on a batter's card,
+of which outcomes 1-11 are determined by the pitcher's grade A through
+D, and outcomes 12-42 are determined by the cumulative fielding points
+of the defense.  Without computing the
+mapping distribution, it cannot be determined to what extent the
+outcome will be determined by the pitcher's, batter's, or team's
+fielding statistics.  Strat-O-Matic is more straightforward; a
+six-sided dice is rolled and a 1-3 is read from the hitter's card and
+a 4-6 from the pitcher's.  Two six-sided dice are then rolled and
+added to determine the outcome (modulo so-called splits, which are
+employed by both APBA and Strat-O-Matic, and are discussed in part
+three of this paper).  Of course, if the dice are labeled, all three
+may be rolled at once.
+
+<P>
+For simplicity, the first model follows Strat-O-Matic and assigns
+equal likelihoods to reading from the pitcher's or hitter's
+statistics.  Any method may be used from flipping a coin to a game of
+scissors, rock and paper.  This measure is merely a stopgap until the
+more sophisticated method underlying Little Professor Baseball is
+introduced in the final part of this paper.
+
+<P>
+Assuming that each batter and pitcher faces an overall average set of
+opponents over the season, accuracy requires that the result of a
+pitcher facing a sequence of average batters to have an expected value
+of the pitcher's actual statistics.  Similarly, the expected outcome
+of a batter facing an average lineup of pitchers should be the
+batter's season statistics.
+
+<P>
+The average hitter statistics can be computed by simply adding all the
+at bats for the entire season together.  Note that this is also equal
+to the average pitcher statistics.  Again, a granularity choice must
+be made as to whether the averages are drawn from the American or
+National League or from both.  Little Professor Baseball took the
+leagues separately in computing the statistics, though there is
+residual error due to interleague play as outlined in the following
+exercise.  Thus accuracy requires a National League pitcher facing an
+average assortment of National League batters will produce his actual
+averages.
+
+<P>
+<FONT color=red>Exercise: Effects of League Variation</font>
+<BR>
+<font size=-1>
+With the designated hitter rules, the average hitter and pitcher
+statistics are considerably different.  Compare the <a
+href="http://www.baseball-reference.com/leagues/AL_2000.shtml">2000
+American League Statistics</a> with the <a
+href="http://www.baseball-reference.com/leagues/NL_2000.shtml">2000
+National League Statistics</a>.  How much error would be introduced
+into if averages for both leagues are used rather than for the
+individual leagues?  How much of that variation might be due to
+designated hitters?  Did you notice that the National League Pitchers
+hits allowed and runs allowed is not equal to the National League
+Batters in terms of runs and hits?  That's thanks to interleague play,
+so the only proper adjustment is the one mentioned in the exercise on
+adjusting statistics for the opposition.  How much error is introduced
+because a team does not actually play itself, but the stats for each
+team is included?
+</font>
+
+<P>
+To begin slowly, reconsider the case where an at bat has two outcomes,
+hit and out.  Thus the target averages being modeled are the batting
+average of a batter and the percentage of outs by a pitcher
+(disregarding walks altogether). To introduce some real numbers, in
+1970, before inter-league play and designated hitters complicated
+matters, in the National League, batters eked out 17151 hits in 66465
+at bats, for a league cumulative batting and hits-allowed average of
+.259.  Johnny Bench, playing for the Big Red Machine, beat the
+averages considerably by hitting .293 in 605 at bats.  Against Tom
+Seaver, of the New York Mets, batters only managed 230 hits in 1102
+appearances (note that innings pitched * 3 + bases on balls is the
+number of at bats against a pitcher), for an allowed average of .209.
+
+<P>
+The obvious thing to try is to set the cards up according to the player
+averages.  Recall that the pitcher's card is used 50% of the time and
+the batter's card the remaining 50% of the time.  The expected value
+of Johnny Bench facing an average array of pitchers will be the same
+as reading half the resuls from the average and half from Johnny's
+statistics.  But this yields the rather disappointing:
+
+<PRE>
+     (1/2)*.259 + (1/2)*.293 = .276
+</PRE>
+
+For simplicity, the average player's card is assumed to provide the
+league average chance of a hit: 
+25.9%.  Working backward from the desired
+result, Johnny's card must be adjusted to a value such that:
+
+<PRE>
+     Johnny Bench's Average =
+     1/2 * League Average + 1/2 * Johnny Bench's Card
+</PRE>
+
+This is the <b>fundamental formula of opposition</b>.  A little
+quick algebra, and:
+
+<PRE>
+     1/2 * Johnny Bench's Card
+     = Johnny Bench's Average - 1/2 * League Average
+
+     Johnny Bench's Card
+     = 2 * Johnny Bench's Average - League Average
+</PRE>
+
+Plugging in the actual numbers yields:
+
+<PRE>
+     Johnny Bench's Card
+      = 2 * .293 - .259 = .327
+</PRE>
+
+Pitching works the same way, so that:
+
+<PRE>
+  Tom Seaver's Card
+  = 2 * Tom Seaver's Average - League Average
+  = 2 * .209 - .259 = .159
+</PRE>
+
+This adjustment for blending with the average accounts for the
+apparent skew seen on cards in other games.  The statistics need to be
+"juiced" when you read off a player's card in order for the averages
+to work out.
+
+<P>
+<FONT color=red>Exercise: Generalizing the Fundamental Formula</font>
+<BR>
+<font size=-1>
+What adjustments would have to be made to the fundamental formula in
+order to account for having 75% of the outcome determined by the
+pitcher and only 25% by the hitter?  Will the expected outcome of a
+hitter facing a pitcher be different?
+</font>
+
+<P>
+There are several desirable consequences of the present model.  First,
+if Johnny Bench faces average pitchers, his expected average is equal
+to his actual average of .293.  On the other hand, if he faces weaker
+pitchers, then his average will be higher, whereas if he faced
+stronger pitchers it would be lower.  Second, if an entire season is
+simulated an at bat at a time, using the actual hitter and an average
+pitcher, the expected results for each batter and the entire league
+will be accurate.  This also follows for pitching.  It also works if
+pitchers are faced off against batters by being selected according to
+their number of plate appearances.
+
+<P>
+<FONT color=red>Exercise: Prove It and Extend It</font>
+<BR>
+<font size=-1>
+Prove the assertions in the preceding paragraph.  Generalize them to
+show that if each hitter faced an average lineup of pitchers and each
+pitcher faced an average linup of batters that the result of
+simulating an entire season with the actual pitcher versus batter
+matchups would have the right expected values for each player and for
+the cumulative averages.
+</font>
+
+<P>
+<FONT color=red>Exercise: Adjusting Statistics for Opposition</font>
+<BR>
+<font size=-1>
+Why is it not
+guaranteed that if the actual pitcher versus batter events are
+simulated that the expected average is the actual league average?  How
+could it be adjusted so that it would be accurate?
+
+If batters or pitchers do not face a representatively average set of
+opponents, how might their statistics be adjusted to account for the
+caliber of opponents?  Did you get the limit construction?  How much
+is your answer like the way <a
+href="http://www.google.com/technology/index.html">Google ranks</a>
+are determined? How about the way <a
+href="http://www.geocities.com/rtell/FAQ.html">BCS ranks</a> are
+determined for college football teams?  Is the BCS
+second-order approximation reasonable?  
+</font>
+
+<P>
+<FONT color=red>Exercise: Playing Across Generations</font>
+<BR>
+<font size=-1>
+Why is it impossible to compare across generations?  Would it be fun
+to play them against each other with their Little Professor cards
+anyway?  How could you justify enjoying such a game if you had to.
+</font>
+
+<P>
+<FONT SIZE=+1 color=red><b>Pitcher versus Hitter: Multiple Outcomes</b></font>
+
+<BR>
+The same way as the simple batter-only model was extended to multiple
+outcomes, the pitcher versus hitter cards can be extended to multiple
+outcomes by evaluating each outcome the same way as was done for hits
+versus outs. Thus all percentagle values on a card will be double the
+player's percentage minus the average percentage.  Returning to the 1970 National
+League, the total stats, in the format typically reported in league
+averages and on baseball cards, were:
+
+<PRE>
+     National League (1970)    Johnny Bench (1970)
+     AB: 66465                 AB: 605
+      H: 17151                  H: 177
+     2B:  2743                 2B:  35
+     3B:   554                 3B:   4
+     HR:  1683                 HR:  45
+     BB:  6919                 BB:  54
+     SO: 11417                 SO: 102
+
+     1B: 12171                 1B:  93
+     PA: 73384                 PA: 659
+     HO: 37897                 HO: 326
+</PRE>
+
+Note that singles can be recovered by:
+
+<PRE>
+     1B = H - 2B - 3B - HR 
+</PRE>
+
+The total number of plate apperances (otherwise known as batters faced
+for pitchers) is given by:
+
+<PRE>
+     PLATE APPEARANCES = AB + BB
+</PRE>
+
+Finally, the number of non strikeout outs is the difference:
+
+<PRE>
+     HIT OUT = AB - H - SO
+</PRE>
+
+Recasting the above tables as percentages and ordering them from worst
+to best outcome for a hitter produces the following table:
+
+<PRE>
+            NL     JB      2*JB-NL
+     SO:   .156    .155    .154
+     HO:   .516    .495    .474
+     BB:   .094    .082    .070
+     1B:   .166    .141    .116
+     2B:   .037    .053    .069
+     3B:   .008    .006    .004
+     HR:   .023    .068    .113
+</PRE>
+
+Applying the fundamental formula requires each stat on Johnny Bench's
+card to be twice Johnny's percentage minus the league's percentage,
+which reading from the third column and converting to cumulative dice
+rolls yields Johnny's card and the league average pitcher/hitter card:
+
+<PRE><B>
+     Johnny Bench (1970)     Average Pitcher/Hitter (1970)
+     SO: 000                 SO: 000
+     HO: 154                 HO: 156
+     BB: 628                 BB: 672
+     1B: 698                 1B: 766
+     2B: 814                 2B: 932
+     3B: 883                 3B: 969
+     HR: 887                 HR: 977
+</B></PRE>
+
+But what about Tom Seaver?  The immediate problem is that so many
+additional game statistics (W/L, ERA, etc.) are provided for pitchers
+that their hits are rarely broken into singles, doubles, and triples.
+For instance, the reported statistics for Tom Seaver in 1970 are:
+
+<PRE>
+     Tom Seaver (1970)
+     IP: 290.7 (290 2/3)
+     SO: 283       
+     BB:  83
+     HR:  21
+      H: 230
+
+     AB: 1102 (IP * 3 + H)
+     PA: 1185 (AB + BB)
+     HO:  589 (PA - BB - H - SO)
+     1B + 2B + 3B: 209 (H - HR)
+</PRE>
+
+Because the ratio of singles to doubles to triples is unknown, it must
+be approximated somehow.  A simple approximation involves using the
+league ratios of singles:doubles:triple, which are: 12171:2743:554, or
+normalized to percentages, .787:.177:.036.  This ensures that the
+distributions are right on average for the batters, and that the
+expected number of hits (the known statistic) is right for the
+pitcher. Multiplying these results through Tom's 209 hits yields:
+
+<PRE>
+     1B: 164
+     2B:  37
+     3B:   9
+</PRE>
+
+This allows the calculation of a card according to the percentages: 
+
+<PRE>
+            NL     TS      2*TS-NL
+     SO:   .156    .239    .322
+     HO:   .516    .496    .476
+     BB:   .094    .070    .046
+     1B:   .166    .138    .110
+     2B:   .037    .031    .025
+     3B:   .008    .008    .008
+     HR:   .023    .018    .013
+</PRE>
+
+If the resulting total does not sum to 1.000, it should be normalized
+in some way so that it does; in htis case, .001 was subtracted from
+Seaver's hit outs. This yields the following card for Tom Seaver in
+1970.
+
+<PRE><B>
+     Tom Seaver (1970)
+     HR: 000
+     3B: 013
+     2B: 021
+     1B: 046
+     BB: 156
+     HO: 202
+     SO: 678
+</B></PRE>
+
+Anticipating the actual presentation order of Little Professor
+Baseball, outcomes are presented on the card in the opposite order for
+pitchers so that they, like batters, will want to roll high.
+
+<P>
+<FONT color=red>Exercise: Generate a Card</FONT>
+<BR>
+<font size=-1>
+Generate your own cards for a batter, pitcher and league average for a
+year other than 1970.  Generate an average pitcher card with the same
+statistics as the average batter card, but in the reverse order of
+outcomes to match Tom Seaver's card.
+</font>
+
+<P>
+<FONT color=red>Exercise: Total Outcomes</FONT>
+<BR>
+<font size=-1>
+If Johnny Bench faces Tom Seaver, what is the likelihood of each
+outcome?  What if Johnny Bench faces an average pitcher or Tom Seaver
+faces an average batter?
+</font>
+
+<P>
+<FONT color=red>Exercise: More Cards</FONT>
+<BR>
+<font size=-1>
+Generate your own cards for a batter, pitcher and league average for a
+year other than 1970.  
+</font>
+
+
+<P>
+<FONT color=red>Exercise: Estimating Hit Ratios</FONT>
+<BR>
+<font size=-1>
+Could the ratio of home runs to hits be used to assign a better
+estimate of the distribution of hits to pitchers?  How would you prove
+that extra-base hits and home runs were correlated?
+</font>
+
+<P>
+There is one complication which has yet to be addressed.  What if
+double the player's percentage minus the average percentage is
+negative?  Unfortunately, this actually occurs quite often.  For
+instance, 2 percent of the plate appearances in the National League in
+1970 resulted in home runs.  Some players didn't hit any.  Therefore,
+2 * 0.0 - .023 = -.023.  
+
+<P>
+The real bummer is that it's hard to compensate for this effect
+assuming that fifty percent of the outcomes are on the batter and
+fifty percent on the pitcher.  If a pitcher gave up any percentage of
+home runs, and there is any chance of a home run on the pither's
+statistics, then there is no hope of accomodating a weak hitter
+directly.  Drastic measures may be taken and a weak-hitter designation
+given, which amounts in home runs being converted back into doubles,
+and the doubles category similarly downgraded.  This step was taken in
+Strat-O-Matic, but not in the basic game of Little Professor
+Baseball.  Triples could also be downgraded to doubles in order to
+satisfy the first principle.  If there is still underflow, then
+doubles must be downgraded to singles and so on.  For instance, a
+player who doubled only .010 plate appearances and never tripled or
+homered must be designated so that pitcher outcomes of triples or home
+runs are downgraded to doubles (.31 total) and that a percentage of
+doubles are re-rolled and possibly downgraded to singles and so on.
+
+<P>
+<FONT color=red>Advanced Statistical Exercise: Smoothing</FONT>
+<BR>
+<font size=-1>
+Why might smoothing be useful to deal with rare outcomes
+like triples?  What is the expected variance in number of triples for
+a batter with the league chance of .008 per plate appearance of
+hitting a triple with 500 at bats?
+</font>
+
+<P>
+<FONT color=red>Advanced Exercise: Errors and Fielding</FONT>
+<BR>
+<font size=-1>
+Allow for the possibility of errors, with an accuracy criterion given
+by having a player (or team's) expected number of errors equal that of
+the actual season being modeled.  Hint: Set aside some of the
+hit out likelihood on the pitcher and catcher cards for errors.  Calculate the
+likelihood of an error based on team fielding reserving the other
+outcomes for hit outs.  If modeling individuals, pro-rate the likelihood
+of error based on players in the field.  Although this provides an
+accurate model of the distribution of errors, where does it fall down
+as a model of fielding?  How could that be accomodated? Second Hint:
+See either APBA or Strat-O-Matic.
+</font>
+
+<P>
+If you've read this far, take a break and play a couple games.  Now you
+really deserve it.  If you've done all the exercises, you are hereby
+rewarded an honorary M.B.S.Sc., aka the Master's of Baseball Simulation
+Science.  If you've done the advanced exercise, consider it your
+master's thesis.  
+
+
+<P>
+&nbsp;
+<BR>
+<FONT SIZE=+2 color=red><b>Part III: The Rolling System</b></font>
+<BR>
+In the rolling system just described, as in Strat-O-Matic, two rolls
+are required to generate the outcome of an at bat. The first roll
+determines which player's statistics are used to determine the
+outcome, and the second roll generates an outcome from that player's
+card.  One of the charms of Little Professor Baseball is that both
+players roll simultaneously, and the outcome is read off of the card
+of the player with the higher roll; if both players roll the same
+result, they roll again.
+
+<P>
+<FONT SIZE=+1 color=red><b>Compensating for the High Roller Bias</b></font> 
+<BR>
+The problem introduced by reading the result off the card of the
+player who rolled highest is that higher rolls are more likely to
+result, introducing a bias into the outcome.  Luckily, this bias is
+easily calculated by considering the events consisting of the two
+rolls and their likelihoods.  First consider the game as it
+stands. There are 1000 outcomes from 000 to 999, and each is equally
+likely.  But only half the outcomes will be read from each card, so
+each number on the card represents 1/2000 of the probability mass.  
+<P>
+In the situation where the player's card with the highest roll is
+chosen, a roll of 000 will never be used, so instead of 1/2000, the
+probability mass is 0.  At the opposite extreme, a roll of 999 by a
+player occurs 1/1000 times, but will be used 999/1000 of the times
+that it is rolled, for a total of 999/1,000,000, or roughly double the
+probability mass of the same outcome in the original game.  In
+general, a roll of N will be assigned N/1,000,0000 of the probability
+mass, because the likelihood of a roll of N is 1/1000, and if it is
+rolled, it stands an N/1000 chance of surviving as the high roll,
+beating every outcome from 0 to N-1 inclusive.
+<P>
+Previously a range of outcomes between N and M inclusive would
+constitue (M-N+1)/2000 of the probability mass.  With the highest roll
+wins model, it will now constitute:
+<PRE>
+     M/1,000,000 + (M+1)/1,000,000 + ... + (N-1)/1,000,000
+</PRE>
+of the probability mass, because this is the sum of the probabilities
+of each outcome in the range.  Note that this can be reduced to a
+closed expression by:
+<PRE>
+     M/1,000,000 + (M+1)/1,000,000 + ... + (N-1)/1,000,000
+     = (M + (M+1) + (M+2) + ... + (N-1))/1,000,000
+     = ((1 + 2 + ... + (N-1)) - (1 + 2 + ... + (M-1)))/1,000,000
+     = (N*(N-1)/2 - M*(M-1)/2)/1,000,000 
+     = (N * (N-1) - M * (M-1)) / 2,000,000
+</PRE>
+The tricky step is the third one, where the sum of numbers between
+<code>M</code> and <code>N-1</code> is replaced with the difference
+between the sum of the numbers between <code>1</code> and
+<code>N-1</code> and the sum of the numbers beteen <code>1</code> and
+<code>M-1</code>.  The result is the fundamental formula of
+high-roll-wins calculations.
+
+<P>
+With this observation, cards can be generated straightway for 
+Johnny Bench, Tom Seaver, and the average 1970 pitcher/hitter.
+Recall the statistics for Johnny Bench, Tom Seaver, and the National
+League. 
+<PRE>
+            NL     JB      2*JB-NL    TS      2*TS-NL
+     SO:   .156    .155    .154       .239    .322
+     HO:   .516    .495    .474       .496    .476
+     BB:   .094    .082    .070       .070    .046
+     1B:   .166    .141    .116       .138    .110
+     2B:   .037    .053    .069       .031    .025
+     3B:   .008    .006    .004       .008    .008
+     HR:   .023    .068    .113       .018    .013
+</PRE>
+Note that in terms of batting average, good pitchers differ more from
+the league averages, and in terms of power, good batters diverge more.
+To start, Johnny Bench need a .154 chance of strikeouts, where the
+strikeout range begins at <code>000</code>.  Suppose the strikeout range ends at
+the number <code>N</code>.  Then the total probability mass will be
+<code>(N*(N-1) - 0*(0-1))/2,000,000</code>.  Recal that only half of
+Johnny's number is required, yielding the following equation:
+<PRE>
+   .154/2 = N*(N-1) - 0*(0-1)/2,000,000
+   .077 = N*(N-1)/2,000,000
+   154000 = N*(N-1)
+   0 = N*(N-1) - 154000
+   0 = N*N - N - 154000
+</PRE>
+This is a simple quadratic equation of the following form, where
+the unknown variable <code>N</code> is replaced by <code>X</code> to
+make the discussion line up with the standard presentation of the
+quadratic equation.
+<PRE>
+     A*X<sup>2</sup> + B*X + C = 0
+</PRE>
+with <code>A=1</code>, <code>B=-1</code> and <code>C=-154000</code>.
+Every quadratic equation has two roots (which might be the same, and
+which might be imaginary), given by the following formula:
+<PRE>
+     X = (-B + (B<sup>2</sup> - 4*A*C)<sup>(1/2)</sup>)/(2*A)
+</PRE>
+A quick search on the web finds a nice <a
+href="http://www.1728.com/quadratc.htm">quadratic equation
+calculator</a>, which yields roots of 393 and -392.  This fills in the
+number next to HO on Johnny's card.
+
+<PRE><B>
+     Johnny Bench (1970) 
+     SO: 000             
+     HO: 393
+</B></PRE>
+
+As expected, the number is much higher than the one on the original
+card where a determination is first made of whose card to read the
+result from.  Continuing the calculation, note that Johnny has a hit
+out percentage of .474.  The starting number is <code>393</code> this
+time, yielding the following equation:
+<PRE>
+     (N*(N-1) - (393)(393-1))/2,000,000 = .474/2
+     (N*(N-1) - 154056) = .474*1,000,000
+     N<sup>2</sup> - N -1102056 = 0
+</PRE>
+which has a positive solution <code>793</code>.  Continuing in this
+fashion produces the final card for Johnny Bench.
+
+<PRE><B>
+     Johnny Bench (1970) 
+     SO: 000             
+     HO: 393
+     BB: 793
+     1B: 836     
+     2B: 903
+     3B: 940
+     HR: 942
+</B></PRE>
+
+Note that by the range for home runs is now smaller just as the range
+for strikeouts and hitouts is higher.  This is to be expected given
+the non-linear effect of the fundamental formula of high-roll wins.
+Also note that the result is slightly different than seen in <a
+href="http://www.colloquial.com/games/baseball/basic.html">The Basic
+Game</a>, becuase the basic game calculated statistics against the
+combined American and National League averages.  
+
+<P>
+<FONT color=red>Exercise: Average Batters and Pitchers</FONT>
+<BR>
+<font size=-1>
+Create the cards for Tom Seaver, the average batter, and the average
+pitcher for 1970, given the statistics reported above.
+</font>
+
+<P>
+<FONT SIZE=+1 color=red><b>Ties Go to whom?</b></font> 
+<BR>
+The only thing left unaccounted for theoretically is ties. 
+
+<P>
+<FONT color=red>Exercise: Likelihood of Ties</FONT>
+<BR>
+<font size=-1>
+What is the chance that two players rolling <code>000</code> to
+<code>999</code> both roll the same thing?
+</font>
+
+<P>
+Because a retry will result in the same ratio of outcome likelihoods
+as the original set of non-tie outcomes, in the limit, the results can
+simply be normalized back to 1.0.  Proving this goes beyond the simple
+algebra assumed so far, so the result is left as an exercise
+(involving calculus).
+
+<P>
+<FONT color=red>Exercise: Ties on Rolls Converge</FONT>
+<BR>
+<font size=-1>
+Show that doing ties over results in the correct result in
+the limit.
+</font>
+
+<P>
+Alternatively, ties could go to the batter or to the pitcher, and the
+results re-normalized to take this into account.  
+
+<P>
+<FONT color=red>Exercise: Ties Go to the Batter</FONT>
+<BR>
+<font size=-1>
+Assume that ties go to the batter.  How much error would be introduced
+if the same cards were used?  Would ties going to the batter be to the
+batter's advantage?  How could the fundamental formula be adjusted to
+take into account ties going to the batter?
+</font>
+
+
+
+<P>
+<FONT color=red>Exercise: Pitcher Fatigue</FONT>
+<BR>
+<font size=-1>
+To account for pitcher fatigue, a number could be subtracted from the
+pitcher's rolls based on the number of batters faced, which is a
+reasonable proxy for pitch count due to the high correlation.  For
+sake of argument, assume <code>50</code> is subtracted from Tom
+Seaver's rolls.  What is the likelihood of each outcome in that
+situation?  Is it the same as if <code>50</code> is added to each of
+Johnny Bench's rolls?  Is the result intuitively reasonable?  If you
+can find the real statistics for a season, calculate whether any
+straight sum would be appropriate.  If not, could there be a
+non-linear adjustment for fatigue?  
+</font>
+
+
+
+<P>
+<FONT SIZE=+1 color=red><b>Bases for Dice</b></font> 
+<BR>
+One benefit of the new math is that a generation of American children
+should be able to conver the statistics used in Little Professor
+Baseball from base 10 to base 6.  The advantage of this is that it is
+far easier to come by 6-sided dice than 10-sided ones.  The
+manufacture of the traditional 20-sided dice with two sets of 0 to 9
+has ceased.  This is a shame, because a 20-sided die is an
+icosahedron, and as every geometer knows, an icosahedron is a
+platonic solid, with 20 equilateral triangle sides (The others are
+tetrahedrons [4 equilateral triangle sides], cubes [6 square sides],
+octahedrons [8 equilateral triangle sides] and dodecahedrons [12
+pentagonal sides]).  Icosahedrons roll very nicely, whereas the
+abominable 10-siders roll more like (American) footballs.
+
+
+
+<P>
+<FONT color=red>Exercise: Base 6</font> 
+<BR>
+<font size=-1>
+As an exercise, comnvert Bernie Williams's 2002 card from decimal, as
+above, to base 6.  You should assume there are 4 six-sided dice
+ordered to create a resulting sequence of heximal digits ( (not to be
+confused with hexidecimal, which is base 16 and only understood by
+computer nerds).  Could the same thing be done using base 2 and
+coin flips?  What about base 52 and drawing from an ordinary deck
+of cards with replacement?  
+</font>
+
+<P>
+<FONT color=red>Exercise: Additive Dice</font> 
+<BR>
+<font size=-1>
+How could outcomes be assigned if dice are summed?  How many
+six-sided dice would be required for the same arithmetic
+precision as Little Professor Baseball?  How many dice would be needed
+if higher rolls are better outcomes for the roller?  What's the lowest
+likelihood that can be estimated directly from a player with
+600 at bats?  
+</font>
+
+<P>
+<FONT color=red>Exercise: Splits</font> 
+<BR>
+<font size=-1>
+If only two six sided dice are rolled, then the finest granularity of
+outcome is 1/36, or roughly 3 percent.  This is clearly inadequate for
+modeling hits (see the league statistics).  In order to compensate,
+both APBA and Strat-O-Matic resort to the notion of some initial rolls
+requiring follow-up rolls.  These follow-up rolls then provide further
+granularity for outcomes.  Which system do you prefer?  Could Little
+Professor Baseball be redone with splits?  APBA uses two consecutive
+six-sided die outcomes (1/36) plus some splits which are followed by a
+second identical roll (1/36).  Strat-O-Matic uses a sum approach,
+having outcomes 2-12 corresponding to the sum of two six-sided dice;
+for splits a 20-sided die is rolled.  Order the systems in terms of
+the granularity of their representations: APBA, Little
+Professor, Strat-O-Matic.
+</font>
+
+<P>
+<FONT SIZE=+1 color=red><b>Previous Work</b></FONT>
+<BR>
+The most obvious influences on Little Professor Baseball are
+the baseball board games.  Mark Cooper's coffee-table book,
+
+<a href="http://www.members.iex.net/~rfinn/gameshlf/books/cooper/cooper1.htm"><i>Baseball
+Games</i></a>, 
+
+reproduces the boards and boxes of a range of editions from the
+beginning of the game to the modern era.  
+
+<P>
+The first game that modeled individual players was Clifford A. Van
+Beek's <i>National Pastime</i> which was patented in 
+1925, marketed in 1931, then discontinued due to the
+depression.  In 1941, Cadaco issued the long-running
+
+<a href="http://www.cadaco.com/docs/history1.htm"><i>Ethan Allen's
+All-Star Baseball</i></a>.
+
+<a
+href="http://www.apbastadium.com/stadium/front_office/history.html"><i>APBA
+Baseball</i></a>,
+
+which was first released publicly in 1951, remains a popular choice,
+extending <i>National Pastime</i> to pitching and fielding, although
+the models of such are crudely quantized into four pitching grades and
+total team fielding of three grades.  Like
+several early games starting with <i>Parlor Baseball</i> in 1878, the
+outcomes in APBA were determined situationally.  APBA is particularly
+amusing for the narrative nature of its outcomes, despite their
+lack of statistical justification.
+
+Beginning in 1961, 
+
+<a href="http://www.strat-o-matic.com"><i>Strat-O-Matic Baseball</i>
+</a>
+
+took the art of baseball simulation to a higher level by modeling
+pitching, hitting, running, fielding and eventually endurance, health,
+stadiums, weather conditions at a very detailed level.  If you know of
+other early games that modeled individual players or even the outcome
+of average at bats, the professor would love to hear from you.
+
+<P>
+<FONT color=red>Exercise: Literature Review</FONT>
+<BR>
+<font size=-1>
+Provide a more detailed literature review.  Extra credit for annotated
+bibliographies. 
+</font>
+
+<P>
+Take a break and play as many games as you like.  You've earned it.
+If you've done all the exercises, you are hereby rewarded an honorary
+Ph.D. in B.S., aka the Philosophy Doctorate in Baseball Simulation.
+Congratulations.  Send the little professor your thesis.  Please.
+
+
+<P>
+<FONT SIZE=+1 color=red><b>References</b></FONT>
+<UL>
+
+<LI>
+<a href="http://home.attbi.com/~bdbl/fbhistory.txt">Table Baseball - A
+World Apart</a>.  A wonderful history, published anonymously on attbi.com.
+
+<LI>
+<a href="http://www.amstat.org/publications/jse/v10n2/albert.html">A
+Baseball Statistics Course</a>.  An accessible statistics education journal
+article on basing a statistics course on baseball; a short section
+on games and lots of nifty exercises.
+<a href="http://www.amazon.com/exec/obidos/tg/detail/-/038700193X/">Curve Ball:
+Baseball Statistics and the Role of Chance in the Game</a> is a full-length
+book by the same author, as is
+<a href="http://www.amazon.com/exec/obidos/tg/detail/-/0883857278">Teaching
+Statistics Using Baseball</a>.
+
+<LI>
+<a
+href="http://www.baseball-reference.com/">Baseball-Reference.com</a>.
+The statistics used for these pages.
+
+<LI>
+<a href="http://baseball1.com/statistics/">Baseball1.com</a>.  The
+source of machine-readable season statistics for Little Professor
+Baseball.  Let's hope this constitutes research use. Please
+<a href="http://baseball1.com/support.html">consider making a
+donation</a> if you want to use the statistics, too.
+
+</UL>
+
+
+<P>
+<a href="index.html">Home</a>
+&nbsp; | &nbsp;
+<a href="basic.html">Basic Game</a>
+&nbsp; | &nbsp;
+<a href="advanced.html">Advanced Strategy</a>
+&nbsp; | &nbsp;
+<a href="math.html">The Mathematics</a>
+
+</FONT>
+</BODY>
+
+<ADDRESS>
+<HR>
+<FONT FACE="arial">
+<SMALL>
+<B>Copyright</B> ©2001-2004. All rights reserved, <a href="http://www.colloquial.com/">Colloquial.Com</a>. &nbsp; 
+<B>Contact:</B> <A href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</A> &nbsp; 
+<B>Updated:</B> 11 January 2003
+</SMALL>
+</FONT>
+</ADDRESS>
+
+</HTML>

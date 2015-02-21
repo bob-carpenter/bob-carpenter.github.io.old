@@ -1,0 +1,548 @@
+<HTML>
+
+<HEAD>
+  <TITLE>
+    A Prolog CGI Interface
+  </TITLE>
+</HEAD>
+
+
+<BODY>
+<H1>
+    A Prolog CGI Interface
+</H1>
+
+
+<P>
+by <a href="../carp/index.html">Bob Carpenter</a>.
+
+<P> 
+This document describes how Prolog can be used as part of the 
+Common Gateway Interface (CGI) [for more information on CGI, check out
+the 
+<A HREF="http://www.cc.ukans.edu/~acs/docs/other/forms-intro.shtml">
+University of Kansas CGI Intro
+</A>
+or the
+<A HREF="http://hoohoo.ncsa.uiuc.edu/cgi/overview.html">NCSA CGI Intro</A>]
+
+in order to process
+<A href="http://www.ncsa.uiuc.edu/SDG/Software/Mosaic/Docs/fill-out-forms/overview.html">
+HTML Forms
+</A>.
+As an example, we use the 
+<A HREF="parser.html">
+Type-Logical Grammar Theorem Prover
+</A>.  
+
+<H2>Forms</H2>
+<P>
+The first component of the system is an HTML form.  Forms allow
+several ways of graphically structuring information for a user to
+select or input.  The following form is the one used by the
+Type-Logical Grammar Parser:
+<HR>
+<FORM ACTION="http://macduff.andrew.cmu.edu/cgi-bin/cgparser" TARGET= "dummy">
+<TABLE>
+<TR><TD>
+<INPUT TYPE=radio NAME=inputfrom VALUE="Typing">
+</TD>
+<TD>
+<b>Input:</b>
+</TD>
+<TD>
+<INPUT SIZE=20 NAME=parsestringone VALUE="">
+</TD>
+</TR>
+<TR>
+<TD>
+<INPUT TYPE=radio NAME=inputfrom VALUE="Corpus" CHECKED>
+</TD>
+<TD>
+<b>Select:</b>
+</TD>
+<TD>
+<SELECT NAME=parsestringtwo SIZE=4>
+  <OPTION SELECTED> Sandy ran
+  <OPTION> Sandy likes Terry
+  <OPTION> the kid ran
+  <OPTION> Sandy likes the picture of Terry
+  <OPTION> the kid in Pittsburgh 
+</SELECT>
+</TABLE>
+
+<INPUT TYPE=submit VALUE="Parse String">
+<INPUT TYPE=reset VALUE="Reset Input">
+
+<BR>
+  <b>Output Style</b>:
+   <SELECT NAME="outputform">
+   <OPTION SELECTED> Prawitz
+   <OPTION> Fitch
+   <OPTION> Text
+   </SELECT>
+
+  <b>Target Category</b>:
+    <SELECT NAME="outputsyn">
+    <OPTION SELECTED>Any
+    <OPTION>Finite S
+    <OPTION>Noun Phrase
+    </SELECT>
+  
+    <b>Expand Meanings</b>:  
+    <SELECT NAME="expandmng">
+    <OPTION SELECTED>No
+    <OPTION>Yes
+</SELECT>
+</FORM>
+<HR>
+
+<PRE>
+&ltFORM ACTION="/cgi-bin/cgparser"&gt
+&ltTABLE&gt
+&ltTR&gt&ltTD&gt
+&ltINPUT TYPE=radio NAME=inputfrom VALUE="Typing"&gt
+&lt/TD&gt
+&ltTD&gt
+&ltb&gtInput:&lt/b&gt
+&lt/TD&gt
+&ltTD&gt
+&ltINPUT SIZE=20 NAME=parsestringone VALUE=""&gt
+&lt/TD&gt
+&lt/TR&gt
+&ltTR&gt
+&ltTD&gt
+&ltINPUT TYPE=radio NAME=inputfrom VALUE="Corpus" CHECKED&gt
+&lt/TD&gt
+&ltTD&gt
+&ltb&gtSelect:&lt/b&gt
+&lt/TD&gt
+&ltTD&gt
+&ltSELECT NAME=parsestringtwo SIZE=4&gt
+  &ltOPTION SELECTED&gt Sandy ran
+  &ltOPTION&gt Sandy likes Terry
+  &ltOPTION&gt the kid ran
+  &ltOPTION&gt Sandy likes the picture of Terry
+  &ltOPTION&gt the kid in Pittsburgh 
+&lt/SELECT&gt
+&lt/TABLE&gt
+
+&ltINPUT TYPE=submit VALUE="Parse String"&gt
+&ltINPUT TYPE=reset VALUE="Reset Input"&gt
+
+&ltBR&gt
+  &ltb&gtOutput Style&lt/b&gt:
+   &ltSELECT NAME="outputform"&gt
+   &ltOPTION SELECTED&gt Prawitz
+   &ltOPTION&gt Fitch
+   &ltOPTION&gt Text
+   &lt/SELECT&gt
+
+  &ltb&gtTarget Category&lt/b&gt:
+    &ltSELECT NAME="outputsyn"&gt
+    &ltOPTION SELECTED&gtAny
+    &ltOPTION&gtFinite S
+    &ltOPTION&gtNoun Phrase
+    &lt/SELECT&gt
+  
+    &ltb&gtExpand Meanings&lt/b&gt:  
+    &ltSELECT NAME="expandmng"&gt
+    &ltOPTION SELECTED&gtNo
+    &ltOPTION&gtYes
+&lt/SELECT&gt
+&lt/FORM&gt
+</PRE>
+<HR>
+
+<h3> HTML for Forms</h3>
+
+<P>
+Note that the form begins with a FORM declaration.  When the user
+submits the form, its content will be sent to the program declared by
+the ACTION field of the FORM command.  In this case, it is a Unix shell
+script called <TT>cgparser</TT>, but it could be another program itself.  
+
+<P>
+The form itself is organized using <A HREF="http://www.netscape.com/assist/net_sites/tables.html">HTML tables</A>, which
+introduce the commands TABLE (table environment), TR (table row)
+and TD (table datum).  
+
+<P>
+Forms provide a number of formats for allowing the client to send
+information to the server.  In the example above, we have radio
+buttons, scrollable selected inputs, typed inputs, submit and reset
+buttons, and pull-down input selection.
+
+<P>
+First note the radio buttons which allow a selection between the
+typing input and selecting from a list.  The form handler detects
+which radio button is selected and performs the appropriate action.
+Note that a radio button has a NAME and a VALUE.  
+Radio buttons with the same NAME are linked in such a way that
+selecting one unselects the others.  The VALUE determines what is sent
+to the form handler if the button with that VALUE is selected.
+Also note the field CHECKED, which determines which value starts out
+selected and which one becomes selected if the input is reset.
+
+<P>
+The first radio button is lined up with an INPUT field.  
+An INPUT without a TYPE allows the user to type in free text. 
+The NAME is as with radio buttons, and the initial value is set to the
+null string in this case.  
+
+<P>
+The second radio button is lined up with a SELECT environment.  If a
+SIZE value is given to a SELECT environment, it appears as a
+scrollable field that highlights the input selected with the number of
+inputs given by SIZE displayed at once.  Each element is listed as an
+OPTION.  The option that is SELECTED is initially highlighted and
+selected.  
+
+<P>
+The next two buttons are INPUTS of TYPE <TT>submit</TT> and <TT>reset</TT>
+respectively.  The VALUEs of these fields determine the text displayed
+on the buttons.  The <TT>submit</TT> INPUT, when clicked on by the client,
+submits the form data for processing.  The <TT>reset</TT> INPUT, causes all
+the form elements to revert to their initial, default values.  In some
+browsers, a carriage return has the same behavior as clicking the
+<TT>submit</TT> button.
+
+<P>
+The remaining elements are all pull-down lists.  They behave just as
+the scrollable SELECT environments, but only display the element that
+is currently selected (initially, the one declared <TT>SELECTED</TT>).  
+
+<P>
+In general, an HTML document may contain more than one form element,
+each of which is independent.  And forms may be embedded in documents,
+as with the one above, which is live.  
+
+<P>
+With Netscape 2.0, it is possible to have forms direct their output to
+(1) overwrite the location where the form resides, (2) spawn a new
+window for output, or (3) direct the results to a frame within a
+netscape browser.  The above form used the overwrite option.  To spawn
+a new window, you can use TARGET="_blank".  To learn more about
+frames, see Netscape's
+<a href="http://www.netscape.com/assist/net_sites/frames.html">
+Introduction to Frames</A>.
+
+
+<h2>Directing Form Output to Prolog</H2>
+
+<P> 
+When a form is submitted (by pressing the submit button or in some
+cases executing a carriage return), much the same thing happens as
+when any anchor is called.  A URL is submitted by the client for
+processing.  The URL submitted for the default values of the form
+given above is as follows:
+<pre>
+http://macduff.andrew.cmu.edu/cgi-bin/cgparser?parsestringone=&ampinputfrom=Corpus&ampparsestringtwo=Sandy+ran&ampoutputform=Prawitz&ampoutputsyn=Any&ampexpandmng=No
+</pre>
+Note that the first portion of the URL, before the ?, is just the one
+given by the URL in the ACTION field of the FORM command (note that we
+have used a relative URL).  It is conventional to have a directory
+called <TT>cgi-bin</TT> in which the form handlers reside, but it is merely a
+convention and not necessary.  
+
+<P>
+The portion of the URL after the ? encodes the output of the form as a
+string.  Note that the basic structure is a list of key/value pairs of
+the form <TT>Key=Value</TT>, separated by ampersands (&amp).  Note that
+spaces are coded using the plus sign (<TT>+</TT>).  Other special
+characters get three-character encodings beginning with a percent sign
+(%).  
+
+<P> Unlike other URLs, form handlers are executed rather than treated
+as HTML.  In our case, we have used the following Unix shell script
+(thanks to Chris Manning for this).  Again, shell scripts are a
+typical way of handling forms, but they can also be handled with C or
+Perl programs, etc.  The shell script for this system is as follows
+(if you copy, be sure to replace the commands for left and right
+brackets with the real brackets): 
+<HR> 
+<PRE> 
+#!/bin/sh
+
+echo Content-type: text/html
+echo
+echo "<TITLE>CG Parse Results</TITLE>"
+cd /usr/user/carp/CGParser
+/usr/contributed/bin/sicstus -r /usr/user/carp/CGParser/test3 -a "$QUERY_STRING"
+</PRE>
+<HR>
+The first line of the script simply indicates that it is going to be
+executed using the Bourne shell.  
+
+<P>
+The key to understanding CGI is that any output directed by this
+script to the standard output will be interpreted as an HTML
+document, including the output of programs called by the shell script.
+Thus the next three lines, beginning with <TT>echo</TT>, simply indicate that
+the content is HTML and that the title of the HTML document is
+<TT>CG Parse Results</TT>.  
+
+<P>
+The final action of the shell script is to call a Prolog process.  We
+have used SICStus Prolog, and the format for sending command lines to
+other versions of Prolog may vary.  The first part of this line simply
+indicates the location of sicstus on our server.  The <TT>-r</TT> argument
+indicates that a Prolog saved state should be loaded, in the case, one
+called <TT>test3</TT>.  The final command line argument, the <TT>-a</TT>
+declaration, passes the environment variable <TT>$QUERY_STRING</TT> to the
+Prolog process.  The value of <TT>$QUERY_STRING</TT> is the portion of the
+URL occurring after the question mark.
+
+
+<H2>Handling Forms in Prolog</H2>
+<P>
+In SICStus Prolog, the <TT>-a</TT> command line argument will be accessible
+to Prolog through the goal <TT>prolog_flag(argv,[Arg])</TT>, which
+instantiates the variable <TT>Arg</TT> to the string following the
+<TT>-a</TT>.   As with other compilers, the input must be tokenized
+(broken down into constituent symbols) and then parsed (the symbols
+organized structurally).  Then, once the structured CGI input is
+recovered, any action performable in Prolog can be executed by Prolog
+with any output being interpreted as HTML.
+
+<P>
+The way in which this is all accomplished is by having the Prolog
+saved state, upon startup, perform all of these actions.  This can be
+managed by using the following clause to create the saved state:
+<PRE>
+make_savedstate:-
+  save(test3), start_up.  
+</PRE>
+%
+This causes the state of the program to be saved in a file
+<TT>test3</tt>.  Because Prolog saves the entire state, it saves the
+fact that the goal start_up/1 must be executed as soon as the saved
+state is resumed.  The predicate start_up/1 performs the necessary
+actions, and is defined as follows:
+<PRE>
+start_up:-
+  prolog_flag(argv,[Arg]),
+  ( tokenizeatom(Arg,TokenList)
+  ; write('Input '), write(Arg), write(' could not be tokenized'), ttyflush, halt
+  ),
+  ( parse_cgi(TokenList,KeyVals)
+  ; write('Tokens '), write(TokenList), write(' could not be parsed'), halt
+  ),
+  ( action(KeyVals)
+  ; told, write('Action '), write(KeyVals), write(' could not be executed')
+  ),
+  halt.
+</PRE>
+This causes the command line argument to be retrieved.  Next, it is
+tokenized by tokenizeatom/2 and then parsed using parse_cgi/2, and
+then acted upon by action/1.  Then Prolog must halt.  If either
+tokenization or parsing fails, or the call to action/1 does not
+succeed, an error is returned.  
+
+<P>
+Tokenization is carried out by the following clauses:
+<PRE>
+% tokenizeatom(+Input:&ltatom&gt, -Tokens:&ltlist(&lttoken&gt)&gt)  
+% ----------------------------------------------------------------------
+% breaks input Input into list of tokens;  
+% ----------------------------------------------------------------------
+tokenizeatom(Atom,Ws):-
+  name(Atom,Cs),
+  tokenize(Cs,Xs-Xs,Ws).
+ 
+% tokenize(+Chars:&ltlist(&ltchar&gt)&gt, +CharsSoFar:&ltd_list(&ltchar&gt)&gt,
+%          -Tokens:&ltlist(&lttoken&gt)&gt)
+% ----------------------------------------------------------------------
+% Tokens is the list of tokens retrieved from Chars; ChrsSoFar 
+% accumulates prefixes of atoms being recognized
+% ----------------------------------------------------------------------
+tokenize([C1,C2,C3|Cs],Xs-Ys,TsResult):-     % special symbol
+  name('%',[C1]),
+  specialsymbol(C2,C3,SpecialSymbol),
+  !, 
+  ( Xs = []
+    -&gt TsResult = [SpecialSymbol|TsOut]
+  ; Ys = [],
+    name(CsAtom,Xs),
+    TsResult = [CsAtom,SpecialSymbol|TsOut]
+  ), 
+  tokenize(Cs,Zs-Zs,TsOut).
+tokenize([C|Cs],Xs-Ys,TsResult):-           % one-character operator
+  isoperator(C),
+  !, name(OpToken,[C]),
+  ( Xs = []
+    -&gt TsResult = [OpToken|Ts]
+  ; Ys = [],
+    name(CsAtom,Xs),
+    TsResult = [CsAtom,OpToken|Ts]
+  ),
+  tokenize(Cs,Zs-Zs,Ts).
+tokenize([C|Cs],Xs-[C|Ys],Ts):-             % more of string
+  tokenize(Cs,Xs-Ys,Ts).
+tokenize([],Xs-_,[]):-                      % no more input; nothing accum.
+  Xs = [], !.
+tokenize([],Xs-[],[CsAtom]):-               % no more input; stringg accum.
+  name(CsAtom,Xs).
+
+% isoperator(+Char:&ltchar&gt)
+% ----------------------------------------------------------------------
+% Char is the name of an operator character
+% ----------------------------------------------------------------------
+isoperator(Char):-
+  name(Op,[Char]),
+  isoptab(Op).
+
+isoptab('%').
+isoptab('+').
+isoptab('&').
+isoptab('=').
+
+% specialsymbol(+C1:&ltchar&gt, +C2:&ltchar&gt, -S:&lttoken&gt)
+% ----------------------------------------------------------------------
+% C1 and C2 are the names of characters completing a % special symbol
+% ----------------------------------------------------------------------
+specialsymbol(C1,C2,S):-
+  name(N1,[C1]), name(N2,[C2]),
+  ( sstab(N1,N2,S), !
+  ; S = spec(N1,N2)
+  ).
+
+sstab(2,'C',',').
+sstab(2,'F','/').
+sstab(2,8,'(').
+sstab(2,9,')').
+sstab(5,'B','[').
+sstab(5,'C','\\').
+sstab(5,'D',']').
+sstab(3,'D','=').
+sstab(3,'E','&gt').
+</PRE>
+The tokenization begins by converting the atom into a list of ASCII
+representations using name/2.  Then tokenize/3 is called.  
+The first argument is a list of characters remaining to be tokenized,
+the third argument is the sequence of tokens recovered, and the second
+argument is a difference list accumulator for partial tokens.
+The only trick here is to recognize special symbols and operators.
+The special symbols are three-character URL encodings of charactes
+such as punctuation and brackets.  The operators must also be
+reocgnized.  These involve the = for key/value pairs and the
++ for spaces.  Everything else is assumed to be part of a string
+token.  The tokenization of the string above is the following Prolog list:
+<PRE>
+[parsestringone,=,&,inputfrom,=,Corpus,&,parsestringtwo,=,Sandy,+,ran,&,outputform,=,Prawitz,&,outputsyn,=,Any,&,expandmng,=,No]
+</PRE>
+
+<P>
+The parser used is a straightforward DCG taking the tokenized string
+as input.  As is standard in Prolog compilers, the arguments of the
+non-terminals encode the structures derived.  The parser has been
+specialized to return the appropriate structures to Prolog.  This
+specialization begins with the non-terminal val/1, which looks for a
+single value.  It can parse standard Prolog terms, but does not have
+precedence built in in order to deal with infix operators properly
+without bracketing.  The grammar could be modified in a
+straightforward way to deal with precedences in the usual way.
+
+<PRE>
+% parse_cgi(+TokenList:&ltlist(&lttoken&gt)&gt, -KeyVals:&ltlist(&ltkeyval&gt)&gt)
+% ----------------------------------------------------------------------
+% KeyVals is Key/Val list resulting from parsing TokenList using
+% the compiled DCG to perform a top-down parse
+% ----------------------------------------------------------------------
+parse_cgi(TokenList,KeyVals):-
+    keyvalseq(KeyVals,TokenList,[]).
+
+% Grammar for Parser
+% ----------------------------------------------------------------------
+keyvalseq([KeyVal|KeyVals]) --&gt 
+   keyval(KeyVal), andkeyvalseq(KeyVals). 
+keyvalseq([]) --&gt [].
+
+andkeyvalseq(KeyVals) --&gt ['&'], keyvalseq(KeyVals).
+andkeyvalseq([]) --&gt [].
+
+keyval(key(Key,Val)) --&gt [Key,'='], valseq(Val).
+
+valseq([Val|Vals]) --&gt val(Val), plusvalseq(Vals).
+valseq(Vals) --&gt plusvalseq(Vals).
+
+plusvalseq([]) --&gt [].
+plusvalseq(Vals) --&gt ['+'], valseq(Vals).
+
+optplus --&gt [].
+optplus --&gt ['+'].
+
+val(X) --&gt ['['], valseq(X), [']'].
+val(der(X)) --&gt [der,'('], valseq(X), [')'].
+val(X) --&gt atomval(X).
+val(X/Y) --&gt atomval(X), ['/'], atomval(Y).
+val(Y\X) --&gt atomval(Y), ['\\'], atomval(X).
+val(X-Y) --&gt atomval(Y), ['-'], atomval(X).
+val(Term) --&gt atom(Fun), ['('], argvals(Args), [')'],   {Term =.. [Fun|Args]}.
+
+argvals([]) --&gt [].
+argvals([Arg|Args]) --&gt
+  val(Arg), commaargvals(Args).
+
+commaargvals(Args) --&gt
+  [','], argvals(Args).
+commaargvals([]) --&gt
+  [].
+
+atomval(X) --&gt atom(X).
+atomval(X) --&gt ['('], val(X), [')'].
+
+atom(X) --&gt [X], {atomic(X)}.
+</PRE>
+
+After parsing, the above form output looks as follows:
+<PRE>
+[key(parsestringone,[]),key(inputfrom,[Corpus]),key(parsestringtwo,[Sandy,ran]),key(outputform,[Prawitz]),key(outputsyn,[Any]),key(expandmng,[No])]
+</PRE>
+
+After this structure has been recovered, application-specific actions
+can be taken on the input, with anything written to the standard
+output being interpreted as HTML.
+
+</BODY>
+
+
+<ADDRESS>
+
+<HR>
+
+<TABLE>
+  <TR>
+    <TD>
+      <small><i>Directory:</i></small>
+      &nbsp &nbsp
+    </TD>
+    <TD>
+      <small>
+      <a href="index.html">TLG Home</a>
+      &nbsp | &nbsp
+      <a href="help.html">Help</A>
+      &nbsp | &nbsp
+      <a href="parser.html">Parser</a>
+      &nbsp | &nbsp
+      <a href="lexicon.html">Lexicon</a>
+      </small>
+    </TD>
+  </TR>
+</TABLE>
+  <HR>
+  <small>
+  <i>Copyright</i> &copy;1999.  All rights reserved. 
+   
+  &nbsp
+  <i>Contact:</i> 
+  <a href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</a>
+
+  &nbsp
+  <i>Updated:</i> &nbsp 22 January 1999 
+  </small>
+</ADDRESS>
+
+</HTML>
+
+

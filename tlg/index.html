@@ -1,0 +1,108 @@
+<HTML>
+
+<HEAD>
+  <TITLE>
+    Type-Logical Grammar Theorem Prover
+  </TITLE>
+</HEAD>
+
+
+<BODY>
+<H1>
+  Type-Logical Grammar Theorem Prover
+</H1>
+
+<H2>The Theorem Prover</H2>
+
+<P>
+This site is devoted to the:
+<UL>
+<LI><a href="parser.html"><b>Type-Logical Grammar Theorem Prover</b></a>.  
+</UL>
+
+<P>
+This theorem prover provides a parser for type-logical grammar,
+a variety of
+<a href ="http://www.cs.man.ac.uk/ai/CG/">categorial grammar</a>.
+
+<H2>Technical Background</H2>
+
+<P>
+The Prolog parser is based on a bottom-up chart parser for phrase
+structure grammars.   Empty categories are handled as usual, and
+hypotheticals are assumed where specified in the input, and then
+discharged by a Cooper-storage-like mechanism.  Each rule checks that
+the tree that it has created is normal.  The terms are displayed in
+beta-eta-normal form.  You can check out:
+<UL>
+<LI>
+<a href="source.html">Prolog Source Code</a>.
+</UL>
+
+<P>
+There is a separate document explaining the:
+<UL>
+<LI>
+<a href="cgi.html">Prolog CGI Interface</a>.
+</UL>
+
+<H2>History</H2>
+
+<P>
+This theorem prover was used to generate the examples in 
+<a href="../carp/index.html">Bob Carpenter</a>'s book, 
+<a href="../carp/books/tls/index.html">Type-Logical Semantics</a> 
+(1998, MIT Press).
+
+<P>
+In early 2000, the web server at CMU with my CGI was
+retired after about five years of continuous service.
+
+<P>
+In October 2000, Geert Kloosterman, of the University
+of Groningen in the Netherlands, reimplimented the CGI
+handler on their local server, which is where results
+are currently being served from.
+
+</BODY>
+
+
+<ADDRESS>
+
+<HR>
+
+<TABLE>
+  <TR>
+    <TD>
+      <small><i>Directory:</i></small>
+      &nbsp &nbsp
+    </TD>
+    <TD>
+      <small>
+      <b>TLG Home</b>
+      &nbsp | &nbsp
+      <a href="help.html">Help</A>
+      &nbsp | &nbsp
+      <a href="parser.html">Parser</a>
+      &nbsp | &nbsp
+      <a href="lexicon.html">Lexicon</a>
+      </small>
+    </TD>
+  </TR>
+</TABLE>
+  <HR>
+  <small>
+  <i>Copyright</i> &copy;1999-2000.  All rights reserved. 
+   
+  &nbsp
+  <i>Contact:</i> 
+  <a href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</a>
+
+  &nbsp
+  <i>Updated:</i> &nbsp 2 October 2000
+  </small>
+</ADDRESS>
+
+</HTML>
+
+

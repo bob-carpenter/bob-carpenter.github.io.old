@@ -1,0 +1,122 @@
+<HTML>
+
+<HEAD>
+  <TITLE>
+    Bob's Index
+  </TITLE>
+</HEAD>
+
+
+<BODY>
+<H1>
+  Bob's Index
+</H1>
+
+<P>
+No, it's not an <code>index.html</code> kind of index, but rather
+a <a href="http://www.harpers.org/"><i>Harper's</i></a> kind of 
+<a href="http://www.harpers.org/harpers-index/harpers-index.html">
+index</a>.
+
+Well, you'll see.
+</P>
+
+<H2>Skill Index</H2>
+
+<P>
+This index will be useful if you want to hire Bob to do something.
+</P>
+<UL>
+<LI> Number of balls Bob can juggle in one hand as a percentage of the world record for two hands: 
+<b>25</b>
+<LI> Degrees Bob has to pass in order to become
+a Sixth Degree Black Belt: <b>5</b>
+<LI> Average number of alarms in Bob's Chili, Black Bean Soup and Chana
+Masala for the 1998 Calendar Year:
+<b>3</b>
+<LI> Photographic frames exposed by Bob since 1996: <b>5000</b>
+<LI> Photographs Bob printed as a percentage of total: <b>4</b>
+<LI> Number of exposures at Bob's current favorite
+<a href="../../photo/formats.html">film format</a> that would fit in a
+frame of his favorite format in 1996.
+in 1996: <b>4</b>
+</UL>
+
+<H2>Geographical Index</H2>
+<UL>
+<LI> Number of countries Bob's lived in for more than 3 months divided by the number of cities in which Bob's lived for more than 3 months: <b>0.325</b>
+<LI> Number of languages Bob speaks fluently expressed as a fraction of the
+total number of languages: <b>1/5000</b>
+<LI> Number of Bob's Manhattan Apartments that would fit in his second house
+in Pittsburgh: <b>4</b>
+<LI> Cost per square foot of Bob's favorite neighborhood in New York
+compared to his favorite neighborhood in Pittsburgh: <b>11/3</b>
+</UL>
+
+<H2>Size Index (American)</H2>
+<P>
+Of course, size isn't everything, but
+this index will be particularly useful if you want to buy
+Bob some clothing or a whole wardrobe. 
+
+<UL>
+<LI> Bob's height minus Uma Thurman's height, in centimeters: <b>0.0</b>
+<LI> The circumference of Bob's head at the location a hat would sit: <b>?</b>
+<LI> Correction Factor of Bob's spectacles, in diopters: <b>2</b>
+<LI> Outside Diameter of Bob's neck in inches: <b>15 1/2</b>
+<LI> The second number on a long sleeved shirt that fits Bob, in inches: <b>33</b>
+<LI> The size of jacket Bob would wear, expressed in American sizes: <b>40</b>
+<LI> The number of inches a tape measure would travel around Bob's waist, in
+inches:
+<b>34</b>
+<LI> The second number on a pair of Levi's that fit Bob, in inches: <b>34</b>
+<LI> The number written inside Bob's shoes next to <i>American</i> when the shoes fit: <b>9 1/2</b>
+</UL> 
+
+
+
+
+</BODY>
+
+
+<ADDRESS>
+
+<HR>
+
+<TABLE>
+  <TR>
+    <TD>
+      <small><i>Directory:</i></small>
+      &nbsp &nbsp
+    </TD>
+    <TD>
+      <small>
+      <a href="../index.html">Home</A>
+      &nbsp | &nbsp
+      <a href="../Schedule/index.html">Schedule</A>
+      &nbsp | &nbsp
+      <a href="../Projects/index.html">Projects</A>
+      &nbsp | &nbsp
+      <a href="../Publications/index.html">Publications</A>
+      &nbsp | &nbsp
+      <a href="../CV/index.html">CV</A>
+      &nbsp | &nbsp
+      <a href="../Personal/index.html">Personal</A>
+      </small>
+    </TD>
+  </TR>
+</TABLE>
+  <HR>
+  <small>
+  <i>Copyright</i> &copy;1999.  All rights reserved. 
+   
+  &nbsp
+  <i>Contact:</i> 
+  <a href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</a>
+
+  &nbsp
+  <i>Updated:</i> 24 January 1999 
+  </small>
+</ADDRESS>
+
+</HTML>

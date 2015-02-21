@@ -1,0 +1,129 @@
+<HTML><HEAD><TITLE>Bob Carpenter's Personal Page</TITLE>
+<style type="text/css">
+body { 
+  margin: 1em 2em 1em 2em;
+  background-color: #F8F8F8;
+}
+* a { text-decoration: none; color: #0033EE; }
+</style>
+</HEAD>
+<BODY>
+<H1>Bob's Personal Page</H1>
+<TABLE>
+  <TBODY>
+    <TR>
+      <TD vAlign=top width=225>
+        <TABLE>
+          <TBODY>
+            <TR>
+              <TD><IMG align=left border=2 src="caricature.gif"> 
+              </TD></TR>
+              <TR>
+                <TD><SMALL>A caricature of Bob drawn in 1996 in Heathrow airport 
+                  outside London before a flight to the United States. It was a 
+                  freebie from the Duty Free for buying a fifth of Scotch. Many people 
+                  no longer recognize Bob because he has short hair now, and 
+                  arms.</SMALL> </TD></TR></TBODY></TABLE></TD>
+                  <TD vAlign=top>Here you'll find everything you need to know about the 
+                    personal side of Bob. 
+                    <UL>
+                      <LI> Bob would rather write a <a href="../../games/sudoku/java_sudoku.html">Java Sudoku Solver</a> than solve a game by hand.
+                      <LI> Bob has traced his <a href="academic-lineage.html">academic lineage</a> back to Leibniz.
+                      <LI> Bob finally decided to <a href="computer/shop.html">build his own computers</a>.
+                      <LI><a href="http://www.topcoder.com/stat?c=member_profile&cr=293134">Bob's a Division I TopCoder.</a> Freakishly geeky, but great exercise.
+                      <LI><a href="http://www.colloquial.com/carp/Personal/slept.html">Bob Carpenter Slept Here</a>
+                      <LI><A href="http://www.colloquial.com/carp/Personal/chili.html">Bob's Chili</A>: Master Recipe, Technique and Variations</a>
+                      <LI>Bob loves to build games; his most recent is <A href="http://www.colloquial.com/games/baseball/">
+                      Little Professor Baseball</a>.
+                      <LI><A href="http://www.colloquial.com/carp/Personal/erdos.html">Bob's Erdos Number</a>
+                      <LI><A href="http://www.colloquial.com/carp/Personal/life.html">Bob's 
+                      Life</A>: A very short biography. 
+                      <LI><A href="http://www.colloquial.com/carp/Personal/family.html">Bob's 
+                      Family</A>: A look at my parents, grandparents, sister and wife. 
+                      <LI>Bob's becoming critical.  Check out 
+                      <A HREF="http://www.amazon.com/exec/obidos/redirect?tag=colloquial&path=tg/cm/member-reviews/-/A1RPKCLVRLU062">Bob Carpenter's Reviews on Amazon</A>.
+                      <LI>Bob's a budding oenophile.  Check out
+                      <A href="http://www.wineaccess.com/shared/community-member.tcl?user_id=10004395">Bob Carpenter's Wine Access Home Page</A>.
+                      <LI>Bob likes <a href="http://www.eBay.com">eBay</a>.  Check out:
+                      <A href="http://members.ebay.com/aboutme/colloquialdotcom@yahoo.com/">Bob's eBay page</A>.
+<LI><A 
+href="http://www.colloquial.com/carp/Personal/bobsindex.html">Bob's 
+Index</A> in the style of <A 
+href="http://www.harpers.org/harpers-index/harpers-index.html"><I>Harper's</I> 
+index</A>. 
+<LI><A 
+href="http://www.colloquial.com/carp/Personal/houserules.html">Bob's 
+House Rules</A> <i>a la</i> <A 
+href="http://www.house-and-garden.com/"><I>House&amp;Garden</I></A>. 
+
+<LI><A 
+href="http://www.colloquial.com/carp/Personal/geekcode.html">Bob's Geek 
+Code</A>: You'll learn a lot about me from this if you have the patience 
+to decode it. 
+<LI><A 
+href="http://www.colloquial.com/carp/Personal/favorites.html">Bob's 
+Favorites</A>. These are <A 
+href="http://www.colloquial.com/carp/Personal/favorites.html">a few of 
+Bob's favorite things</A>. 
+<LI><A href="http://www.colloquial.com/carp/Personal/films.html">Bob's 
+Favorite Films</A>. For quicker insight. 
+<LI><A href="http://www.colloquial.com/carp/Personal/accent.html">Bob's 
+accent</A>, even though it doesn't sound to him like he has one. 
+<LI><A 
+href="http://www.colloquial.com/carp/Personal/jeopardy.html">Bob's 
+ultimate <CITE>Jeopardy</CITE> categories</A>: Categories I'd be sure to 
+win with. 
+<LI><A href="http://www.colloquial.com/carp/Personal/dossier.html">Bob's 
+Dossier</A>: An interview <i>a la</i> the <I>Pittsburgh Post-Gazette</I>. 
+<LI><A 
+href="http://www.colloquial.com/carp/Personal/myers-briggs.html">Bob's 
+Myers-Briggs Personality Type</A>: A Jungian Personality Type Indicator 
+<LI>There are lots of <A 
+href="http://www.colloquial.com/carp/Personal/otherBobCarpenter.html">other 
+people named Bob Carpenter</A> out there, and even some <A 
+href="http://www.colloquial.com/carp/Personal/otherBobCarpenter.html">things 
+named Bob Carpenter</A>. 
+<LI>An <A 
+href="http://www.let.uu.nl/~Anne-Marie.Mineur/personal/Ta/Carpenter.html">interview 
+from <I>Ta!</I></A>, a Dutch magazine. </LI></UL></TD></TR>
+</TBODY>
+</TABLE>
+
+
+&nbsp;
+
+
+<HR>
+
+
+<TABLE>
+  <TR>
+    <TD><font size="+1"><A
+      href="http://www.colloquial.com/carp/index.html">Home</A> 
+      &nbsp; | &nbsp; <A 
+      href="http://www.colloquial.com/carp/Projects/index.html">Projects</A> 
+      &nbsp; | &nbsp; <A 
+      href="http://www.colloquial.com/carp/Publications/index.html">Publications</A> 
+      &nbsp; | &nbsp; <A 
+      href="http://www.colloquial.com/carp/cv.pdf">CV</A> &nbsp; | &nbsp; 
+      <B>Personal</B> 
+      </font>
+    </TD>
+  </TR>
+</TABLE>
+
+</BODY>
+</HTML>
+
+
+
+
+
+
+
+
+
+
+
+
+

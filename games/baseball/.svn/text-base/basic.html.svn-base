@@ -1,0 +1,137 @@
+<HTML>
+
+<HEAD>
+<TITLE>Little Professor Baseball: Simple Game</TITLE>
+</HEAD>
+
+<BODY>
+<FONT FACE="Arial">
+
+<IMG  HSPACE=0 ALIGN=RIGHT HEIGHT=172 WIDTH=161 SRC="images/field.gif">
+<FONT SIZE=+2><font color=red>Little Professor Baseball</font></font>
+<BR>
+<I>We do the arithmetic, so you can play baseball.</I>
+
+<P>
+<FONT SIZE=+3 color=red>The Simple Game</font>
+
+<P>
+<B>Equipment:</B>
+Little Professor Baseball is <i><b>free!</b></i> 
+Just follow these links to find the player cards, dice and scoresheets.
+<UL>
+<LI> <a href="basic_cards.html">Little Professor Basic Player Cards</a>
+<LI> <a href="dice.html">Little Professor Dice</a>, including links to print and build your own dice 
+<LI> <a href="http://baseball-almanac.com/scoring4.shtml">Printable Scoresheets</a>, from
+the folks at <a href="http://baseball-almanac.com/">Baseball Almanac</a>'s 
+</UL>
+
+<P>
+<B>Step 0: Rules</B>
+The basic game is played according to the 
+<a href="http://www.mlb.com/NASApp/mlb/mlb/baseball_basics/mlb_basics_foreward.jsp">
+Official Rules of Baseball</a>.  The professor is pro-choice; whether
+or not to use a designated hitter is up to the discretion of the
+players.
+
+<P>
+<B>Step 1: Choose Teams</B>  
+Choose teams however you'd like.  Popular methods
+are playing favorite teams, recreating the world series,
+having a draft, or recreating the all-star game.
+
+<P>
+<B>Step 2: Lineup</B>  
+Create a lineup.  Be sure to fill every position.  You should only
+use players at positions listed on their cards.  You can substitute
+players just as in regular baseball.  
+
+<P>
+<B>Step 3: At Bat</B>  
+Each at-bat is resolved by both players rolling three ten-sided
+dice to generate a number between 000 and 999.  
+Whichever player rolls higher looks on his card
+to determine the result.  If there is a tie, the players roll again.
+The player rolling higher chooses the best result whose number does not go over his roll. 
+The professor says this is the result across from the largest number less than or
+equal to the roll of the higher roller.
+
+<P>
+<B>Step 4: Base Running</B>
+Running is played by two simple rules:
+<UL>
+<LI> Runners advance one base on all hit outs.  
+<BR>
+<small>
+Scoring Note:  If a runner scores from third on an out, it is scored a SF.
+</small>
+<LI> Runners advance one base on a single and two bases on a double.
+</UL>
+
+<P>
+<B>Step 5: Keep Score</B>  
+Keep score just like in regular baseball.  You'll need to keep track
+of the rotation and who's batting and how many outs there are and
+which bases are occupied.  For information on how to score a baseball
+game, consult 
+<a href="http://www.mlb.com/NASApp/mlb/mlb/baseball_basics/mlb_basics_keeping_score.jsp">Official Baseball Scoring</a>.
+Of course, the basic game does not generate fielding plays, so those will be unknown.
+
+<P>
+<B>Example:</B>
+Here's a batting and pitching card from 1970:
+<SMALL>
+<pre>
+Johnny Bench   Catcher,OF,1B    CIN (NL)              Jim Palmer   Pitcher    BAL (AL)                1970
+AB:605 K:102 W:54 SF:11 H:177 2B:35 3B:4              IP:305.0 H:263 HR:21 W:100 K:199 Avg: .223 OBP: .284
+Avg: .292 HR:45 SLG: .586 OBP: .344   
+     000  Strike Out                                  000  Home Run
+     391  Hit Out                                     093  Triple
+     791  Walk                                        114  Double
+     834  Single                                      207  Single
+     901  Double                                      429  Walk
+     938  Triple                                      497  Hit Out
+     940  Home Run                                    915  Strike Out
+</pre>
+</SMALL>
+It's the first inning, with Pete Rose on third base
+and Johnny Bench batting against Jim Palmer. Johnny rolls an 892
+and Jim rolls a 109.  Johnny rolls higher, so you look on his card for
+the result.  An 892 is a single on Johnny's card; he would've needed a
+roll of 901 or better to get a double.  Pete scores easily from third
+for the run and Johnny gets another RBI. In the third inning, they
+meet again with Bernie Carbo on second base.  Johnny rolls a 412, but Jiim bests
+him with a 519; that's a hit out on Jim's card.  Bernie advances to third
+on the play.
+
+
+
+
+
+
+
+
+<P>
+<a href="index.html">Home</a>
+&nbsp; | &nbsp;
+<a href="basic.html">Basic Game</a>
+&nbsp; | &nbsp;
+<a href="advanced.html">Advanced Strategy</a>
+&nbsp; | &nbsp;
+<a href="math.html">The Mathematics</a>
+
+</FONT>
+
+
+</BODY>
+
+<ADDRESS>
+<HR>
+<FONT FACE="arial" SIZE=-2>
+<B>Copyright</B> ©2001. All rights reserved, <a href="http://www.colloquial.com/">Colloquial.Com</a>. &nbsp; 
+<B>Contact:</B> <A href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</A> &nbsp; 
+<B>Updated:</B> 17 July 2001
+</FONT>
+</ADDRESS>
+
+</HTML>

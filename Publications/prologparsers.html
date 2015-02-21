@@ -1,0 +1,300 @@
+<HTML>
+
+<HEAD>
+  <TITLE>
+    Compiling CFG Parsers in Prolog
+  </TITLE>
+</HEAD>
+
+
+<BODY>
+<H1>
+   Compiling CFG Parsers in Prolog
+</H1>
+
+<PRE>
+
+COMPILED CFG RECOGNIZERS FOR PROLOG
+======================================================================
+Bob Carpenter
+Carnegie Mellon University
+31 October 1995
+
+This document describes what I believe to be optimal methods of
+compiling several popular CFG recognition algorithms directly to
+Prolog:
+
+  - Shift-Reduce
+  - Left-Corner
+  - Top-Down
+  - Dynamic Chart (Bottom-Up, Right-to-Left)
+
+Less drastic compilations would have similar performance and perhaps
+be easier to use.  
+
+This exercise was party carried out in response to the rather
+misleading results reported by Covington in his book _Natural Language
+Processing for Prolog Programmers_ (1994, Prentice Hall).  Covington's
+reported timings suffer from (1) a failure to exploite indexing, (2)
+passing redundant structures, and (3) small sentence lengths in the
+inputs.
+
+In the remainder of this document, I describe the target of the
+compilation based on a given grammar.  There are restrictions on the
+format of the grammar, but these could be alleviated by grammar
+transformations of various kinds, or by slight extensions of the
+compilation strategies.  
+
+Each example comes with a top-level recognition predicate
+
+    rec(Ws,C)
+
+which holds if the string of words Ws can be recognized as being of
+category C.
+
+Timing statistics are presented after the descriptions of the
+recognizers themselves.  These statistics are derived by backtracking
+through all paths, not by stopping after the first solution.  The
+non-memoizing recognizers are clearly exponential, whereas the chart
+recognizer is growing at a less than cubic clip.  
+
+Unfortunately, the timing was not done with a reasonable sized
+grammar.  There was no lexical ambiguity, and only a large enough
+grammar to cover the structures generated and a few more.  I would be
+interested in testing other CFGs, especially ones of a larger scale
+that were designed to cover realistic data.  But in these cases, the
+chart recognizer should have an even greater advantage.  Of course,
+that depends on whether the ambiguity induced is top-down (C0 --> Cs
+for lots of different Cs), or bottom-up (C0 --> C1, Cs for lots of
+different C0 & Cs).  
+
+Of course, results will also differ if all *parses* are to be
+generated.  In this case, the advantage of the chart recognizer will
+be reduced to some extent because of the lack of filtering from
+existing edges in the chart.  But there will still be a gain from not
+having to redo subanalyses.
+
+Results will also differ for strings with less ambiguity than the ones
+tested.  In these cases, the non-memoizing parsers should dominate,
+assuming there are not too many blind paths to follow.
+
+Slightly extended versions of these recognizers could be adapted to
+full DCG grammar format.  
+
+
+
+SHIFT-REDUCE RECOGNIZER
+======================================================================
+Restrictions: no empty categories or looping unary rules
+
+rec(Ws,C):-
+  srrec(Ws,[],C).
+
+srrec([W|Ws],Cs,C):-          % shift
+  lexrec(W,Ws,Cs,C).
+
+C0 --> C1,...,CN
+-----------------
+srrec(Ws,[CN,...,C1|Cs],C):-  % reduce
+  srrec(Ws,[C0|Cs],C).
+
+C0 --> [W]
+---------
+lexrec(W,Ws,Cs,C):-
+  srrec(Ws,[C0|Cs],C).
+
+
+LEFT-CORNER RECOGNIZER
+======================================================================
+Grammar Restrictions: no empty left corners
+
+rec(Ws,s):-
+  s(Ws,[]).
+
+C a category
+------------
+C(C,Ws,Ws).              % connection
+
+C([W|Ws],WsOut):-        % bottom-up expansion
+  lex(W,C,Ws,WsOut).     % needless!! -- quicken w/o empties
+
+C --> []
+--------
+C(Ws,Ws).                % satisfy empty category
+
+C0 --> C1,...,CN
+-----------------
+C1(C,WsIn,WsOut):-      % expand rule from left-corner
+  C2(WsIn,WsMid1),      % only if C1 is possible left-corner of C
+  ...,
+  CN(WsMid1,WsMidN+1),
+  C0(C,WsMidN+1,WsOut).
+
+C0 --> [W]
+----------             
+lex(W,C,WsIn,WsOut):-   % lexical expansion
+  C0(C,WsIn,WsOut).
+
+
+TOP-DOWN RECOGNIZER
+======================================================================
+Grammar Restrictions: no left-recursive rules
+    np --> det, n
+    n --> n, pp 
+   vp --> vp, pp
+    s --> np, vp
+ converted to:
+    np --> det, n, ppstar
+    ppstar --> []
+    ppstar --> pp, ppstar
+    s --> np, vp, ppstar
+
+rec(Ws,s):-
+  s(Ws,[]).
+
+C --> []
+--------
+C(Ws,Ws).
+
+C0 --> C1,...,CN
+-----------------
+C0(WsIn,WsOut):-
+  C1(WsIn,WsMid0),
+  ...
+  CN(WsMidN,WsOut).
+
+C a category
+------------
+C([W|Ws],Ws):-
+  lexC(W).
+
+C0 --> [W]
+----------             
+lexC0(W).
+
+
+BOTTOM-UP LEFT-TO-RIGHT CHART PARSER
+======================================================================
+Grammar Restrictions: no empty categories
+Notes:  optimized by keeping dynamic edges dynamic rather than in chart.
+
+rec(Ws,s):-
+  cleanchart,                     % remove old edges
+  reversecount(Ws,WsRev,N),       % reverse words and count length
+  build_chart(WsRev,N),           % construct full chart
+  edges(0,N).                     % find s edge spanning chart
+
+
+build_chart([],_).                % complete chart
+build_chart([W|Ws],R):-          
+  L is R-1,
+  ( lex(W,L,R)                    % add lexical entries for word
+  ; build_chart(Ws,L)             % build rest of chart
+  ).
+
+
+C0,...,CN all categories
+------------------------
+cleanchart:- 
+  retractall(edgeC0(_,_)),
+  ...,
+  retractall(edgeCN(_,_)).
+
+C --> [W]
+---------
+lex(W,Left,Right):-
+  \+ edgeC(Left,Right),
+  assertz(edgeC(Left,Right)),
+  ruleC(Left,Right).
+
+C0 --> C1,...,CN
+----------------
+ruleC1(Left,Right):-
+  edgeC2(Right,Mid2),
+  ...,
+  edgeCN(MidN-1,Right).
+
+
+RECOGNITION TIMING
+======================================================================
+
+Language:  Compiled (native) SICStus Prolog Version 3.0
+Machine:   SPARCstation 5, 85MHz, 32MB RAM
+
+Grammar:  fairly minimal to cover sentence
+
+String of form: PN TV Det N (P Det N)^k
+
+Run Time in Milliseconds (1/1000 second)
+
+Input                    PARSER
+|n|      BUChart     LC       SR  SimpDCG  LexDCG
+4           4        0         2       0
+7           6        0         6             
+10                            52       0
+13         18        0       402
+16         26        7      3184       0   
+19                         15870         
+22         49       80                10   
+25                 295
+28         79     1113                90
+31                4270               305      220
+34        122    16330              1100      795
+37        150    62520              3810     2805
+40                                 13585     9975
+43        211                      48875    36780
+49        290
+55        394
+64        590
+73        753
+82       1172
+94       1722
+
+Note: SimpDCG uses DCG compiler directly -- takes a hit from 'C'/3.
+
+</PRE>
+
+</BODY>
+
+
+<ADDRESS>
+
+<HR>
+
+<TABLE>
+  <TR>
+    <TD>
+      <small><i>Directory:</i></small>
+      &nbsp &nbsp
+    </TD>
+    <TD>
+      <small>
+      <a href="../index.html">Home</A>
+      &nbsp | &nbsp
+      <a href="../Schedule/index.html">Schedule</A>
+      &nbsp | &nbsp
+      <a href="../Projects/index.html">Projects</A>
+      &nbsp | &nbsp
+      <a href="../Publications/index.html">Publications</A>
+      &nbsp | &nbsp
+      <a href="../CV/index.html">CV</A>
+      &nbsp | &nbsp
+      <a href="../Personal/index.html">Personal</A>
+      </small>
+    </TD>
+  </TR>
+</TABLE>
+  <HR>
+  <small>
+  <i>Copyright</i> &copy;1999.  All rights reserved. 
+   
+  &nbsp
+  <i>Contact:</i> 
+  <a href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</a>
+
+  &nbsp
+  <i>Updated:</i> 24 January 1999 
+  </small>
+</ADDRESS>
+
+</HTML>

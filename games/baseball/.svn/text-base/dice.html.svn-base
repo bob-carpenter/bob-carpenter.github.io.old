@@ -1,0 +1,150 @@
+<HTML>
+
+<HEAD>
+<TITLE>Little Professor Baseball: Percentile Dice</TITLE>
+</HEAD>
+
+<BODY>
+<FONT FACE="Arial">
+
+<IMG  HSPACE=0 ALIGN=RIGHT HEIGHT=172 WIDTH=161 SRC="images/field.gif">
+<FONT SIZE=+2><font color=red>Little Professor Baseball</font></font>
+<BR>
+<I>We do the arithmetic, so you can play baseball.</I>
+
+<P>
+<FONT SIZE=+3 color=red><b>Percentile Dice</b></font>
+
+<P>
+<FONT SIZE=+1 color=red><b>Rolling 000-999</b></FONT>
+<BR>
+You may have noticed that results in Little Professor Baseball are
+ordered 000 to 999, with higher rolls being better for the player
+rolling.  The simplest way to generate a random number between 000 and 999
+is to roll three ten sided dice.  These dice must be given an order
+and when they're rolled, that's the order of digits in the result
+between 000 and 999.  
+<BR>
+<b>Example:</b> Earl Weaver orders his dice black,
+red, white, and rolls a 2 on white, 6 on black and 3 on red, then the
+result is black-red-white or 6-3-2, or 632 for short.
+
+<P>
+<font size=+1 color=red><b>Make Your Own Dice</b></font>
+<BR>
+<IMG  HSPACE=20 ALIGN=RIGHT WIDTH=170 HGT=128 SRC="images/chpdice1.jpg">
+If your budget's tight, the professor suggests downloading <a
+href="http://www.microtactix.com/new/chpdice.html">Microtactix's
+Cheepdice</a> and making your own d10s for the cost of some cardboard.
+(Please don't ask the Professor why they're called "cheep," when they
+are, in fact, free; his head still hurts from placing the apostrophe
+in "Microtactix's" and the comma inside '"cheep,".')
+
+
+<P>
+<font size=+1 color=red><b>Playing Cards as Percentile Dice</b></font>
+<BR>
+The professor has a novel suggestion for generating random
+percentiles: use everyday playing cards.  First,
+divide the playing cards four decks, one for each suit, removing
+the face cards.  Then, choose your favorite three suits and put them in order.
+To generate a random number, you need merely draw a card randomly from
+each deck and read it off as a percentile score.  Warning: this method
+will involve a lot of shuffling.  The professor wants you to know that
+you should be drawing from the decks <i>with replacement</i>, which
+means that after you draw a card from a deck, you replace it and
+reshuffle;  otherwise, the card sharp will be able to count cards and
+have some guess of what the last couple of "rolls" will look like.
+<BR>
+<b>Example:</b>
+Sparky Anderson is managing the 1970 Reds and somehow finds himself 
+ten-sided dice, he chooses the following suits in order:
+<BR>
+<IMG src="images/hearts.gif">, 
+<IMG src="images/spades.gif">, and 
+<IMG src="images/diamonds.gif">. 
+<BR>
+Then when he wants to see how Johnny Bench fares against Jim
+Palmer, he makes the following draw:
+<BR>
+<IMG src="images/2hearts.gif">
+<IMG src="images/8spades.gif">
+<IMG src="images/7diamonds.gif">
+<BR>
+That's a 2-8-7 given the order he put the suits in, for a result
+of 287 on the card.
+
+<P>
+<font size=+1 color=red><b>Platonic Solids and Old-School Dice</b></font>
+<BR>
+<b>Platonic Solids</b>: In the professor's youth, the only dice
+available were molded in opaque solid colors in the shape of the five
+platonic solids, collectively known as <a
+href="http://www.adelaide.net.au/~allanson/polhed.html">polyhedrons</a>.
+Plato showed that there were only five three dimensional objects that
+could be made using sides consisting of identical equilateral
+polygons.
+<UL>
+<LI> <b>d4</b>: tetrahedron (four equilateral triangles)
+<LI> <b>d6</b>: cube (six cubes)
+<LI> <b>d8</b>: octahedron (eight equilateral triangles)
+<LI> <b>d12</b>: dodecahedron (twelve pentagons)
+<LI> <b>d20</b>: icosahedron (twenty equilateral triangles)
+</UL>
+
+<P>
+<b>Percentile Dice:</b> In the professor's youth, d20 were engraved
+with 0-9 twice, rather than the contemporary fashion of defacing them
+with the markings 1-20.  The advantage of the 0-9 range is that a pair
+of d20 can be read as a <i>percintile</i> value from 00-99.  As long
+as you could tell the two d20 apart, the first one would give the tens
+place and the second one the ones place.    This usage was so common
+that a pair of d20 were referred to as <i>percentile dice</i>.
+
+<P>One other historical note: almost everyone treated a 0
+as 10, by the way, yielding results of 1-100 rather than 0-99.  The
+professor believes in truth in advertising and contrary to tradition
+will read 0 as 0.
+
+<P>
+<b>Old School 1-20: d6 and d20</b>
+So how did they roll 1-20 in the old days?  Simple.  With a d6 and a
+d20.  If the d6 was 1, 2, or 3, the result was what the d20 said
+(remember, the markings ranged 0-9, with 0 counting as 10), yielding
+results from 1-10.  If the d6 was 4, 5, or 6, the result was 10 plus
+the result on the d20, yielding results from 11-20.  
+
+<P>
+<b>Old School 1-20: crayon and d20</b>
+So how else did they do it?  Since some of the dice came without so
+much as factory colors in the number, it was common to use permanent
+markers or crayons to color in the gaps.  If you did it in two colors,
+you could generate 1-20 with a single d20.  The professor prefers the
+old school elegance of the first method.
+
+<P>
+<a href="index.html">Home</a>
+&nbsp; | &nbsp;
+<a href="basic.html">Basic Game</a>
+&nbsp; | &nbsp;
+<a href="advanced.html">Advanced Strategy</a>
+&nbsp; | &nbsp;
+<a href="math.html">The Mathematics</a>
+
+
+</FONT>
+</BODY>
+
+<ADDRESS>
+<HR>
+<FONT FACE="arial" SIZE=-2>
+<B>Copyright</B> ©2001. All rights reserved, <a
+href="http://www.colloquial.com/">Colloquial.Com</a>. &nbsp;
+<B>Contact:</B> <A
+href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</A>
+&nbsp; <B>Updated:</B> 17 July 2001
+</FONT>
+</ADDRESS>
+
+</HTML>
+

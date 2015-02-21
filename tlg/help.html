@@ -1,0 +1,230 @@
+<HTML>
+
+<HEAD>
+  <TITLE>
+    Help for TLG Theorem Prover
+  </TITLE>
+</HEAD>
+
+
+<BODY>
+<H1>
+  Help for TLG Theorem Prover
+</H1>
+
+<h2><A NAME="Directory">Help Directory</A></h2>
+<UL>
+<LI>
+<a href="#Submit">Submitting Queries</a>
+<LI>
+<a href="#Display">Display Options</a>
+<LI>
+<a href="#Lexicon">Lexicon Window</a>
+<LI>
+<a href="#Saving">Saving Results</a>
+<LI> 
+<a href="#Options">Customizing the Environment</a>
+<LI>
+<a href="#Optimization">Getting the Most Out of the Parser</a>
+</UL>
+
+
+<h2><A NAME=Submit>Submitting Queries</A>
+<A href="#Directory"><FONT SIZE=-0>[back to Directory]</FONT></A> 
+</h2>
+<P>
+Input can be typed in or selected from a corpus.  The source for input
+is chosen with the radio buttons to the left of the input prompts. 
+
+<h3>Selecting Queries</h3>
+<OL>
+<LI>
+Depress the radio button to the left of the <b>Select:</b> prompt.
+<LI>
+Select input string by clicking (use the scroll bars or cursor to 
+view all input).
+<LI> 
+Click on the <b>Parse String</b> button to submit query.
+</OL>
+
+<h3>Inputting Queries</h3>
+<OL>
+<LI>
+Depress the radio button to the left of the <b>Input:</b> prompt.
+<LI>
+Select input field by clicking in the field.
+<LI> 
+Type input (use the cursor to scroll to text beyond the window).
+<LI>
+Click on the <b>Parse String</b> button to submit query.
+</OL>
+
+
+<h3>Resetting Input</h2>
+<P>
+The <b>Reset Input</b> button clears the input and returns selection
+to initial setting.
+
+
+<H2><A NAME="Display">Display Options</A>
+<A href="#Directory"><FONT SIZE=-0>[back to Directory]</FONT></A> 
+</H2>
+
+<H3>Resizing Windows</H3>
+<P>
+The Query window, the lexicon window, and the output display windows
+can be resized, but not repositioned.  To resize them, simply position
+the cursor on their border and click to grab and drag.
+
+<h3>Options Dialogue</h3>
+<P>
+Clicking on the <b>Options</b> button summons a dialogue box which can
+be used to select various options relating to the input and output of
+the system.
+
+
+<H2><A NAME="Lexicon">The Lexicon Window</A>
+<A href="#Directory"><FONT SIZE=-0>[back to Directory]</FONT></A> 
+</H2>
+<P>
+The complete list of words recognized by the parser can be browsed by
+scrolling in the Lexicon window.  The white space between entries is
+an artificat of Netscape's windowing (as of version 2.0b6a).  
+
+<H2><A NAME="Saving">Saving Results</A>
+<A href="#Directory"><FONT SIZE=-0>[back to Directory]</FONT></A> 
+</H2>
+<P>
+Results of any analysis can be saved by selecting the 'Save As' or
+'Save Frame As' options, depending on whether or not you are using the
+frame-based browser.  As of Netscape 2.0b6a, the frame currently
+selected is outlined in black.  The results will be saved as an
+HTML-formatted document. 
+
+<H2><A NAME="Options">Customizing the Environment</A>
+<A href="#Directory"><FONT SIZE=-0>[back to Directory]</FONT></A> 
+</H2>
+<P>
+The user can reconfigure the parser's style and look by clicking on
+the Options button and making selections from the window that is
+subsequently brought up.  The current options are:
+<DL>
+<DT> Output Style
+<DD> 
+Allows the user to select the form of output.  Options available are:
+  <UL>
+  <LI> Prawitz
+  <LI> Fitch
+  <LI> Text 
+  </UL>
+
+Prawitz is the standard notation for natural deduction proofs in tree
+format.  
+
+Text style approximates the Prawitz style using indentation
+rather than HTML tables.
+
+Fitch style presents proofs in a column, with one step per
+row.  In this format, we indicate the string associated with each
+step. 
+
+<BR><BR>
+<DT>Output Target
+<DD>
+
+The user may select to have output displayed in the output frame of
+the primary parser window, in a new window for each parse, or in a
+single external window, depending on the choice of:
+  <UL>
+  <LI> Local Frame
+  <LI> New Window
+  <LI> Single External Window
+  </UL> 
+
+<BR>
+<DT> Parse as
+<DD>
+Allows the user to select which category the input string should be
+parsed as.  Options available are:
+  <UL>
+  <LI> Any
+  <LI> Finite S
+  <LI> Noun Phrase
+  </UL>
+
+
+<BR>
+<DT> Expand Meanings
+<DD>
+Choosing Yes or No determines whether or not the meaning postulates
+associated with non-logical constants are expanded.  
+
+<BR><BR>
+<DT> Normalize Lambda Terms
+<DD> 
+Choosing Yes or No determines whether or not the lambda terms involved
+in meanings are converted to beta-eta normal form or whether they are
+left unreduced.   
+
+</DL>
+<P>
+Clicking on the OK button submits the options selected and returns the
+user to the query frame.  The Defaults button reverts all selections
+to their default values.
+
+<H2><A NAME="Optimization">Getting the Most out of the Parser</A>
+<A href="#Directory"><FONT SIZE=-0>[back to Directory]</FONT></A> 
+</H2>
+<P>
+The operating system under which the server is operating (the Andrew
+File System at CMU) is set up to cache programs that have been
+recently run.  As a result, the first call to the parser may be much
+slower than subsequent calls because of the need for my local machine
+to fetch a copy of SICStus Prolog to local memory.  
+
+<P>
+For those with small monitors, it may help to pull down the Options
+menu and hide all of the buttons, captions, sites, and other clutter
+that occupies the top portion of most browsers.  
+
+
+
+<ADDRESS>
+
+<HR>
+
+<TABLE>
+  <TR>
+    <TD>
+      <small><i>Directory:</i></small>
+      &nbsp &nbsp
+    </TD>
+    <TD>
+      <small>
+      <a href="index.html">TLG Home</a>
+      &nbsp | &nbsp
+      <b>Help</b>
+      &nbsp | &nbsp
+      <a href="parser.html">Parser</a>
+      &nbsp | &nbsp
+      <a href="lexicon.html">Lexicon</A>
+      </small>
+    </TD>
+  </TR>
+</TABLE>
+  <HR>
+  <small>
+  <i>Copyright</i> &copy;1999.  All rights reserved. 
+   
+  &nbsp
+  <i>Contact:</i> 
+  <a href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</a>
+
+  &nbsp
+  <i>Updated:</i> &nbsp 22 January 1999 
+  </small>
+</ADDRESS>
+
+</HTML>
+
+

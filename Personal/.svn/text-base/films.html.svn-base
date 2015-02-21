@@ -1,0 +1,88 @@
+<HTML>
+
+<HEAD>
+  <TITLE>
+    Bob's Favorite Films
+  </TITLE>
+</HEAD>
+
+
+<BODY>
+<H1>
+  Bob's Favorite Films
+</H1>
+
+<p> They seem to fall into pretty natural categories.  The emphasis
+seems to be on intensity, with a definite weakness for the tragic
+hero.  Too bad my favorite character, Batman, has never made a good
+film.
+
+<H3>Top Ten</H3>
+<UL>
+<li> A Clockwork Orange
+<li> Groundhog's Day
+<li> The Philadelphia Story
+<li> Three Days of the Condor
+<li> The Usual Suspects
+<li> All that Jazz
+<li> Betty Blue
+<li> Memento
+<li> Kagemusha
+<li> 2001: A Space Odyssey
+</UL>
+
+<H3>Runners Up</H3>
+<UL>
+<li> Trading Places
+<li> Failsafe
+<li> Terminator 2
+<li> Dead Ringers
+<li> Butch Cassidy and the Sundance Kid
+<li> The Jungle Book
+<li> Star Wars
+</UL>
+
+</BODY>
+
+
+<ADDRESS>
+
+<HR>
+
+<TABLE>
+  <TR>
+    <TD>
+      <small><i>Directory:</i></small>
+      &nbsp &nbsp
+    </TD>
+    <TD>
+      <small>
+      <a href="../index.html">Home</A>
+      &nbsp | &nbsp
+      <a href="../Schedule/index.html">Schedule</A>
+      &nbsp | &nbsp
+      <a href="../Projects/index.html">Projects</A>
+      &nbsp | &nbsp
+      <a href="../Publications/index.html">Publications</A>
+      &nbsp | &nbsp
+      <a href="../CV/index.html">CV</A>
+      &nbsp | &nbsp
+      <a href="../Personal/index.html">Personal</A>
+      </small>
+    </TD>
+  </TR>
+</TABLE>
+  <HR>
+  <small>
+  <i>Copyright</i> &copy;1999-2001.  All rights reserved. 
+   
+  &nbsp
+  <i>Contact:</i> 
+  <a href="mailto:webmaster@colloquial.com">webmaster@colloquial.com</a>
+
+  &nbsp
+  <i>Updated:</i> 3 December 2001
+  </small>
+</ADDRESS>
+
+</HTML>
