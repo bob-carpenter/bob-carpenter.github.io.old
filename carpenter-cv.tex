@@ -1,0 +1,335 @@
+\documentclass[10pt]{paper}
+
+\usepackage[bookmarks={false},pdftex,unicode,colorlinks,citecolor={blue},filecolor={blue},linkcolor={blue},urlcolor={blue},pdffitwindow,pdfauthor={Bob Carpenter},pdftitle={Bob Carpenter's CV}]{hyperref}
+
+\setlength{\paperwidth}{8.5in}
+\setlength{\paperheight}{11.0in}
+\pdfpagewidth=\paperwidth
+\pdfpageheight=\paperheight
+
+\setlength{\textwidth}{7.0in}
+\setlength{\textheight}{10.5in}
+
+\setlength{\oddsidemargin}{-0.25in}
+\setlength{\evensidemargin}{-0.25in}
+\setlength{\topmargin}{-0.925in}
+
+\newcommand{\heading}[1]{\noindent{\Large\bf\sffamily #1}\\[6pt]}
+\newcommand{\publ}[2]{#1 & \begin{minipage}[t]{0.9\textwidth}#2\end{minipage}\\[4pt]}
+\newcommand{\sll}[1]{{\sl\sffamily #1}}
+
+\raggedbottom
+
+\begin{document}
+\pagestyle{empty}
+\sffamily
+\noindent
+{\Huge\bf\sffamily Bob Carpenter}
+\\[12pt]
+\hspace*{12pt} {\tt http://bob-carpenter.github.io/}
+\\[4pt]
+\hspace*{12pt} {\tt bob.carpenter@columbia.edu}
+\\[14pt]
+
+\heading{Positions}
+%
+\begin{tabular}{lll}
+2018 -- now & Research Scientist
+& Columbia University
+\\[4pt]
+2011 -- 2018 & Assoc. Research Scientist
+& Columbia University
+\\[4pt]
+2002 -- 2016 &  Research Scientist / Software Engineer & Alias-i (LingPipe)
+\\[4pt]
+2000 -- 2002 & Research Scientist / Software Engineer & SpeechWorks
+\\[4pt]
+1996 -- 2000 & Research Scientist & Lucent Bell Labs
+\\[4pt]
+1988 -- 1996 & Assoc.\ Professor, Computational Linguistics & Carnegie
+                                                              Mellon
+                                                              University
+\end{tabular}
+\\[10pt]
+
+\heading{Education}
+%
+\begin{tabular}{llll}
+1984 -- 1989 & Ph.D. & Cognitive Science / Computer Science & Univesity of Edinburgh
+\\[4pt]
+1981 -- 1984 & B.S. & Math / Computer Science & Michigan State Univesity
+\end{tabular}
+\\[12pt]
+
+
+\heading{Grant Funding}
+%
+\begin{tabular}{lllll}
+2019--2020 & Schmidt & \$500K & PI & Schmidt Innovation Fellow
+\\[3pt]
+2019--2022 & NSF & \$630K & co-PI & RIDIR: Tool for Poststratification and
+                            Small-Area Estimation for Survey Data
+\\[3pt]
+2019--2020 & Sloan & \$360K & co-PI & Econometric Modeling with Stan for
+                                      Causality and Differential Equilibrium
+\\[3pt]
+2017--2020 & NSF & \$980K & co-PI & CRI: Stan for the Long Run
+\\[3pt]
+2017--2019 & ONR & \$750K & co-PI & STTR Phase II: Fast and Flexible
+                                 Differential Equation Model Fitting
+\\[3pt]
+2016--2017 & ONR & \$80K & co-PI & STTR Phase I: Fast and Flexible
+                                   Differential Equation Model Fitting
+\\[1pt]
+& & & &                                    with Applications to Pharmacometrics
+\\[3pt]
+2015--2018 & Sloan & \$600K & co-PI & Sustaining and Growing the Stan Community
+\\[3pt]
+2014--2016 & NSF & \$200K & co-PI & EAGER: Advanced Machine Learning
+for Prediction of Preterm Birth
+\\[3pt]
+2014--2017 & IES & \$750K & co-PI & Solving Difficult Bayesian Computation Problems in Education Research Using Stan
+\\[3pt]
+2012--2015 & NSF & \$500K & co-PI & CRI: Stan: Scalable Software for
+Bayesian Modeling
+\\[3pt]
+2006--2008 & NIH & \$750K & tech lead & Phase II SBIR: Resolving Biological Entity References
+\\[3pt]
+2004--2006 & NIH & \$400K & tech lead & Phase I SBIR: Resolving Biological Entity References
+\end{tabular}
+\\[10pt]
+
+\heading{Open Source Software}
+%
+\begin{tabular}{ll}
+\publ{2012 -- present}{w. Stan Dev Team.  Stan Probabilistic Programming Language and
+  Statistical Inference (C++, R, Python)\vspace*{6pt}}
+\publ{2003 -- present}{LingPipe. Natural Language Processing API. (Java)}
+\publ{2002 -- present}{Arithmetic Coding and PPM Compression API. (Java)}
+\publ{2001 -- 2002}{w. S.~Caskey, K.~Dayanidhi, C.~Drouin, R.~Pieraccini. Open Speech Application Framework. (Java, C)}
+\publ{1993 -- present}{w.\ G.~Penn. Attribute Logic Engine. Grammar Formalisms. (Prolog)}
+\end{tabular}
+\\[8pt]
+
+\heading{Books}
+%
+\begin{tabular}{ll}
+in prep & {\sl\sffamily Probability and Statistics: A Simulation-Based Introduction.}
+\\[6pt]
+in prep & {\sl\sffamily Bayesian Workflow with Stan}.
+CRC/Chapman \& Hall.
+\\[2pt]
+&  w. A.~Vehtari, R.~Trangucci, A.~Rajagopal,
+               D.~Simpson, M.~Morris, A.~Gelman, and J.~Gabry.
+\\[6pt]
+1998 & {\sl\sffamily Type-Logical Semantics}. MIT Press.
+\\[6pt]
+1992 & {\sl\sffamily The Logic of Typed Feature Structures}. Cambridge Uni.\ Press.
+\end{tabular}
+\\[10pt]
+
+
+\newpage
+
+\heading{Journal Articles}
+\begin{tabular}{ll}
+  \publ{2018}{S.~Paun, B.~Carpenter, J.~Chamberlain, D.~Hovy,
+  U.~Kruschwitz, M.~Poesio. Comparing Bayesian Models of
+  Annotation. {\sl\sffamily TACL.}\vspace*{6pt}}
+\publ{2017}{B.~Carpenter, A.~Gelman, M.~Hoffman, D.~Lee, B.~Goodrich,
+  M.~Betancourt, M.~Brubaker, J.~Guo, P.~Li, A.~Riddell. Stan: A
+  Probabilistic Programming Language. {\sl\sffamily JStatSoft} 76(1).\vspace*{6pt}}
+\publ{2016}{R.~L.~Grant, D.~C.~Furr, B.~Carpenter and  A.~Gelman. Fitting Bayesian item
+  response models in Stata and Stan. {\sl\sffamily Stata Journal}.\vspace*{6pt}}
+\publ{2014}{R.~Passonneau and B.~Carpenter. The Benefits of a Model of
+  Annotation. {\sl\sffamily TACL.}\vspace*{6pt}}
+\publ{2008}{L.~Smith (w.\ 40 others). Overview of BioCreative II Gene
+  Mention Recognition. {\sl\sffamily Genom.~Bio.}}\vspace*{6pt}
+\publ{2000}{w. C.~H.~Lee, W.~Chou, J.~Chu-Carroll, W.~Reichl, A.~Saad,
+  and Q.~Zhou.  On natural language call routing. {\sl\sffamily Speech Communications}}
+\publ{1999}{w.\ J.\ Chu-Carroll. Dialogue Management in Vector-Based
+  Call Routing. {\sl\sffamily Comp.\ Ling.}\vspace*{-2pt}}
+\publ{1991}{The Generative Power of Categorial Grammars and
+  Head-driven Phrase Structure Grammars with Lexical
+  Rules. {\sl\sffamily Comp.\ Ling.}\vspace*{6pt}}
+\publ{1990}{w.\ G.\ Morrill. Compositionality, Implicational Logics, and Theories of Grammar. {\sl\sffamily Ling.\ and Phil.}}
+\publ{1988}{w.\ G.~Gazdar, G.~Pullum, E.~Klein, T.~Hukari, R.~Levine. Category Structures. {\sl\sffamily Comp.~Ling.}}
+\end{tabular}
+\vspace*{12pt}
+
+\heading{Open Articles}
+%
+\begin{tabular}{ll}
+\publ{2019}{A.~Vehtari, A.~Gelman, D.~Simpson, B.~Carpenter,
+  P.-C.~Bürkner.  Rank-normalization, folding, and localization: An
+  improved Rˆ for assessing convergence of MCMC. {\sl\sffamily arXiv}
+  1903.08008. \vspace*{6pt}}
+\publ{2015}{B.~Carpenter, M.~D.~Hoffman, M.~Brubaker, D.~Lee, P.~Li,
+  and M.~J.~Betancourt.  The Stan Math Library: Reverse-Mode Automatic
+  Differentiation in C++. {\sl\sffamily arXiv} 1509.07164.}
+\end{tabular}
+\vspace*{12pt}
+
+\heading{Book Chapters}
+%
+\begin{tabular}{ll}
+\publ{2004}{Orthographic Variation with Lucene. {\sl\sffamily Lucene in Action}. Manning.}
+\publ{2003}{Constraint-Based Processing. {\sl\sffamily Encyclopedia of Cognitive Science}. Nature Publ.}
+\publ{2003}{[Computational] Complexity. {\sl\sffamily The Oxford Handbook of Computational Linguistics}. Oxford Uni.\ Press.}
+\publ{2000}{w. J.~Chu-Carroll, R.~Sproat, C.~Samuelsson. Computational Linguistics. {\sl\sffamily Handbook of Linguistics}. Blackwell.\vspace*{6pt}}
+\publ{2000}{w.\ C.~Manning. Probabilistic Parsing Using Left-Corner Language Models. {\sl\sffamily Advances in Probabilistic and Other Parsing Technologies}. Kluwer.\vspace{6pt}}
+\publ{1999}{The Turing-Completeness of Multimodal Categorial Grammars. {\sl\sffamily Papers Presented to Johan van Benthem in Honor of his 50th Birthday}. ESSLLI.\vspace{6pt}}
+\publ{1995}{w.\ G.~Penn. Compiling Typed Attribute-Value Logic Grammars. {\sl\sffamily Current Issues in Parsing Technologies, Vol.~2}. Kluwer.\vspace*{6pt}}
+\publ{1993}{w.\ G.~Penn. Sources of Disjunction in Attribute-Value Logic Constraint Resolution. {\sl\sffamily Disjunctive Reasoning in Artificial Intelligence}. Ellis Horwood.\vspace{6pt}}
+\publ{1993}{Skeptical and Credulous Unification with Applications to Lexical Templates and Inheritance. {\sl\sffamily Default Reasoning and Lexical Organization}. Cambridge Uni.~Press.\vspace{6pt}}
+\publ{1992}{Lexical and Unary Rules in Categorial Grammar. {\sl\sffamily Formal Grammar: Theory and Implementation}. Oxford Uni.~Press.\vspace{6pt}}
+\publ{1990}{w.\ R.~Thomason. Inheritance Theory and Path-Based Reasoning. {\sl\sffamily Defeasible Reasoning and Knowledge Representation}. Kluwer.}
+\end{tabular}
+\vspace*{14pt}
+
+\heading{Conference Papers}
+%
+\begin{tabular}{ll}
+  \publ{2014}{w. S.~Weber, D.~Lee, F.~Bois, A.~Gelman, and
+    A.~Racine. Bayesian drug-disease modeling with Stan.
+   {\sl\sffamily Abstracts of the Annual Meeting of the
+      Population Approach Group in Europe.}\vspace*{6pt}}
+\publ{2012}{w. M.~Hoffman, A.~Gelman. Stan: Scalable software for
+  probabilistic modeling. {\sl\sffamily NIPS Probabilistic Programming
+    Workshop.}\vspace*{6pt}}
+\publ{2011}{Measurement, Modeling, and Sampling Error in Clinical
+  Notes. {\sl\sffamily Clinical Notes Workshop, ICML} (invit.)}
+\end{tabular}
+
+\clearpage
+\heading{Conference Papers (cont.)}
+\begin{tabular}{ll}
+\publ{2009}{Ground Truth, Machine Learning and the Mechanical
+  Turk. {\sl\sffamily Turk Meetup}. (invit.) \vspace*{6pt}}
+\publ{2008}{w. B.~Baldwin, C.~Cano, and L.~Peshkin. Known Unknowns in Discharge Summary Mining. {\sl\sffamily AMIA i2b2 Wkshp.}\vspace*{6pt}}
+\publ{2008}{Hierarchical Bayesian Models of Categorical Data Annotation. {\sl\sffamily NYAS ML Symp.}}
+\publ{2007}{LingPipe for 99.99\% Recall of Gene Mentions. {\sl\sffamily BioCreative II Wkshp.}}
+\publ{2006}{Character Language Models for Chinese Word Segmentation and Named-Entity Recogntion. {\sl\sffamily ACL SIGHAN.}}
+\publ{2005}{w. G.~Morrill. Switch Graphs for Parsing Type Logical Grammars. {\sl\sffamily IWPT}.}
+\publ{2005}{Scaling High-Order Character Language Models to Gigabytes. {\sl\sffamily ACL Software}.}
+\publ{2004}{Phrasal Queries with LingPipe and Lucene. {\sl\sffamily TREC}.}
+\publ{2004}{w.\ C.~Collins, G.~Penn. Head-Driven Parsing for Word Lattices. {\sl\sffamily ACL.}}
+\publ{2004}{LingPipe for Biological Entity Extraction. {\sl\sffamily EMBO Wkshp. on Text Mining in Mol.~Bio.}}
+\publ{2002}{Linguistic Methodology Meets Language Reality. {\sl\sffamily PACLing}. (invit.)}
+\publ{2002}{w.\ S.~Caskey, K.~Dayanidhi, C.~Drouin, R.~Pieraccini. A Portable, Server-Side Dialog Framework for VoiceXML. {\sl\sffamily ICSLP}.\vspace{8pt}}
+\publ{2001}{w.\  R.~Pieraccini, S.~Caskey, K.~Dayanidhi, M.~Phillips. ETUDE: A Recursive Dialog Manager with Embedded User Interface Patterns. {\sl\sffamily ASRU}.\vspace{6pt}}
+\publ{2000}{w.\ S. Lerner, R.~Pieraccini. Optimizing BNF Grammars
+  through Source Transformations. {\sl\sffamily ICSLP.}}
+\publ{1999}{Tagging and Parsing Word Graphs. {\sl\sffamily Dagstuhl}. (invit.)}
+\publ{1999}{Human vs.\ Machine: Psycholinguistics Meets Automatic Speech Recognition. {\sl\sffamily ASRU}.}
+\publ{1999}{w.\ G.~Penn. ALE for Speech: A Machine Translation Prototype. {\sl\sffamily Eurospeech}.}
+\publ{1998}{w.\ J.~Chu-Carroll. Dialogue Management in Vector-Based Call Routing. {\sl\sffamily ACL}.}
+\publ{1998}{w.\ J.~Chu-Carroll, Wolfgang Reichl, Wu Chou. Language Modeling for Content. {\sl\sffamily ICSLP}.}
+\publ{1998}{w.\ J.~Chu-Carroll. Natural Language Call Routing: A Robust, Self-Organizing Approach. {\sl\sffamily ICSLP}.}
+\publ{1998}{w.\ J.~Chu-Carroll, W.~Chou, C.-H.~Lee, W.~Reichl, A.~Saad, and Q.~Zhou. A Study on Natural Language Call Routing. {\sl\sffamily IVTTA.}\vspace{6pt}}
+\publ{1998}{German Clause Structure: A Type-Logical Account. {\sl\sffamily ESSLLI Wkshp.\ on Germanic Syntax}.}
+\publ{1997}{VP Ellipsis in Type-Logical Grammar. {\sl\sffamily Roma CG Wkshp.} (invit.)}
+\publ{1997}{w.\ C.~Manning. Left-Corner Language Models and Parsing. {\sl\sffamily IWPT.}}
+\publ{1995}{Clause Union and Argument Structure. {\sl\sffamily Formal Gram.} (invit.)}
+\publ{1995}{The Logic of Grammar. {\sl\sffamily Amsterdam Colloq.} (invit.)}
+\publ{1995}{A Type-Logical Account of Plurality. {\sl\sffamily Formal Gram.}}
+\publ{1995}{w.\ P.~King. The Complexity of Closed-World Reasoning in Constraint-Based Grammar Theories. {\sl\sffamily MOL.}}
+\publ{1995}{w.\ Y.~Qu. An Abstract Machine Architecture for Typed Attribute-Value Grammars. {\sl\sffamily IWPT.}}
+\publ{1994}{Principle-Based Parsing of HPSG. {\sl\sffamily CUNY Sentence Proc.} (invit.)}
+\publ{1994}{Quantification and Scoping: A Deductive Account. {\sl\sffamily WCCFL.}}
+\publ{1994}{w.\ M.~Mastroianni. Constraint-Based Morpho-Phonology. {\sl\sffamily ACL SIGPhon.}}
+\publ{1993}{Interpretation of Lexical Rules in HPSG. {\sl\sffamily HPSG Wkshp.} (invit.)}
+\publ{1993}{An Attribute-Value Logic for Sets. {\sl\sffamily Logic and Language.}}
+\publ{1993}{Compilation of Typed Attribute-Value Logic Grammars for Parsing. {\sl\sffamily IWPT.}}
+\publ{1993}{The ALE System and Grammar Engineering. {\sl\sffamily EAGLES Wkshp.} (invit.)}
+\publ{1992}{Constraint-Based Reasoning, Partial vs. Total Information and the Closed-World Hypothesis. {\sl\sffamily MAIS}. (invit.)}
+\publ{1992}{Plurals as Further Motivation for Lambek's Abstraction. {\sl\sffamily MOL.}}
+\publ{1991}{w.\ C.~Pollard. Inclusion, Disjointness and Choice: The Logic of Linguistic Classification. {\sl\sffamily ACL.}}
+\publ{1991}{w.\ C.~Pollard, A.~Franz. Specification and Implementation of Constraint-Based Unification Grammars. {\sl\sffamily IWPT.}}
+\publ{1991}{Linguistic Knowledge Representation and Reasoning with Hybrid Constraints. {\sl\sffamily AAAI Fall Symp.}}
+\end{tabular}
+
+\clearpage
+\heading{Conference Papers (cont.)}
+\begin{tabular}{ll}
+\publ{1991}{Typed Feature Structures: an Extension of First-Order Terms. {\sl\sffamily ISLP}.}
+\publ{1990}{w.\ C.~Pollard. Extensionality in Feature Structures and Feature Logic. {\sl\sffamily Bad Teinach Conf. on Unification.}}
+\publ{1989}{Typed Feature Structures: Inheritance and Unification. {\sl\sffamily Wkshp.\ on Inheritance and NLP}.}
+\publ{1987}{Some Lexical Issues in Categorial Grammar. {\sl\sffamily NLP, Unification and  Grammatical Formalisms Wkshp.}}
+\publ{1987}{w.\ Glyn Morrill. Compositionality, Implicational Logics, and Theories of Grammar. {\sl\sffamily Logic and Ling.}}
+\publ{1986}{A Theory of Types for Situation Semantics. {\sl\sffamily LAGB}.}
+\end{tabular}
+\\[14pt]
+
+\heading{Tutorials}
+%
+\begin{tabular}{ll}
+\publ{2016}{w.\ D.~Lee and A.~Gelman.  Stan for Bayesian Modeling and Inference.
+\\[2pt] {\sl\sffamily Memorial Sloan Kettering, Vanderbilt Uni
+  Med School, Australian ML Summer School, New England Statistics
+  Symposium} \vspace*{6pt}}
+\publ{2010}{w.\ M.~Poesio. Statistical Models of Data Coding. {\sl\sffamily LREC}.}
+\publ{1999}{w.\ J.~Chu-Carroll.  Spoken Dialogue Systems. {\sl\sffamily ACL.}}
+\publ{1991}{Prolog for Linguistics. {\sl\sffamily LSA Summer School.}}
+\publ{1995}{Type-Logical Grammar. {\sl\sffamily ESSLLI Summer School.}}
+\publ{1991}{Theory and Implementation of Attribute-Value Logics. {\sl\sffamily ESSLLI Summer School.}}
+\publ{1990}{Domain Theory and Denotational Semantics. {\sl\sffamily ESSLLI Summer School.}}
+\publ{1989}{Event-Based Theories of Semantics. {\sl\sffamily ESSLLI Summer School.}}
+\end{tabular}
+\\[14pt]
+
+\heading{Patents}
+%
+\begin{tabular}{ll}
+\publ{2001}{Methods and apparatus for automatic call routing including
+  disambiguating routing decisions.  Robert Lee Carpenter and Jennifer
+  Chu-Carroll.  U.S.\ Patent number 6269153.}
+\end{tabular}
+\\[14pt]
+
+\heading{University Courses}
+%
+\begin{tabular}{l}
+w. Ivan Sag.  Categorial Grammar and HPSG. \sll{Dutch Grad.\ School in Logic and Ling.}
+\\[4pt]
+Semantics and Pragmatics. \sll{CMU Grad.}
+\\[4pt]
+Natural Language Processing I, II, and III. \sll{CMU Grad.}
+\\[4pt]
+Intro. to Computational Linguistics. \sll{CMU Undergrad.}
+\\[4pt]
+w. T.~Seidenfeld. Philosophy of Language. \sll{CMU Undergrad.}
+\\[4pt]
+Psycholinguistics. \sll{CMU Undergrad.}
+\\[4pt]
+Computational Theory Core. \sll{CMU Grad.}
+\\[4pt]
+Computation Theory for AI. \sll{U.~Pitt.~Grad.}
+\end{tabular}
+\\[14pt]
+
+\heading{Blog Posts}
+%
+\begin{tabular}{l}
+http://lingpipe-blog.com/
+\\[6pt]
+http://andrewgelman.com/
+\end{tabular}
+\\[14pt]
+
+\heading{Students}
+%
+\begin{tabular}{ll}
+\publ{2002}{Kathy Baker, CMU Ph.D. (Research Scientist, NSA)}
+\publ{2000}{Gerald Penn, CMU Ph.D. (Assoc.~Prof., Uni.\ Toronto, Comp.~Sci.)}
+\publ{1996}{Ariel Cohen, CMU Ph.D. (Senior Lect., Ben Gurion Uni., Linguistics)}
+\publ{1988--1996}{14 CMU M.S.\ students}
+\publ{1988--1997}{2 external Ph.D.\ committees / examinations}
+\end{tabular}
+\\[14pt]
+
+\vfill
+
+
+
+\end{document}
